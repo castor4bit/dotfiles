@@ -66,6 +66,8 @@ map <silent> sP :call YanktmpPaste_P()<CR>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap sk <C-W>k
 nmap sj <C-W>j
+nnoremap j gjzz
+nnoremap k gkzz
 
 let g:miniBufExplSplitBelow=0
 let g:miniBufExplMapWindowNavArrows=1
@@ -73,3 +75,6 @@ let g:miniBufExplMapCTabSwitchBufs=1
 let g:miniBufExplModSelTarget=1
 let g:miniBufExplSplitToEdge=1
 
+hi Pmenu ctermbg=cyan ctermfg=black
+hi PmenuSel ctermbg=blue
+hi PmenuSbar ctermbg=cyan
