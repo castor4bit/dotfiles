@@ -48,33 +48,40 @@ set whichwrap=b,s,h,l,<,>,[,]
 syntax on
 colorscheme darkblue
 
-nnoremap j gj
-nnoremap k gk
-
 filetype plugin indent on
 
 if has("autocmd")
-    autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
-    autocmd QuickFixCmdPost vimgrep cw
-    autocmd BufNewFile,BufRead *.as   set filetype=actionscript
-    autocmd BufNewFile,BufRead *.mxml set filetype=mxml 
+  "autocmd!
+  autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+  autocmd QuickFixCmdPost vimgrep cw
+  autocmd BufNewFile,BufRead *.as   set filetype=actionscript
+  autocmd BufNewFile,BufRead *.mxml set filetype=mxml 
+  autocmd FileType * let g:AutoComplPop_CompleteOption = '.,w,b,u,t,i'
+  autocmd FileType php let g:AutoComplPop_CompleteOption = '.,w,b,u,t,i,k~/.vim/dict/php.dict'
 endif
 
 map <silent> sy :call YanktmpYank()<CR>
 map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 nmap sk <C-W>k
 nmap sj <C-W>j
 nnoremap j gjzz
 nnoremap k gkzz
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
-let g:miniBufExplSplitBelow=0
+let g:AutoComplPop_IgnoreCaseOption=1
+let g:miniBufExplMapWindowNavVim=1
 let g:miniBufExplMapWindowNavArrows=1
 let g:miniBufExplMapCTabSwitchBufs=1
 let g:miniBufExplModSelTarget=1
 let g:miniBufExplSplitToEdge=1
+let g:miniBufExplSplitBelow=0
+nmap <Space> :MBEbn<CR>
+nmap <S-Space> :MBEbp<CR>
 
 hi Pmenu ctermbg=cyan ctermfg=black
 hi PmenuSel ctermbg=blue
 hi PmenuSbar ctermbg=cyan
+hi Folded	ctermfg=blue ctermbg=darkgrey cterm=bold term=bold
+
