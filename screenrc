@@ -1,0 +1,35 @@
+termcapinfo xterm* ti@:te@
+autodetach off
+defmonitor on
+vbell off
+defutf8 on
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+defscrollback 8192
+startup_message off
+hardstatus on
+hardstatus alwayslastline "%= [%Y-%m-%d %02c]"
+caption always "%{= wk} %-w%{=bu dr} %n %t %{-}%+w"
+shell -$SHELL
+
+bind j focus down
+bind k focus up
+bind t title
+bind u encoding utf8
+bind e encoding eucJP
+bind s eval 'split' 'focus' 'screen 1'
+bind | eval 'split -v' 'focus' 'screen 1'
+bind q only
+bind w windowlist -b
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^]  command
+bind -c resize j eval 'resize +1' 'command -c resize'
+bind -c resize k eval 'resize -1' 'command -c resize'
+bind o eval 'echo "Region select"' 'command -c region'
+bind -c region j eval 'focus down' 'command -c region'
+bind -c region k eval 'focus up'   'command -c region'
+
+logfile "/private/var/log/screen/$USER-%Y%m%d-%n.log"
+deflog on
+
