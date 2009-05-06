@@ -69,6 +69,7 @@ nmap sj <C-W>j
 nnoremap j gjzz
 nnoremap k gkzz
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+vmap _ :w !nkf -Ws\|pbcopy<CR><CR>
 
 let g:AutoComplPop_IgnoreCaseOption=1
 let g:miniBufExplMapWindowNavVim=1
