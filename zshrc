@@ -4,6 +4,7 @@ PAGER=less
 PATH=/opt/local/bin:/opt/local/sbin:$PATH
 PATH=$PATH:/Applications/Flex3SDK/bin
 NEKOPATH=/usr/lib/neko
+HAXE_LIBRARY_PATH=/usr/lib/haxe/std:/usr/lib/haxe/lib:.
 VIMRUNTIME=/usr/share/vim/vim70
 
 export LANG
@@ -11,6 +12,7 @@ export EDITOR
 export PAGER
 export PATH
 export NEKOPATH
+export HAXE_LIBRARY_PATH
 export VIMRUNTIME
 
 autoload -U compinit
@@ -50,11 +52,13 @@ setopt append_history
 setopt share_history
 
 alias ls='ls -G'
+alias ll='ls -Gla'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ..='cd ..'
 alias vi='vim'
+#alias screen='screen -UxR'
 
 if [ "$TERM" = "dumb" ] ; then
     PROMPT='%h %n@%m[%d] %# '
@@ -64,19 +68,7 @@ else
     RPROMPT="%d"
 fi
 
-# script lgg
-now=`date +%Y%m%d%H%M%S`
-user=`whoami`
-logdir=/private/var/log/script_log/$user
-logfile=$logdir/$now.log
-
-if [ ! -e $logdir ]; then
-    mkdir $logdir
-fi
-
-p_proc=`ps -ef|grep $PPID|grep zsh|awk '{print $8}'`
-if [ "$p_proc" = -zsh ]; then
-    script -aq $logfile
-    exit
-fi
-
+preexec () {
+  [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
+}
+[ ${STY} ] || screen -UxR
