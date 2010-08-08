@@ -1,19 +1,32 @@
 LANG=ja_JP.UTF-8
 EDITOR=vim
 PAGER=less
-PATH=/opt/local/bin:/opt/local/sbin:$PATH
-PATH=$PATH:/Applications/Flex3SDK/bin
+MANPATH=$MANPATH:/opt/local/man
 NEKOPATH=/usr/lib/neko
 HAXE_LIBRARY_PATH=/usr/lib/haxe/std:/usr/lib/haxe/lib:.
-VIMRUNTIME=/usr/share/vim/vim70
+VIMRUNTIME=/opt/local/share/vim/vim72
+RUBYLIB=/opt/local/lib/ruby/1.8:/opt/local/lib/ruby/site_ruby/1.8/:/opt/local/lib/ruby/vendor_ruby/1.8/:$RUBYLIB
+GOROOT=$HOME/go
+GOOS=darwin
+GOARCH=386
+GOBIN=$GOROOT/bin
+PATH=/opt/local/bin:/opt/local/sbin:$PATH
+PATH=$PATH:/Applications/Flex3SDK/bin
+PATH=$PATH:$GOBIN
 
 export LANG
 export EDITOR
 export PAGER
 export PATH
+export MANPATH
 export NEKOPATH
 export HAXE_LIBRARY_PATH
 export VIMRUNTIME
+export RUBYLIB
+export GOROOT
+export GOOS
+export GOARCH
+export GOBIN
 
 autoload -U compinit
 compinit
