@@ -15,7 +15,7 @@ set ruler
 set laststatus=2
 set list
 set listchars=tab:\ \ ,extends:<,trail:-
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline=%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c%V%8P
 
 set incsearch
 set ignorecase
@@ -60,21 +60,14 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.go   set filetype=go
   autocmd FileType * let g:AutoComplPop_CompleteOption = '.,w,b,u,t,i'
   autocmd FileType php let g:AutoComplPop_CompleteOption = '.,w,b,u,t,i,k~/.vim/dict/php.dict'
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 endif
 
 call pathogen#runtime_append_all_bundles()
-
-map <silent> sy :call YanktmpYank()<CR>
-map <silent> sp :call YanktmpPaste_p()<CR>
-map <silent> sP :call YanktmpPaste_P()<CR>
-nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
-nmap sk <C-W>k
-nmap sj <C-W>j
-nmap sh <C-W>h
-nmap sl <C-W>l
-nnoremap j gjzz
-nnoremap k gkzz
-vmap _ :w !nkf -Ws\|pbcopy<CR><CR>
 
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
@@ -100,9 +93,23 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 let g:neocomplcache_enablecursorholdi = 1
 let g:neocomplcache_enable_auto_select = 1
 
+let g:buftabs_only_basename=1
+let g:buftabs_in_statusline=1
+let g:buftabs_active_highlight_group="Visual"
+
+nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+vmap _ :w !nkf -Ws\|pbcopy<CR><CR>
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+nnoremap j gjzz
+nnoremap k gkzz
+nnoremap <Space>   :bnext<CR>
+nnoremap <S-Space> :bprev<CR>
+
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-
 inoremap <expr><CR>    pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><Right> pumvisible() ? neocomplcache#cancel_popup() : "\<Right>"
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -112,20 +119,10 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 inoremap <expr><C-g>  neocomplcache#undo_completion()
 inoremap <expr><C-l>  neocomplcache#complete_common_string()
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-let g:miniBufExplMapWindowNavVim=1
-let g:miniBufExplMapWindowNavArrows=1
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplModSelTarget=1
-let g:miniBufExplSplitToEdge=1
-let g:miniBufExplSplitBelow=0
-nmap <Space> :MBEbn<CR>
-nmap <S-Space> :MBEbp<CR>
+map <silent> sy :call YanktmpYank()<CR>
+map <silent> sp :call YanktmpPaste_p()<CR>
+map <silent> sP :call YanktmpPaste_P()<CR>
 
 hi Pmenu ctermbg=cyan ctermfg=black
 hi PmenuSel ctermbg=blue
