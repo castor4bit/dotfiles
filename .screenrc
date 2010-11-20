@@ -30,6 +30,9 @@ bind o eval 'echo "Region select"' 'command -c region'
 bind -c region j eval 'focus down' 'command -c region'
 bind -c region k eval 'focus up'   'command -c region'
 
+bindkey ^n next
+bindkey ^p prev
+
 logfile "/private/var/log/screen/$USER-%Y%m%d-%n.log"
 deflog on
 
