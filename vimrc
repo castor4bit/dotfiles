@@ -68,11 +68,10 @@ map <silent> sP :call YanktmpPaste_P()<CR>
 nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 nmap sk <C-W>k
 nmap sj <C-W>j
+nmap sh <C-W>h
+nmap sl <C-W>l
 nnoremap j gjzz
 nnoremap k gkzz
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-inoremap <expr><Up> pumvisible() ? neocomplcache#close_popup()."\<Up>" : "\<Up>"
-inoremap <expr><Down> pumvisible() ? neocomplcache#close_popup()."\<Down>" : "\<Down>"
 vmap _ :w !nkf -Ws\|pbcopy<CR><CR>
 
 let g:user_zen_expandabbr_key = '<c-e>'
@@ -96,18 +95,21 @@ if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplcache_enablecursorholdi = 1
+let g:neocomplcache_enable_auto_select = 1
 
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . (&indentexpr != '' ? "\<C-f>\<CR>X\<BS>":"\<CR>")
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><CR>    pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr><Right> pumvisible() ? neocomplcache#cancel_popup() : "\<Right>"
+inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-g>  neocomplcache#undo_completion()
+inoremap <expr><C-l>  neocomplcache#complete_common_string()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
