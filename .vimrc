@@ -46,6 +46,9 @@ set scroll=3
 set scrolloff=15
 set whichwrap=b,s,h,l,<,>,[,]
 
+filetype off
+call pathogen#runtime_append_all_bundles()
+
 colorscheme darkblue
 filetype plugin on
 filetype indent on
@@ -66,8 +69,6 @@ if has("autocmd")
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 endif
-
-call pathogen#runtime_append_all_bundles()
 
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
@@ -128,5 +129,5 @@ hi Pmenu ctermbg=cyan ctermfg=black
 hi PmenuSel ctermbg=blue
 hi PmenuSbar ctermbg=cyan
 hi Folded	ctermfg=blue ctermbg=darkgrey cterm=bold term=bold
-hi MatchParen term=standout ctermbg=LightGrey ctermfg=Black guibg=LightGrey guifg=Black
+hi MatchParen term=standout ctermbg=Black ctermfg=Red guibg=Black guifg=Red
 
