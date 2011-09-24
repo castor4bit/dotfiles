@@ -1,4 +1,24 @@
+" Bundle Settings
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'qmarik/vundle'
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/vimfiler'
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-surround'
+Bundle 'mattn/zencoding-vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-scripts/yanktmp.vim'
+Bundle 'buftabs'
+
 
 set termencoding=utf-8
 set encoding=utf-8
@@ -46,23 +66,22 @@ set scroll=3
 set scrolloff=15
 set whichwrap=b,s,h,l,<,>,[,]
 
-filetype off
-call pathogen#runtime_append_all_bundles()
-
-colorscheme darkblue
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 syntax on
 
+colorscheme darkblue
+hi Pmenu ctermbg=cyan ctermfg=black
+hi PmenuSel ctermbg=blue
+hi PmenuSbar ctermbg=cyan
+hi Folded	ctermfg=blue ctermbg=darkgrey cterm=bold term=bold
+hi MatchParen term=standout ctermbg=Black ctermfg=Red guibg=Black guifg=Red
+
 if has("autocmd")
-  "autocmd!
   autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
   autocmd QuickFixCmdPost vimgrep cw
   autocmd BufNewFile,BufRead *.as   set filetype=actionscript
   autocmd BufNewFile,BufRead *.mxml set filetype=mxml
   autocmd BufNewFile,BufRead *.go   set filetype=go
-  autocmd FileType * let g:AutoComplPop_CompleteOption = '.,w,b,u,t,i'
-  autocmd FileType php let g:AutoComplPop_CompleteOption = '.,w,b,u,t,i,k~/.vim/dict/php.dict'
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -70,11 +89,11 @@ if has("autocmd")
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 endif
 
+" ZenCoding
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
-let g:AutoComplPop_IgnoreCaseOption=1
-let g:AutoComplPop_NotEnableAtStartup=1
 
+" NeoComplcache
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -94,21 +113,6 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 let g:neocomplcache_enablecursorholdi = 1
 let g:neocomplcache_enable_auto_select = 1
 
-let g:buftabs_only_basename=1
-let g:buftabs_in_statusline=1
-let g:buftabs_active_highlight_group="Visual"
-
-nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
-vmap _ :w !nkf -Ws\|pbcopy<CR><CR>
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
-nnoremap j gjzz
-nnoremap k gkzz
-nnoremap <Space>   :bnext<CR>
-nnoremap <S-Space> :bprev<CR>
-
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><CR>    pumvisible() ? neocomplcache#close_popup() : "\<CR>"
@@ -121,13 +125,25 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 inoremap <expr><C-g>  neocomplcache#undo_completion()
 inoremap <expr><C-l>  neocomplcache#complete_common_string()
 
+" Buftabs
+let g:buftabs_only_basename=1
+let g:buftabs_in_statusline=1
+let g:buftabs_active_highlight_group="Visual"
+
+nnoremap <Space>   :bnext<CR>
+nnoremap <S-Space> :bprev<CR>
+
+" YankTmp
 map <silent> sy :call YanktmpYank()<CR>
 map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
-hi Pmenu ctermbg=cyan ctermfg=black
-hi PmenuSel ctermbg=blue
-hi PmenuSbar ctermbg=cyan
-hi Folded	ctermfg=blue ctermbg=darkgrey cterm=bold term=bold
-hi MatchParen term=standout ctermbg=Black ctermfg=Red guibg=Black guifg=Red
-
+" Other key maps
+nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+vmap _ :w !nkf -Ws\|pbcopy<CR><CR>
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+nnoremap j gjzz
+nnoremap k gkzz
