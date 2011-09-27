@@ -76,17 +76,10 @@ hi PmenuSbar ctermbg=cyan
 hi Folded	ctermfg=blue ctermbg=darkgrey cterm=bold term=bold
 hi MatchParen term=standout ctermbg=Black ctermfg=Red guibg=Black guifg=Red
 
+" autocmd
 if has("autocmd")
-  autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   autocmd QuickFixCmdPost vimgrep cw
-  autocmd BufNewFile,BufRead *.as   set filetype=actionscript
-  autocmd BufNewFile,BufRead *.mxml set filetype=mxml
-  autocmd BufNewFile,BufRead *.go   set filetype=go
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 endif
 
 " ZenCoding
