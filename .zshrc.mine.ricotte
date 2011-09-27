@@ -7,3 +7,7 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
 
 # perlbrew
 source ~/perl5/perlbrew/etc/bashrc
+
+# Homebrew
+export PATH="$(brew --prefix)/bin:$PATH"
+
