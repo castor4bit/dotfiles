@@ -65,6 +65,7 @@ set autoread
 set scroll=3
 set scrolloff=15
 set whichwrap=b,s,h,l,<,>,[,]
+set clipboard+=unnamed
 
 filetype plugin indent on
 syntax on
