@@ -10,4 +10,5 @@ source ~/perl5/perlbrew/etc/bashrc
 
 # Homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
+export GISTY_DIR="$HOME/Project/gists"
 
