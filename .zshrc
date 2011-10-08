@@ -73,4 +73,4 @@ preexec () {
 }
 
 # Startup screen on login
-[ ${STY} ] || screen -UdRR
+[ ${STY} ] || screen -D -RR -U
