@@ -33,6 +33,7 @@ bind -c region k eval 'focus up'   'command -c region'
 bindkey ^n next
 bindkey ^p prev
 
-logfile "/private/var/log/screen/$USER-%Y%m%d-%n.log"
+logfile "$HOME/log/screen-%Y%m%d-%n.log"
+log on
 deflog on
 
