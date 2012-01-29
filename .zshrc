@@ -18,6 +18,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ..='cd ..'
 alias vi='vim'
+alias less='less -FRSX'
 
 # Options - Changing Directories
 setopt auto_cd
