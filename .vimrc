@@ -12,11 +12,14 @@ Bundle 'Shougo/vimfiler'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/zencoding-vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/yanktmp.vim'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'buftabs'
 Bundle 'tyru/caw.vim'
 
@@ -66,11 +69,13 @@ set scroll=3
 set scrolloff=15
 set whichwrap=b,s,h,l,<,>,[,]
 set clipboard+=unnamed
+set visualbell t_vb=
 
 filetype plugin indent on
 syntax on
 
-colorscheme darkblue
+set t_Co=256
+colorscheme desert
 hi Pmenu ctermbg=cyan ctermfg=black
 hi PmenuSel ctermbg=blue
 hi PmenuSbar ctermbg=cyan
@@ -84,7 +89,6 @@ if has("autocmd")
 endif
 
 " ZenCoding
-let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
 
 " NeoComplcache
@@ -104,10 +108,16 @@ if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-let g:neocomplcache_enablecursorholdi = 1
+let g:neocomplcache_enable_cursor_hold_i = 1
+let g:neocomplcache_enable_insert_char_pre  = 1
 let g:neocomplcache_enable_auto_select = 1
 
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><CR>    pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><Right> pumvisible() ? neocomplcache#cancel_popup() : "\<Right>"
@@ -126,6 +136,10 @@ let g:buftabs_active_highlight_group="Visual"
 
 nnoremap <Space>   :bnext<CR>
 nnoremap <S-Space> :bprev<CR>
+
+" NERD_comments
+let NERDSpaceDelims = 1
+let NERDShutUp = 1
 
 " YankTmp
 map <silent> sy :call YanktmpYank()<CR>
