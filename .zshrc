@@ -75,3 +75,7 @@ preexec () {
 
 # Startup screen on login
 [ ${STY} ] || screen -D -RR -U
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/usr/local/sbin  # for nginx
+
