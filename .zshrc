@@ -67,6 +67,9 @@ setopt no_beep
 setopt prompt_subst
 unsetopt promptcr
 
+# Environment variables
+PATH=$PATH:/usr/local/bin:/usr/local/sbin
+
 # Local Settings
 if [[ -s $HOME/.zshrc.mine ]] ; then source $HOME/.zshrc.mine ]] ; fi
 
@@ -83,7 +86,3 @@ preexec () {
 
 # Startup screen on login
 [ ${STY} ] || screen -D -RR -U
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/usr/local/sbin  # for nginx
-
