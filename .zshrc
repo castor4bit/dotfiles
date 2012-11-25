@@ -11,8 +11,15 @@ autoload -U compinit && compinit
 bindkey -v
 
 # Aliases
-alias ls='ls -G'
-alias ll='ls -Gla'
+case "${OSTYPE}" in
+  freebsd*|darwin*)
+    alias ls="ls -G"
+    ;;
+  linux*)
+    alias ls="ls --color"
+    ;;
+esac
+alias ll='ls -la'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -33,6 +40,7 @@ setopt auto_menu
 setopt auto_param_keys
 setopt auto_remove_slash
 setopt complete_in_word
+setopt complete_aliases
 setopt list_types
 setopt no_list_beep
 
