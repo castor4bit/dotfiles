@@ -15,13 +15,15 @@ Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tyru/caw.vim'
 Bundle 'mattn/zencoding-vim'
-Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/yanktmp.vim'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'buftabs'
-Bundle 'tyru/caw.vim'
+Bundle 'kana/vim-tabpagecd'
 
 set termencoding=utf-8
 set encoding=utf-8
@@ -110,7 +112,11 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 let g:neocomplcache_enable_cursor_hold_i = 1
 let g:neocomplcache_enable_insert_char_pre  = 1
-let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_auto_select = 0
+if !exists('g:neocomplcache_source_rank')
+  let g:neocomplcache_source_rank = {}
+endif
+let g:neocomplcache_source_rank.buffer_complete = 90
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -118,6 +124,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><CR>    pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><Right> pumvisible() ? neocomplcache#cancel_popup() : "\<Right>"
@@ -151,7 +158,7 @@ nmap <Leader>c <Plug>(caw:I:toggle)
 vmap <Leader>c <Plug>(caw:I:toggle)
 
 " unite.vim
-"let g:unite_enable_start_insert=1
+let g:unite_enable_start_insert=1
 "let g:unite_enable_split_vertically=1
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
@@ -174,4 +181,7 @@ nnoremap k gkzz
 cmap W w
 cmap Q q
 cmap WQ wq
+
+nnoremap ; :
+inoremap jj <ESC>
 
