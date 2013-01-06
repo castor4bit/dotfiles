@@ -29,7 +29,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'buftabs'
 Bundle 'kana/vim-tabpagecd'
 
-set termencoding=utf-8
+let &termencoding = &encoding
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932
 
@@ -121,7 +121,7 @@ set scrolloff=15
 " [, ]          Left, Right (Insert/Replace)
 set whichwrap=b,s,h,l,<,>,[,]
 " クリップボードを共有
-set clipboard+=unnamed
+set clipboard+=unnamed,autoselect
 set visualbell t_vb=
 
 " ファイルタイプ毎のインデント有効化
@@ -229,15 +229,42 @@ vmap <Leader>c <Plug>(caw:I:toggle)
 " unite.vim
 "--------------------------------------
 let g:unite_enable_start_insert=1
-"let g:unite_enable_split_vertically=1
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+"--------------------------------------
+" VimFiler
+"--------------------------------------
+cmap vf VimFiler -split -simple -winwidth=30 -no-quit
+
+"--------------------------------------
+" ref.vim
+"--------------------------------------
+let g:ref_use_vimproc=1
+let g:ref_phpmanual_path=$HOME ."/Documents/refs/php-chunked-xhtml"
+let g:ref_source_webdict_sites = {
+\   'alc': {
+\     'url': 'http://eow.alc.co.jp/search?q=%s',
+\   },
+\   'wikipedia': {
+\     'url': 'http://ja.wikipedia.org/wiki/%s',
+\   },
+\ }
+function! g:ref_source_webdict_sites.alc.filter(output)
+  return join(split(a:output, "\n")[42 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.wikipedia.filter(output)
+  return join(split(a:output, "\n")[17 :], "\n")
+endfunction
+nnoremap ,rr :<C-u>Ref refe<Space>
+nnoremap ,rp :<C-u>Ref phpmanual<Space>
+nnoremap ,ra :<C-u>Ref webdict alc<Space>
+nnoremap ,rw :<C-u>Ref webdict wikipedia<Space>
+au FileType ref nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 
 "--------------------------------------
 " Other key maps
