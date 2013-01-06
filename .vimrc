@@ -5,29 +5,37 @@ set nocompatible
 " Bundle Settings
 "--------------------------------------
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-Bundle 'qmarik/vundle'
-
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/vimfiler'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/unite.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tyru/caw.vim'
-Bundle 'mattn/zencoding-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'vim-scripts/yanktmp.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'buftabs'
-Bundle 'kana/vim-tabpagecd'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+  \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+  \     'cygwin'  : 'make -f make_cygwin.mak',
+  \     'mac'     : 'make -f make_mac.mak',
+  \     'unix'    : 'make -f make_unix.mak',
+  \    },
+  \ }
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tyru/caw.vim'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'vim-scripts/yanktmp.vim'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'buftabs'
+NeoBundle 'kana/vim-tabpagecd'
 
 let &termencoding = &encoding
 set encoding=utf-8
