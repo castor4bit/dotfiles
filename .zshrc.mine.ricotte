@@ -3,11 +3,14 @@ alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -g 
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 # rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 source /usr/local/opt/rbenv/completions/rbenv.zsh
 
 # perlbrew
 source ~/perl5/perlbrew/etc/bashrc
+
+# ctags
+alias ctags="/usr/local/bin/ctags"
 
 # Homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
