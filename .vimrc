@@ -35,7 +35,9 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'buftabs'
+NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
+NeoBundle 'majutsushi/tagbar'
 
 let &termencoding = &encoding
 set encoding=utf-8
@@ -150,8 +152,12 @@ hi MatchParen term=standout ctermbg=Black ctermfg=Red guibg=Black guifg=Red
 
 " autocmd
 if has("autocmd")
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  " vimgrep時にQuickFixを開く
   autocmd QuickFixCmdPost vimgrep cw
+  " 前回終了時のカーソル行に移動
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  " 保存時に行末の空白を除去
+  autocmd BufWritePre * :%s/\s\+$//ge
 endif
 
 "--------------------------------------
@@ -248,6 +254,24 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " VimFiler
 "--------------------------------------
 cmap vf VimFiler -split -simple -winwidth=30 -no-quit
+
+"--------------------------------------
+" QuickRun
+"--------------------------------------
+let g:quickrun_config={'*': {
+  \ 'split': '',
+  \ 'hook/time/enable': '1',
+\}}
+set splitbelow
+
+"--------------------------------------
+" tagbar
+"--------------------------------------
+let g:tagbar_autofocus = 1
+if has("mac")
+  let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+endif
+map <silent> <leader>tt :TagbarToggle<CR>
 
 "--------------------------------------
 " ref.vim
