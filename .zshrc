@@ -2,7 +2,7 @@
 export LANG=ja_JP.UTF-8         # 日本語環境(ja_JP.UTF-8)
 export EDITOR=vim               # デフォルトエディタ指定
 export PAGER=less               # デフォルトページャ指定
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # Builtin Commands
 bindkey -v    # viキーバインド
