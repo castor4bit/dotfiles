@@ -9,10 +9,15 @@ source /usr/local/opt/rbenv/completions/rbenv.zsh
 # perlbrew
 source ~/perl5/perlbrew/etc/bashrc
 
+# phpenv
+if [ -f ~/.phpenv/bin/phpenv ]; then
+  export PATH=$PATH:~/.phpenv/bin
+  eval "$(phpenv init -)"
+fi
+
 # ctags
 alias ctags="/usr/local/bin/ctags"
 
 # Homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
 export GISTY_DIR="$HOME/Project/gists"
-
