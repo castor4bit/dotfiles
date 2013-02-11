@@ -11,9 +11,12 @@ source ~/perl5/perlbrew/etc/bashrc
 
 # phpenv
 if [ -f ~/.phpenv/bin/phpenv ]; then
-  export PATH=$PATH:~/.phpenv/bin
+  export PATH=~/.phpenv/bin:$PATH
   eval "$(phpenv init -)"
 fi
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # ctags
 alias ctags="/usr/local/bin/ctags"

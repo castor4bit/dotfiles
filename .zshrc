@@ -88,7 +88,8 @@ if [[ -s $HOME/.zshrc.mine ]] ; then source $HOME/.zshrc.mine ]] ; fi
 # Prompt
 # See: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Prompt-Expansion
 autoload -U colors && colors
-setopt prompt_subst   # PROMPT内の変数を展開
+setopt transient_rprompt  # 現在のプロンプトのみRPROMPTを表示
+setopt prompt_subst       # PROMPT内の変数を展開
 unsetopt promptcr
 if [ "$TERM" != "dumb" ] ; then
     # 通常時プロンプト
