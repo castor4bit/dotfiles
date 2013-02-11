@@ -269,11 +269,15 @@ set splitbelow
 " tagbar
 "--------------------------------------
 let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 let g:tagbar_foldlevel = 1
 if has("mac")
   let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
   let g:tagbar_phpctags_bin = '~/.vim/tools/phpctags/phpctags'
 endif
+let g:tagbar_type_javascript = {
+  \ 'ctagsbin' : '~/.nodebrew/current/bin/jsctags'
+\ }
 map <silent> <leader>tt :TagbarToggle<CR>
 
 "--------------------------------------
