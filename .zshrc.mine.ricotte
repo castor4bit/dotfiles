@@ -21,6 +21,9 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # ctags
 alias ctags="/usr/local/bin/ctags"
 
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+
 # Homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
 export GISTY_DIR="$HOME/Project/gists"
