@@ -30,15 +30,19 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'kien/ctrlp.vim'
 
 let &termencoding = &encoding
 set encoding=utf-8
@@ -228,6 +232,15 @@ let NERDSpaceDelims = 1
 let NERDShutUp = 1
 
 "--------------------------------------
+" Syntastic
+"--------------------------------------
+let g:syntastic_mode_map = {
+  \ 'mode': 'passive',
+  \ 'active_filetypes':  ['php', 'ruby', 'javascript'],
+  \ 'passive_filetypes': []
+\}
+
+"--------------------------------------
 " YankTmp
 "--------------------------------------
 map <silent> sy :call YanktmpYank()<CR>
@@ -244,6 +257,8 @@ vmap <Leader>c <Plug>(caw:I:toggle)
 " unite.vim
 "--------------------------------------
 let g:unite_enable_start_insert=1
+let g:unite_enable_ignore_case=1
+let g:unite_enable_smart_case=1
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
@@ -304,6 +319,23 @@ nnoremap ,rp :<C-u>Ref phpmanual<Space>
 nnoremap ,ra :<C-u>Ref webdict alc<Space>
 nnoremap ,rw :<C-u>Ref webdict wikipedia<Space>
 au FileType ref nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+
+"--------------------------------------
+" simple-javascript-indenter
+"--------------------------------------
+let g:SimpleJsIndenter_BriefMode = 1
+let g:SimpleJsIndenter_CaseIndentLevel = -1
+
+"--------------------------------------
+" jscomplete-vim
+"--------------------------------------
+autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
+let g:jscomplete_use = ['dom', 'moz']
+
+"--------------------------------------
+" ctrlp
+"--------------------------------------
+nnoremap <silent> ,cp :<C-u>CtrlP<CR>
 
 "--------------------------------------
 " Other key maps
