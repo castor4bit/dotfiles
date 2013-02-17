@@ -163,6 +163,9 @@ if has("autocmd")
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   " 保存時に行末の空白を除去
   autocmd BufWritePre * :%s/\s\+$//ge
+
+  " 拡張子毎のタブ・空白設定
+  autocmd BufNewFile,BufRead *.php set nowrap tabstop=4 shiftwidth=4
 endif
 
 "--------------------------------------
@@ -335,6 +338,7 @@ let g:jscomplete_use = ['dom', 'moz']
 "--------------------------------------
 " ctrlp
 "--------------------------------------
+let g:ctrlp_follow_symlinks = 1
 nnoremap <silent> ,cp :<C-u>CtrlP<CR>
 
 "--------------------------------------

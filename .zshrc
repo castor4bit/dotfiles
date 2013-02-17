@@ -49,6 +49,7 @@ setopt always_last_prompt         # 補完時にカーソル位置(行)を移動
 setopt auto_list                  # 補完候補をリスト表示
 setopt auto_menu                  # 補完キー連打で候補から自動補完
 setopt auto_param_keys            # 括弧の対応などを自動補完
+setopt auto_param_slash           # ディレクトリ補完で末尾/を付加
 setopt auto_remove_slash          # 補完された/が不要の場合に自動削除
 setopt complete_in_word           # ?
 setopt complete_aliases           # 補完時にエイリアスを展開しない

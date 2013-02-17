@@ -1,0 +1,19 @@
+[core]
+  whitespace = cr-at-eol
+  pager = less -q -R
+  quotepath = false
+  editor = vim
+  excludesfile = ~/.gitignore
+[color]
+  ui = auto
+[alias]
+  s  = status --short --branch
+  st = status
+  br = branch
+  co = checkout
+  ci = commit
+  d  = diff
+  dc = diff --cached
+  f  = fetch --all --prune
+[include]
+  path = ~/.gitconfig.local
