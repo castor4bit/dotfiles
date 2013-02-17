@@ -43,7 +43,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'wombat256.vim'
 
 let &termencoding = &encoding
 set encoding=utf-8
@@ -147,18 +147,9 @@ filetype plugin on
 " シンタックスカラーリング有効化
 syntax on
 
-set t_Co=256
 " カラースキーマ
-let g:solarized_termcolors=256
-let g:solarized_termtrans=0
-let g:solarized_degrade=0
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-let g:solarized_contrast='normal'
-let g:solarized_visibility='normal'
-set background=dark
-colorscheme solarized
+set t_Co=256
+colorscheme wombat256mod
 
 " autocmd
 if has("autocmd")
