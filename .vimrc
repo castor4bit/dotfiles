@@ -272,6 +272,7 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 "--------------------------------------
 " VimFiler
 "--------------------------------------
+let g:vimfiler_safe_mode_by_default=0
 cmap vf VimFiler -split -simple -winwidth=30 -no-quit
 
 "--------------------------------------
@@ -363,3 +364,5 @@ nnoremap ; :
 " 挿入モードでも jj でノーマルモードに遷移する
 inoremap jj <ESC>
 
+" ファイル名の変更
+command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
