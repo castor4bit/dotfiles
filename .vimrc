@@ -43,6 +43,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 
 let &termencoding = &encoding
 set encoding=utf-8
@@ -148,12 +149,16 @@ syntax on
 
 set t_Co=256
 " カラースキーマ
-colorscheme desert
-hi Pmenu ctermbg=cyan ctermfg=black
-hi PmenuSel ctermbg=blue
-hi PmenuSbar ctermbg=cyan
-hi Folded	ctermfg=blue ctermbg=darkgrey cterm=bold term=bold
-hi MatchParen term=standout ctermbg=Black ctermfg=Red guibg=Black guifg=Red
+let g:solarized_termcolors=256
+let g:solarized_termtrans=0
+let g:solarized_degrade=0
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
+let g:solarized_contrast='normal'
+let g:solarized_visibility='normal'
+set background=dark
+colorscheme solarized
 
 " autocmd
 if has("autocmd")
