@@ -272,7 +272,10 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " VimFiler
 "--------------------------------------
 let g:vimfiler_safe_mode_by_default=0
-cmap vf VimFiler -split -simple -winwidth=30 -no-quit
+nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -quit<CR>
+nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -quit<CR>
+au FileType vimfiler setlocal nobuflisted
+au FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
 
 "--------------------------------------
 " QuickRun
