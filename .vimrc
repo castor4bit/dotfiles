@@ -150,6 +150,9 @@ syntax on
 " カラースキーマ
 set t_Co=256
 colorscheme wombat256mod
+hi Normal     ctermbg=232
+hi CursorLune ctermbg=235
+hi ModeMsg    ctermfg=111
 
 " autocmd
 if has("autocmd")
