@@ -89,9 +89,23 @@ if [[ -s $HOME/.zshrc.mine ]] ; then source $HOME/.zshrc.mine ]] ; fi
 # Prompt
 # See: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Prompt-Expansion
 autoload -U colors && colors
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
 setopt transient_rprompt  # 現在のプロンプトのみRPROMPTを表示
 setopt prompt_subst       # PROMPT内の変数を展開
 unsetopt promptcr
+
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' check-for-changes true
+
+function _update_vcs_info_msg() {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+add-zsh-hook precmd _update_vcs_info_msg
+
 if [ "$TERM" != "dumb" ] ; then
     # 通常時プロンプト
     # %B, %b    太字開始/終了
@@ -100,7 +114,7 @@ if [ "$TERM" != "dumb" ] ; then
     PROMPT="[%B%n%b@%m] $ "
     # 右側プロンプト
     # %d        カレントディレクトリ
-    RPROMPT="%d"
+    RPROMPT="%d%1(v| %F{cyan}%1v%f|)"
 fi
 
 # 入力したコマンドをウィンドウタイトルに設定 (ステータス行に表示)
