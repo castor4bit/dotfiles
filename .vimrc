@@ -29,19 +29,20 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'jiangmiao/simple-javascript-indenter'
-NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'wombat256.vim'
 
@@ -265,6 +266,8 @@ nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> ,up :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
+nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
