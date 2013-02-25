@@ -265,6 +265,7 @@ let g:unite_enable_ignore_case=1
 let g:unite_enable_smart_case=1
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> ,up :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
@@ -275,6 +276,7 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 "--------------------------------------
 " VimFiler
 "--------------------------------------
+let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
 nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -quit<CR>
 nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -quit<CR>
