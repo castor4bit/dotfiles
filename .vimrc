@@ -58,7 +58,7 @@ set showcmd
 set title
 " 行番号を表示
 set number
-" ルーラ無効
+" ルーラ有効
 set ruler
 " ステータスライン表示 (0:非表示, 1:ウィンドウが2つ以上ある場合に表示, 2:常時表示)
 set laststatus=2
@@ -104,9 +104,10 @@ set smartindent
 set cindent
 " BackSpaceでインデントや改行などを削除可能にする
 set backspace=indent,eol,start
-set matchtime=1
 " 対応する括弧を表示
 set showmatch
+" showmatchまでの待ち時間(1/10sec)
+set matchtime=1
 set wildmenu
 set shortmess+=I
 
@@ -120,6 +121,7 @@ set shiftwidth=2
 set softtabstop=2
 set shiftround
 set smarttab
+" 編集中ファイルを保存しないでも他ファイル表示可能にする
 set hidden
 " バックアップを作成しない
 set nobackup
@@ -152,7 +154,6 @@ syntax on
 set t_Co=256
 colorscheme wombat256mod
 hi Normal     ctermbg=232
-hi CursorLune ctermbg=235
 hi ModeMsg    ctermfg=111
 
 " autocmd
