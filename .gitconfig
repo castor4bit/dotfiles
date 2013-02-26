@@ -14,6 +14,7 @@
   ci = commit
   d  = diff
   dc = diff --cached
-  f  = fetch --all --prune
+  f  = fetch
+  fa = fetch --all
 [include]
   path = ~/.gitconfig.local
