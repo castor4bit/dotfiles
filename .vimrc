@@ -286,6 +286,7 @@ nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -quit<
 nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -quit<CR>
 au FileType vimfiler setlocal nobuflisted
 au FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
+au FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
 
 "--------------------------------------
 " QuickRun
