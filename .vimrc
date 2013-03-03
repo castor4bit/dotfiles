@@ -263,6 +263,10 @@ vmap <Leader>c <Plug>(caw:I:toggle)
 let g:unite_enable_start_insert=1
 let g:unite_enable_ignore_case=1
 let g:unite_enable_smart_case=1
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt=''
+let g:unite_source_grep_max_candidates=200
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
