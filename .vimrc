@@ -156,18 +156,18 @@ colorscheme wombat256mod
 hi Normal     ctermbg=232
 hi ModeMsg    ctermfg=111
 
-" autocmd
-if has("autocmd")
-  " vimgrep時にQuickFixを開く
-  autocmd QuickFixCmdPost vimgrep cw
-  " 前回終了時のカーソル行に移動
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  " 保存時に行末の空白を除去
-  autocmd BufWritePre * :%s/\s\+$//ge
+" vimgrep時にQuickFixを開く
+autocmd QuickFixCmdPost vimgrep cw
+" 前回終了時のカーソル行に移動
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" 保存時に行末の空白を除去
+autocmd BufWritePre * :%s/\s\+$//ge
 
-  " 拡張子毎のタブ・空白設定
-  autocmd BufNewFile,BufRead *.php set nowrap tabstop=4 shiftwidth=4
-endif
+" 拡張子毎のタブ・空白設定
+autocmd FileType php        setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType css        setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType html       setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType javascript setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
 
 "--------------------------------------
 " ZenCoding
