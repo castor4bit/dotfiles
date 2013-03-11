@@ -291,10 +291,14 @@ au FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map
 "--------------------------------------
 " QuickRun
 "--------------------------------------
-let g:quickrun_config={'*': {
+let g:quickrun_config={
+\ '_': {
   \ 'split': '',
   \ 'hook/time/enable': '1',
+  \ 'runner': 'vimproc',
+  \ 'runner/vimproc/updatetime': 100,
 \}}
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 set splitbelow
 
 "--------------------------------------
