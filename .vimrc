@@ -12,6 +12,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
@@ -221,6 +222,12 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 inoremap <expr><C-g>  neocomplcache#undo_completion()
 inoremap <expr><C-l>  neocomplcache#complete_common_string()
+
+"--------------------------------------
+" NeoSnippet
+"--------------------------------------
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 "--------------------------------------
 " Buftabs
