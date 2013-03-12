@@ -33,6 +33,7 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'vim-scripts/yanktmp.vim'
+NeoBundle 'vim-scripts/Colour-Sampler-Pack'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -44,6 +45,7 @@ NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'wombat256.vim'
 
 let &termencoding = &encoding
@@ -155,6 +157,7 @@ set t_Co=256
 colorscheme wombat256mod
 hi Normal     ctermbg=232
 hi ModeMsg    ctermfg=111
+hi CursorLine ctermbg=none cterm=underline
 
 " vimgrep時にQuickFixを開く
 autocmd QuickFixCmdPost vimgrep cw
