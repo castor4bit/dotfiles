@@ -24,6 +24,11 @@ NeoBundle 'Shougo/vimproc', {
   \    },
   \ }
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache-rsense', {
+  \ 'depends' : 'Shougo/neocomplcache',
+  \ 'autoload' : {
+  \   'filetypes' : 'ruby'
+  \ }}
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-surround'
@@ -204,6 +209,8 @@ if !exists('g:neocomplcache_source_rank')
   let g:neocomplcache_source_rank = {}
 endif
 let g:neocomplcache_source_rank.buffer_complete = 90
+let g:neocomplcache_skip_auto_completion_time = '0.6'
+let g:neocomplcache#sources#rsense#home_directory = '/usr/local/Library/LinkedKegs/rsense/libexec'
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -228,6 +235,7 @@ inoremap <expr><C-l>  neocomplcache#complete_common_string()
 "--------------------------------------
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
+set completeopt-=preview
 
 "--------------------------------------
 " Buftabs
