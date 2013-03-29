@@ -177,6 +177,7 @@ autocmd FileType php        setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType css        setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html       setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType text       setlocal nowrap textwidth=0
 
 "--------------------------------------
 " ZenCoding
@@ -214,7 +215,6 @@ let g:neocomplcache#sources#rsense#home_directory = '/usr/local/Library/LinkedKe
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
@@ -368,7 +368,7 @@ let g:SimpleJsIndenter_CaseIndentLevel = -1
 "--------------------------------------
 " jscomplete-vim
 "--------------------------------------
-autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
+autocmd FileType javascript setlocal omnifunc=jscomplete#CompleteJS
 let g:jscomplete_use = ['dom', 'moz']
 
 "--------------------------------------
