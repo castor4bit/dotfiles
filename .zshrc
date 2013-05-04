@@ -132,4 +132,8 @@ preexec () {
 # ログイン時にscreenセッションでない場合はscreen起動
 # -D -RR  公式推奨設定で既存セッションをデタッチして再アタッチ（存在しない場合は新規）
 # -U      UTF-8モードでの起動
-[ ${STY} ] || screen -D -RR -U
+if [ -z "${SSH_CONNECTION}" ] ; then
+  [ ${STY} ] || screen -D -RR -U
+else
+  setopt nonomatch; screen -UxRR -e^Tt
+fi
