@@ -34,6 +34,7 @@ alias mv='mv -i'            # mv 要確認
 alias cp='cp -i'            # cp 要確認
 alias ..='cd ..'            # 上位ディレクトリへ簡易版
 alias vi='vim'              # viでvim起動
+alias diff='colordiff'      # diffカラー表示
 # F 画面内で表示可能であれば終了
 # R 制御文字をエスケープせずに出力
 # S 改行しない
