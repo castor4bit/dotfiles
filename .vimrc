@@ -173,6 +173,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 autocmd BufWritePre * :%s/\s\+$//ge
 
 " 拡張子毎のタブ・空白設定
+autocmd FileType java       setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType php        setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType css        setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html       setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
@@ -282,7 +283,7 @@ let g:unite_enable_start_insert=1
 let g:unite_enable_ignore_case=1
 let g:unite_enable_smart_case=1
 let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --nogroup'
+let g:unite_source_grep_default_opts='--nocolor --nogroup -S'
 let g:unite_source_grep_recursive_opt=''
 let g:unite_source_grep_max_candidates=200
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
