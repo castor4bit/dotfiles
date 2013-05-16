@@ -51,6 +51,10 @@ NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'marijnh/tern_for_vim', {
+  \ 'build': {
+  \   'others': 'npm install'
+  \}}
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'wombat256.vim'
 
@@ -369,8 +373,13 @@ let g:SimpleJsIndenter_CaseIndentLevel = -1
 "--------------------------------------
 " jscomplete-vim
 "--------------------------------------
-autocmd FileType javascript setlocal omnifunc=jscomplete#CompleteJS
+"autocmd FileType javascript setlocal omnifunc=jscomplete#CompleteJS
 let g:jscomplete_use = ['dom', 'moz']
+
+"--------------------------------------
+" tern_for_vim
+"--------------------------------------
+let g:tern_show_argument_hints = 1
 
 "--------------------------------------
 " ctrlp
