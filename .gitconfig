@@ -1,6 +1,6 @@
 [core]
   whitespace = cr-at-eol
-  pager = less -q -R
+  pager = LESS=-qFR less
   quotepath = false
   editor = vim
   excludesfile = ~/.gitignore
