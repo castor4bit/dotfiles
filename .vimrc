@@ -412,3 +412,10 @@ inoremap jj <ESC>
 
 " ファイル名の変更
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
+
+"--------------------------------------
+" Local settings
+"--------------------------------------
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
