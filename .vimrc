@@ -389,6 +389,12 @@ let g:ctrlp_follow_symlinks = 1
 nnoremap <silent> ,cp :<C-u>CtrlP<CR>
 
 "--------------------------------------
+" MS Word
+"--------------------------------------
+autocmd BufReadPre  *.doc set readonly
+autocmd BufReadPost *.doc silent %!/usr/local/bin/antiword -m UTF-8.txt '%'
+
+"--------------------------------------
 " Other key maps
 "--------------------------------------
 " <Esc>キー2回で検索結果ハイライトを無効化
