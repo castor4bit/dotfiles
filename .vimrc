@@ -419,6 +419,10 @@ inoremap jj <ESC>
 " ファイル名の変更
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
+" 日付の挿入
+nmap <F6> <ESC>i<C-R>=strftime("[%Y/%m/%d]")<CR><CR>
+imap <F6> <C-R>=strftime("%Y%m%d%H%M")<CR>
+
 "--------------------------------------
 " Local settings
 "--------------------------------------
