@@ -27,6 +27,14 @@ eval "$(hub alias -s)"
 # z
 . `brew --prefix`/etc/profile.d/z.sh
 
+# ec2-api-tools
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export EC2_PRIVATE_KEY=$HOME/.aws/credentials/pk-PCKS8.pem
+export EC2_CERT=$HOME/.aws/credentials/cert.pem
+export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
+export AWS_CLOUDWATCH_HOME="/usr/local/Library/LinkedKegs/cloud-watch/jars"
+export SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
+
 # Homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
 export GISTY_DIR="$HOME/Project/gists"
