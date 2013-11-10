@@ -14,6 +14,14 @@ if [ -f ~/.phpenv/bin/phpenv ]; then
   eval "$(phpenv init -)"
 fi
 
+# python
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENV_USE_DISTRIBUTE=true
+export PIP_REQUIRE_VIRTUALENV=true
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export NODE_PATH=$HOME/.nodebrew/current/lib/node_modules
