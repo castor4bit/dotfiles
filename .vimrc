@@ -29,6 +29,7 @@ NeoBundle 'Shougo/neocomplcache-rsense', {
   \ 'autoload' : {
   \   'filetypes' : 'ruby'
   \ }}
+NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-surround'
@@ -39,13 +40,17 @@ NeoBundle 'mattn/sonictemplate-vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'vim-scripts/Colour-Sampler-Pack'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
-NeoBundle 'teramako/jscomplete-vim'
+"NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
@@ -393,6 +398,14 @@ nnoremap <silent> ,cp :<C-u>CtrlP<CR>
 "--------------------------------------
 autocmd BufReadPre  *.doc set readonly
 autocmd BufReadPost *.doc silent %!/usr/local/bin/antiword -m UTF-8.txt '%'
+
+"--------------------------------------
+" anzu
+"--------------------------------------
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
 
 "--------------------------------------
 " Other key maps
