@@ -174,6 +174,7 @@ colorscheme wombat256mod
 hi Normal     ctermbg=232
 hi ModeMsg    ctermfg=111
 hi CursorLine ctermbg=none cterm=underline
+hi MatchParen ctermbg=none
 
 " vimgrep時にQuickFixを開く
 autocmd QuickFixCmdPost vimgrep cw
