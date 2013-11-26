@@ -51,6 +51,8 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 "NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'FuzzyFinder'
+NeoBundle 'L9'
 NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
@@ -393,6 +395,12 @@ let g:tern_show_argument_hints = 1
 "--------------------------------------
 let g:ctrlp_follow_symlinks = 1
 nnoremap <silent> ,cp :<C-u>CtrlP<CR>
+
+"--------------------------------------
+" FuzzyFinder
+"--------------------------------------
+nnoremap <silent> ,fb :<C-u>FufBuffer<CR>
+nnoremap <silent> ,fl :<C-u>FufLine<CR>
 
 "--------------------------------------
 " MS Word
