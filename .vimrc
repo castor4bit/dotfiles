@@ -11,8 +11,9 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
@@ -24,11 +25,6 @@ NeoBundle 'Shougo/vimproc', {
   \    },
   \ }
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache-rsense', {
-  \ 'depends' : 'Shougo/neocomplcache',
-  \ 'autoload' : {
-  \   'filetypes' : 'ruby'
-  \ }}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
@@ -49,7 +45,6 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
-"NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'L9'
@@ -199,57 +194,62 @@ autocmd FileType text       setlocal nowrap textwidth=0
 let g:use_zen_complete_tag = 1
 
 "--------------------------------------
-" NeoComplcache
+" neocomplete
 "--------------------------------------
 let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 0
-let g:neocomplcache_enable_underbar_completion = 0
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_dictionary_filetype_lists = {
-  \ 'default' : '',
-  \ 'vimshell' : $HOME.'/.vimshell_hist',
-  \ 'scheme' : $HOME.'/.gosh_completions'
-  \ }
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_camel_case  = 0
+let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-let g:neocomplcache_enable_cursor_hold_i = 1
-let g:neocomplcache_enable_insert_char_pre  = 1
-let g:neocomplcache_enable_auto_select = 0
-if !exists('g:neocomplcache_source_rank')
-  let g:neocomplcache_source_rank = {}
-endif
-let g:neocomplcache_source_rank.buffer_complete = 90
-let g:neocomplcache_skip_auto_completion_time = '0.6'
-let g:neocomplcache#sources#rsense#home_directory = '/usr/local/Library/LinkedKegs/rsense/libexec'
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#enable_cursor_hold_i = 1
+let g:neocomplete#enable_insert_char_pre = 1
+let g:neocomplete#enable_auto_select = 0
+let g:neocomplete#skip_auto_completion_time = '0.6'
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><CR>    pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-inoremap <expr><Right> pumvisible() ? neocomplcache#cancel_popup() : "\<Right>"
+inoremap <expr><CR>    pumvisible() ? neocomplete#close_popup() : "\<CR>"
+inoremap <expr><Right> pumvisible() ? neocomplete#cancel_popup() : "\<Right>"
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-inoremap <expr><C-g>  neocomplcache#undo_completion()
-inoremap <expr><C-l>  neocomplcache#complete_common_string()
+inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+inoremap <expr><C-g>  neocomplete#undo_completion()
+inoremap <expr><C-l>  neocomplete#complete_common_string()
 
 "--------------------------------------
 " NeoSnippet
 "--------------------------------------
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 set completeopt-=preview
+
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
+
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
 "--------------------------------------
 " Buftabs
