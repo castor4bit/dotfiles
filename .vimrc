@@ -141,6 +141,8 @@ set smarttab
 set hidden
 " バックアップを作成しない
 set nobackup
+" Undo履歴を保存しない
+set noundofile
 " ファイル末尾まで検索したら先頭に戻る
 set wrapscan
 " カーソル行の強調表示
