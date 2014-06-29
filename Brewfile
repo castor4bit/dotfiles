@@ -1,14 +1,31 @@
-tap 'homebrew/dupes'
-tap 'josegonzalez/php'
-tap 'phinze/cask'
+# Make sure using latest Homebrew
+update
+
+# Update already-installed formula
+upgrade
+
+# Add Repository
+tap homebrew/versions
+tap homebrew/homebrew-dupes
+tap homebrew/binary
+tap homebrew/science
+tap caskroom/cask
+tap caskroom/homebrew-versions
+tap josegonzalez/homebrew-php
+tap peco/peco
+
+# Packages
+install ant
 install antiword
 install asciidoc
 install autoconf
 install automake
 install bats
+install boot2docker
 install brew-cask
 install byobu
 install cairo
+install chromedriver
 install cloud-watch
 install cmake
 install colordiff
@@ -17,12 +34,13 @@ install ctags
 install curl
 install docbook
 install docbook-xsl
+install docker
 install ec2-api-tools
 install erlang
 install faac
 install ffmpeg
 install fontconfig
-install fontforge
+install fontforge --env-std
 install freetype
 install gawk
 install gdbm
@@ -36,16 +54,21 @@ install gobject-introspection
 install groonga
 install groonga-normalizer-mysql
 install harfbuzz
+install haproxy
 install htop-osx
 install httpd
 install hub
 install icu4c
+install imagemagick
 install jenkins
 install jpeg
+install jq
 install lame
 install libevent
 install libffi
 install libiconv
+install libjpeg
+install libjpeg-turbo
 install libmemcached
 install libogg
 install libpng
@@ -62,17 +85,19 @@ install mercurial
 install mhash
 install mongodb
 install msgpack
-install mysql
+install mysql --enable-local-infile
 install newt
 install nginx
 install oniguruma
+install opencv
 install openssl
 install pango
 install pcre
+install peco
 install phantomjs
 install php-build
 install php-version
-install phpenv
+install phpenv --HEAD
 install pidof
 install pixman
 install pkg-config
@@ -85,6 +110,7 @@ install python
 install rbenv
 install re2c
 install readline
+link readline --force
 install redis
 install rsense
 install rtmpdump
@@ -94,12 +120,14 @@ install s3cmd
 install scala
 install screen
 install sqlite
+install subversion
 install syck
 install texi2html
 install the_silver_searcher
 install tig
 install tmux
 install tree
+install unar
 install unixodbc
 install wget
 install wxmac
@@ -111,3 +139,31 @@ install yasm
 install z
 install zlib
 install zsh
+
+cask install charles
+cask install dash
+cask install dropbox
+cask install google-chrome
+cask install google-japanese-ime
+cask install firefox
+cask install istat-menus
+cask install iterm2
+cask install java
+cask install libreoffice
+cask install limechat
+cask install mplayerx
+cask install opera
+cask install sequel-pro
+cask install skype
+cask install sublime-text3
+cask install the-unarchiver
+cask install thunderbird
+cask install quicksilver
+cask install virtualbox
+cask install vagrant
+cask install vlc
+cask install xtrafinder
+cask install yorufukurou
+
+# Remove outdated versions
+cleanup
