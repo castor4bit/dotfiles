@@ -110,6 +110,13 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
+# 特定のコマンドは履歴を残さない
+function zshaddhistory() {
+    local line=${1%%$'\n'}
+    [[ ${#line} -ge 5 && ${line} != (cd|pwd|ls|ls -la|ll|vi|exit) ]]
+}
+
+# PROMPT設定
 if [ "$TERM" != "dumb" ] ; then
     # 通常時プロンプト
     # %B, %b    太字開始/終了
