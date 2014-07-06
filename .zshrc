@@ -110,6 +110,23 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
+# pecoで履歴検索
+# http://blog.kenjiskywalker.org/blog/2014/06/12/peco/
+function peco-select-history() {
+  typeset tac
+  if which tac > /dev/null; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+  BUFFER=$(\history -n 1 | eval $tac | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
 # 特定のコマンドは履歴を残さない
 function zshaddhistory() {
     local line=${1%%$'\n'}
