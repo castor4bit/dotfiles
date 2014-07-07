@@ -24,6 +24,7 @@ install bats
 install boot2docker
 install brew-cask
 install byobu
+install bzr
 install cairo
 install chromedriver
 install cloud-watch
@@ -50,11 +51,13 @@ install glib
 install gnu-getopt
 install gnu-sed
 install gnu-tar
+install go --cross-compile-common
 install gobject-introspection
 install groonga
 install groonga-normalizer-mysql
 install harfbuzz
 install haproxy
+install hg
 install htop-osx
 install httpd
 install hub
