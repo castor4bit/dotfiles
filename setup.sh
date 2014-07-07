@@ -1,6 +1,6 @@
 #! /bin/sh
 
-FILES=(".gitconfig" ".gitignore" ".inputrc" ".screenrc" ".vimrc" ".zshrc")
+FILES=(.gemrc .gitconfig .gitignore .inputrc .screenrc .vimrc .zshrc)
 
 for file in ${FILES[@]}; do
   if [ ! -f "$HOME/$file" ]; then
