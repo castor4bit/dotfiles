@@ -38,6 +38,9 @@ export NODE_PATH=$HOME/.nodebrew/current/lib/node_modules
 # ctags
 alias ctags="/usr/local/bin/ctags"
 
+# docker
+alias docker="DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375 docker"
+
 # hub
 eval "$(hub alias -s)"
 
