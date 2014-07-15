@@ -12,8 +12,15 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
-# Disable the “Are you sure you want to open this application?” dialog
+# Disable the "Are you sure you want to open this application?" dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Increase window resize speed for Cocoa applications
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.01
+
+# Set language and text formats
+defaults write NSGlobalDomain AppleLanguages -array "en" "ja"
+defaults write NSGlobalDomain AppleLocale -string "ja_JP"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -23,7 +30,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Disable “natural” (Lion-style) scrolling
+# Disable "natural" (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Enable full keyboard access for all controls
@@ -110,6 +117,9 @@ defaults write com.apple.dock autohide -bool true
 # Bottom right screen corner -> Start screen saver
 defaults write com.apple.dock wvous-br-corner -int 5
 
+# Remove all apps from Dock
+defaults delete com.apple.dock persistent-apps
+
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 
@@ -118,6 +128,12 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
+
+# Only use UTF-8 in Terminal.app
+defaults write com.apple.terminal StringEncodings -array 4
+
+# Use a modified version of the Pro theme by default in Terminal.app
+defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
 
 for app in "Activity Monitor" "Dock" "Finder" "SystemUIServer" "Terminal"; do
     killall "${app}" > /dev/null 2>&1
