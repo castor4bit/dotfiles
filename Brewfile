@@ -13,6 +13,7 @@ tap caskroom/cask
 tap caskroom/homebrew-versions
 tap josegonzalez/homebrew-php
 tap peco/peco
+tap sanemat/font
 
 # Packages
 install ant
@@ -115,6 +116,7 @@ install re2c
 install readline
 link readline --force
 install redis
+install ricty
 install rsense
 install rtmpdump
 install ruby-build
@@ -156,6 +158,7 @@ cask install java
 cask install libreoffice
 cask install limechat
 cask install mplayerx
+cask install nosleep
 cask install opera
 cask install sequel-pro
 cask install skype
