@@ -60,7 +60,6 @@ install harfbuzz
 install haproxy
 install hg
 install htop-osx
-install httpd
 install hub
 install icu4c
 install imagemagick
@@ -105,7 +104,6 @@ install phpenv --HEAD
 install pidof
 install pixman
 install pkg-config
-install play
 install popt
 install potrace
 install pstree
@@ -132,6 +130,7 @@ install the_silver_searcher
 install tig
 install tmux
 install tree
+install typesafe-activator
 install unar
 install unixodbc
 install wget
@@ -154,7 +153,7 @@ cask install firefox
 cask install intellij-idea-ce
 cask install istat-menus
 cask install iterm2
-cask install java
+cask install caskroom/versions/java7
 cask install libreoffice
 cask install limechat
 cask install mplayerx
