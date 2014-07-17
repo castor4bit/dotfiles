@@ -144,6 +144,7 @@ install z
 install zlib
 install zsh
 
+cask install atom
 cask install charles
 cask install dash
 cask install dropbox
