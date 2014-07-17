@@ -30,6 +30,14 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+# Trackpad: enable dragging with drag lock
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad DragLock -bool true
+
+# TrackPad: more responsive
+defaults write -g com.apple.trackpad.scaling   -float 3.0
+defaults write -g com.apple.trackpad.scrolling -float 2.0
+
 # Disable "natural" (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
@@ -49,7 +57,20 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 # Use all F1, F2, etc. keys as standard function keys
 defaults write -g com.apple.keyboard.fnState -bool true
 
-# Require password immediately after sleep or screen saver begins
+# Remap Caps Lock to Ctrl
+keyboardid=$(ioreg -n IOHIDKeyboard -r | grep -E 'VendorID"|ProductID' | awk '{ print $4 }' | paste -s -d'-\n' -)'-0'
+
+defaults -currentHost write -g com.apple.keyboard.modifiermapping.${keyboardid} -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>2</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
+
+# Spotlight menu keyboard shortcut: none
+/usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Delete AppleSymbolicHotKeys:64' > /dev/null 2>&1
+/usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Add AppleSymbolicHotKeys:64:enabled bool false'
+
+# Spotlight window keyboard shortcut: none
+/usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Delete AppleSymbolicHotKeys:65' > /dev/null 2>&1
+/usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Add AppleSymbolicHotKeys:65:enabled bool false'
+
+# Require password 5 seconds after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 5
 
@@ -129,11 +150,19 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
+# Use the Pro theme by default in Terminal.app
+defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
 
-# Use a modified version of the Pro theme by default in Terminal.app
-defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
+# Customize terminal theme
+/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:columnCount 160'           ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:rowCount 50'               ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:EastAsianAmbiguousWide 1'  ~/Library/Preferences/com.apple.Terminal.plist
+
+# Power Manegement
+sudo pmset -b sleep 120 displaysleep 60 disksleep 120
+sudo pmset -c sleep 0 displaysleep 180 disksleep 0
+
 
 for app in "Activity Monitor" "Dock" "Finder" "SystemUIServer" "Terminal"; do
     killall "${app}" > /dev/null 2>&1
