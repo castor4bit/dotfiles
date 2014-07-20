@@ -81,6 +81,7 @@ install libvorbis
 install libxml2
 install libyaml
 install lsof
+install lua
 install lynx
 install mcrypt
 install memcached
@@ -127,6 +128,7 @@ install subversion
 install syck
 install texi2html
 install the_silver_searcher
+install the_platinum_searcher
 install tig
 install tmux
 install tree
