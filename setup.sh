@@ -52,6 +52,9 @@ npm install -g casperjs
 # setup vim
 [ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim && echo "you should run following command to setup plugins ->  vim -c ':NeoBundleInstall'"
 
+# cdd
+git clone https://github.com/m4i/cdd.git ~/.zsh/cdd
+
 # enable locate
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 sudo /usr/libexec/locate.updatedb
