@@ -43,6 +43,7 @@ nodebrew install-binary v0.10.29
 nodebrew use v0.10.29
 
 npm install -g grunt-cli gulp
+npm install -g yo bower
 npm install -g less
 npm install -g coffee-script
 npm install -g mocha expect.js testem sinon
