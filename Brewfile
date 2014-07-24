@@ -27,6 +27,7 @@ install brew-cask
 install byobu
 install bzr
 install cairo
+install chrome-cli
 install chromedriver
 install cloud-watch
 install cmake
