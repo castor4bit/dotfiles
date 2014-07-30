@@ -48,7 +48,7 @@ setopt cdable_vars        # 変数展開する
 setopt pushd_ignore_dups  # 同じディレクトリを重複pushしない
 
 # 補完
-autoload -Uz compinit && compinit  # 補完有効化
+autoload -Uz compinit && compinit # 補完有効化
 setopt always_last_prompt         # 補完時にカーソル位置(行)を移動しない
 setopt auto_list                  # 補完候補をリスト表示
 setopt auto_menu                  # 補完キー連打で候補から自動補完
@@ -86,6 +86,9 @@ setopt brace_ccl                # {}内の文字をASCIIコード順に展開
 setopt no_flow_control          # Ctrl+S/Qのフロー制御無効化
 setopt ignore_eof               # Ctrl+Dでログアウトしない
 setopt no_beep                  # beep音鳴らさない
+
+autoload -U url-quote-magic     # URL文字列を自動でエスケープ
+zle -N self-insert url-quote-magic
 
 # 環境個別設定を読み込む (.zshrc.mine)
 if [[ -s $HOME/.zshrc.mine ]] ; then source $HOME/.zshrc.mine ]] ; fi
