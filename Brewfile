@@ -152,6 +152,7 @@ cask install charles
 cask install dash
 cask install dropbox
 cask install google-chrome
+cask install google-drive
 cask install google-japanese-ime
 cask install firefox
 cask install intellij-idea-ce

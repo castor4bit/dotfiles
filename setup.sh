@@ -49,6 +49,7 @@ npm install -g coffee-script
 npm install -g mocha expect.js testem sinon
 npm install -g hubot
 npm install -g casperjs
+npm install -g http-server
 
 # setup vim
 [ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim && echo "you should run following command to setup plugins ->  vim -c ':NeoBundleInstall'"
