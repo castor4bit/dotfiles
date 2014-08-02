@@ -48,6 +48,10 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'osyo-manga/vim-textobj-multiblock'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'L9'
 NeoBundle 'buftabs'
@@ -420,6 +424,34 @@ nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
+
+"--------------------------------------
+" textobj-multiblock
+"--------------------------------------
+omap ab <Plug>(textobj-multiblock-a)
+omap ib <Plug>(textobj-multiblock-i)
+vmap ab <Plug>(textobj-multiblock-a)
+vmap ib <Plug>(textobj-multiblock-i)
+
+"--------------------------------------
+" easymotion
+"--------------------------------------
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+
+nmap s <Plug>(easymotion-s2)
+xmap s <Plug>(easymotion-s2)
+omap z <Plug>(easymotion-s2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+nmap <Leader>; <Plug>(easymotion-next)
+nmap <Leader>, <Plug>(easymotion-prev)
+
+"--------------------------------------
+" expand-region
+"--------------------------------------
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
 
 "--------------------------------------
 " Other key maps
