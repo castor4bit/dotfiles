@@ -160,6 +160,7 @@ cask install istat-menus
 cask install iterm2
 cask install caskroom/versions/java7
 cask install libreoffice
+cask install licecap
 cask install limechat
 cask install mplayerx
 cask install nosleep
