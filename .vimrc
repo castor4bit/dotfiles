@@ -448,12 +448,6 @@ nmap <Leader>; <Plug>(easymotion-next)
 nmap <Leader>, <Plug>(easymotion-prev)
 
 "--------------------------------------
-" expand-region
-"--------------------------------------
-map K <Plug>(expand_region_expand)
-map J <Plug>(expand_region_shrink)
-
-"--------------------------------------
 " Other key maps
 "--------------------------------------
 " <Esc>キー2回で検索結果ハイライトを無効化
