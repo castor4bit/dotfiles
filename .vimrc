@@ -323,8 +323,9 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 "--------------------------------------
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
-nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -quit<CR>
-nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -quit<CR>
+let g:vimfiler_restore_alternate_file=0
+nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -force-quit<CR>
+nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -force-quit<CR>
 au FileType vimfiler setlocal nobuflisted
 au FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
 au FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
