@@ -60,7 +60,7 @@ NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'marijnh/tern_for_vim', {
   \ 'build': {
   \   'others': 'npm install'
