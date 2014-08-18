@@ -6,12 +6,12 @@ upgrade
 
 # Add Repository
 tap homebrew/versions
-tap homebrew/homebrew-dupes
+tap homebrew/dupes
 tap homebrew/binary
 tap homebrew/science
+tap homebrew/php
 tap caskroom/cask
-tap caskroom/homebrew-versions
-tap josegonzalez/homebrew-php
+tap caskroom/versions
 tap peco/peco
 tap sanemat/font
 
@@ -70,7 +70,6 @@ install jq
 install lame
 install libevent
 install libffi
-install libiconv
 install libjpeg
 install libjpeg-turbo
 install libmemcached
@@ -81,7 +80,6 @@ install libtool
 install libvorbis
 install libxml2
 install libyaml
-install lsof
 install lua
 install lynx
 install mcrypt
