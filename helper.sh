@@ -9,7 +9,7 @@ extensions=( \
 	yslow/ninejjcohidippngpapiilnmkgllmakh \
 )
 
-for name in $extensions; do
+for name in ${extensions[@]}; do
 	chrome-cli open "https://chrome.google.com/webstore/detail/$name"
 done
 
