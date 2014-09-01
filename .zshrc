@@ -1,12 +1,3 @@
-# 環境変数
-export LANG=ja_JP.UTF-8         # 日本語環境(ja_JP.UTF-8)
-export EDITOR=vim               # デフォルトエディタ指定
-export PAGER=less               # デフォルトページャ指定
-
-# PATH
-typeset -U path cdpath fpath manpath  # 重複パスは設定しない
-path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
-
 # Builtin Commands
 bindkey -v    # viキーバインド
 umask 022     # umask

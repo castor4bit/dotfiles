@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # install dotfiles
-FILES=(.gemrc .gitconfig .gitignore .gvimrc .inputrc .screenrc .vimrc .zshrc)
+FILES=(.gemrc .gitconfig .gitignore .gvimrc .inputrc .screenrc .vimrc .zshrc .zshenv)
 
 for file in ${FILES[@]}; do
   if [ ! -f "$HOME/$file" ]; then
