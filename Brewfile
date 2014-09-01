@@ -9,6 +9,7 @@ tap homebrew/versions
 tap homebrew/dupes
 tap homebrew/binary
 tap homebrew/science
+tap homebrew/apache
 tap homebrew/php
 tap caskroom/cask
 tap caskroom/versions
@@ -61,6 +62,7 @@ install harfbuzz
 install haproxy
 install hg
 install htop-osx
+install httpd24
 install hub
 install icu4c
 install imagemagick
