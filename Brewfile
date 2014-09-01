@@ -145,7 +145,7 @@ install xz
 install yasm
 install z
 install zlib
-install zsh
+install --disable-etcdir zsh
 
 cask install atom
 cask install charles
