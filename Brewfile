@@ -55,7 +55,6 @@ install gnu-getopt
 install gnu-sed
 install gnu-tar
 install go --cross-compile-common
-install gobject-introspection
 install groonga
 install groonga-normalizer-mysql
 install harfbuzz
@@ -71,7 +70,6 @@ install jpeg
 install jq
 install lame
 install libevent
-install libffi
 install libjpeg
 install libjpeg-turbo
 install libmemcached
@@ -96,17 +94,14 @@ install nginx
 install oniguruma
 install opencv
 install openssl
-install pango
 install pcre
 install peco
 install phantomjs
 install php-build
 install php-version
 install phpenv --HEAD
-install pidof
 install pixman
 install pkg-config
-install popt
 install potrace
 install pstree
 install pwgen
@@ -128,7 +123,6 @@ install sqlite
 install subversion
 install syck
 install texi2html
-install the_silver_searcher
 install the_platinum_searcher
 install tig
 install tmux
@@ -145,7 +139,7 @@ install xz
 install yasm
 install z
 install zlib
-install --disable-etcdir zsh
+install zsh
 
 cask install atom
 cask install charles
