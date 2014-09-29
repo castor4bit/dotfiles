@@ -16,6 +16,9 @@ if [ $? -ne 0 ]; then
 fi
 chsh -s /usr/local/bin/zsh
 
+# fix path_helper
+grep PATH /etc/zshenv > /dev/null || sudo sed -i '' -e $'3 i\\\nPATH=""' /etc/zshenv
+
 # install ruby
 eval "$(rbenv init -)"
 CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.1.2
