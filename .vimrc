@@ -8,7 +8,7 @@ filetype off
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
@@ -68,6 +68,8 @@ NeoBundle 'marijnh/tern_for_vim', {
   \}}
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'wombat256.vim'
+
+call neobundle#end()
 
 let &termencoding = &encoding
 set encoding=utf-8
