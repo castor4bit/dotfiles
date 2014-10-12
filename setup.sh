@@ -21,8 +21,8 @@ grep PATH /etc/zshenv > /dev/null || sudo sed -i '' -e $'3 i\\\nPATH=""' /etc/zs
 
 # install ruby
 eval "$(rbenv init -)"
-CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.1.2
-rbenv global 2.1.2
+CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.1.3
+rbenv global 2.1.3
 rbenv rehash
 
 gem install bundler --no-ri --no-rdoc

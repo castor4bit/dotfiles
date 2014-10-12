@@ -107,6 +107,9 @@ install pstree
 install pwgen
 install python
 install rbenv
+install rbenv-binstubs
+install rbenv-gem-rehash
+install rbenv-vars
 install re2c
 install readline
 link readline --force
