@@ -164,6 +164,7 @@ cask install nosleep
 cask install opera
 cask install sequel-pro
 cask install skype
+cask install slack
 cask install sublime-text3
 cask install the-unarchiver
 cask install thunderbird
