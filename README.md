@@ -54,3 +54,18 @@ $ ln -s $HOME/Projects/dotfiles/.zshrc.mine.ricotte $HOME/.zshrc.mine
 $ vim -c ':NeoBundleInstall'
 ```
 
+### Edit .zshenv.local
+
+```sh
+$ vi ~/.zshenv.local
+---
+# github
+export HOMEBREW_GITHUB_API_TOKEN=
+
+# aws
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_KEYPAIR_NAME=
+export SSH_PRIVATE_KEY_PATH=
+```
+
