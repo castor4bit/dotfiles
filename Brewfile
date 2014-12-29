@@ -151,7 +151,9 @@ cask install dropbox
 cask install google-chrome
 cask install google-drive
 cask install google-japanese-ime
+cask install gyazo
 cask install firefox
+cask install hyperswitch
 cask install intellij-idea-ce
 cask install istat-menus
 cask install iterm2
