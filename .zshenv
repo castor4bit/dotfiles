@@ -32,8 +32,8 @@ fi
 # go
 if [ -z "${GOPATH:-}" ]; then
   export GOPATH=$HOME/.go
-  export PATH=$PATH:$GOPATH/bin
 fi
+export PATH=$PATH:$GOPATH/bin
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
