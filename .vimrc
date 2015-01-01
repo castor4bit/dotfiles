@@ -188,20 +188,23 @@ hi ModeMsg    ctermfg=111
 hi CursorLine ctermbg=none cterm=underline
 hi MatchParen ctermbg=none
 
-" vimgrep時にQuickFixを開く
-autocmd QuickFixCmdPost vimgrep cw
-" 前回終了時のカーソル行に移動
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-" 保存時に行末の空白を除去
-autocmd BufWritePre * :%s/\s\+$//ge
+augroup vimrc
+  autocmd!
+  " vimgrep時にQuickFixを開く
+  autocmd QuickFixCmdPost vimgrep cw
+  " 前回終了時のカーソル行に移動
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  " 保存時に行末の空白を除去
+  autocmd BufWritePre * :%s/\s\+$//ge
 
-" 拡張子毎のタブ・空白設定
-autocmd FileType java       setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType php        setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType css        setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType html       setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType javascript setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType text       setlocal nowrap textwidth=0
+  " 拡張子毎のタブ・空白設定
+  autocmd FileType java       setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd FileType php        setlocal nowrap tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd FileType css        setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType html       setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType javascript setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType text       setlocal nowrap textwidth=0
+augroup END
 
 "--------------------------------------
 " ZenCoding
@@ -232,10 +235,13 @@ let g:neocomplete#enable_insert_char_pre = 1
 let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#skip_auto_completion_time = '0.6'
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup vimrc_neocomplete
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
 
 inoremap <expr><CR>    pumvisible() ? neocomplete#close_popup() : "\<CR>"
 inoremap <expr><Right> pumvisible() ? neocomplete#cancel_popup() : "\<Right>"
@@ -322,8 +328,11 @@ nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> ,up :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+augroup vimrc_unite
+  autocmd!
+  autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+  autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+augroup END
 
 "--------------------------------------
 " VimFiler
@@ -333,9 +342,12 @@ let g:vimfiler_safe_mode_by_default=0
 let g:vimfiler_restore_alternate_file=0
 nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -force-quit<CR>
 nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -force-quit<CR>
-au FileType vimfiler setlocal nobuflisted
-au FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
-au FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+augroup vimrc_vimfiler
+  autocmd!
+  autocmd FileType vimfiler setlocal nobuflisted
+  autocmd FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
+  autocmd FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+augroup END
 
 "--------------------------------------
 " QuickRun
@@ -388,7 +400,10 @@ nnoremap ,rr :<C-u>Ref refe<Space>
 nnoremap ,rp :<C-u>Ref phpmanual<Space>
 nnoremap ,ra :<C-u>Ref webdict alc<Space>
 nnoremap ,rw :<C-u>Ref webdict wikipedia<Space>
-au FileType ref nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+augroup vimrc_refvim
+  autocmd!
+  autocmd FileType ref nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+augroup END
 
 "--------------------------------------
 " simple-javascript-indenter
@@ -422,8 +437,11 @@ nnoremap <silent> ,fl :<C-u>FufLine<CR>
 "--------------------------------------
 " MS Word
 "--------------------------------------
-autocmd BufReadPre  *.doc set readonly
-autocmd BufReadPost *.doc silent %!/usr/local/bin/antiword -m UTF-8.txt '%'
+augroup vimrc_msword
+  autocmd!
+  autocmd BufReadPre  *.doc set readonly
+  autocmd BufReadPost *.doc silent %!/usr/local/bin/antiword -m UTF-8.txt '%'
+augroup END
 
 "--------------------------------------
 " anzu
