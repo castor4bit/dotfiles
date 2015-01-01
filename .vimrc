@@ -112,6 +112,8 @@ set list
 " extends:  折り返し無効の場合にウィンドウ外に省略された文字がある場合の表示
 " trail:    行末空白
 set listchars=tab:\ \ ,extends:<,trail:-
+" 行が画面内に収まらない場合でも可能な限り表示する
+set display=lastline
 
 "--------------------------------------
 " Search Settings
@@ -172,6 +174,8 @@ set scrolloff=15
 set whichwrap=b,s,h,l,<,>,[,]
 " クリップボードを共有
 set clipboard+=unnamed,autoselect
+" 補完メニューの高さ
+set pumheight=10
 set visualbell t_vb=
 
 " ファイルタイプ毎のインデント有効化
@@ -510,6 +514,9 @@ cnoremap WQ wq
 nnoremap ; :
 " 挿入モードでも jj でノーマルモードに遷移する
 inoremap jj <ESC>
+" 数字のインクリメント/デクリメント
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " ファイル名の変更
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
