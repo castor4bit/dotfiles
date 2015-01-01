@@ -285,8 +285,8 @@ nnoremap <S-Space> :bprev<CR>
 "--------------------------------------
 " NERD_comments
 "--------------------------------------
-let NERDSpaceDelims = 1
-let NERDShutUp = 1
+let g:NERDSpaceDelims = 1
+let g:NERDShutUp = 1
 
 "--------------------------------------
 " Syntastic
