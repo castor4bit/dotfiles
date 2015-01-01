@@ -1,4 +1,4 @@
-" vi互換モード無効
+" Turn vi compatibility mode off
 if &compatible
   set nocompatible
 endif
@@ -76,6 +76,7 @@ call neobundle#end()
 let &termencoding = &encoding
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932
+scriptencoding utf-8
 
 set ambiwidth=double
 
