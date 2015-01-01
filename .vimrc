@@ -56,6 +56,7 @@ NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'castor4bit/inside-motion.vim'
+NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'L9'
 NeoBundle 'buftabs'
@@ -472,6 +473,21 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 nmap <Leader>; <Plug>(easymotion-next)
 nmap <Leader>, <Plug>(easymotion-prev)
+
+"--------------------------------------
+" incsearch.vim
+"--------------------------------------
+let g:incsearch#auto_nohlsearch = 0
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 "--------------------------------------
 " Other key maps
