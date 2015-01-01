@@ -510,6 +510,11 @@ cnoremap W w
 cnoremap Q q
 cnoremap WQ wq
 
+" カーソルキーのシーケンスを打ち消す
+map OA <Up>
+map OB <Down>
+map OC <Right>
+map OD <Left>
 " 英字キーボードでの ; -> : 変換
 nnoremap ; :
 " 挿入モードでも jj でノーマルモードに遷移する
