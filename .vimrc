@@ -1,5 +1,7 @@
 " vi互換モード無効
-set nocompatible
+if &compatible
+  set nocompatible
+endif
 
 "--------------------------------------
 " Bundle Settings
