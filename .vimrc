@@ -375,7 +375,7 @@ endif
 let g:tagbar_type_javascript = {
   \ 'ctagsbin' : '~/.nodebrew/current/bin/jsctags'
 \ }
-map <silent> <leader>tt :TagbarToggle<CR>
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
 "--------------------------------------
 " ref.vim
@@ -478,17 +478,17 @@ nmap <Leader>, <Plug>(easymotion-prev)
 "--------------------------------------
 " <Esc>キー2回で検索結果ハイライトを無効化
 nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
-vmap _ :w !nkf -Ws\|pbcopy<CR><CR>
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
+vnoremap _ :w !nkf -Ws\|pbcopy<CR><CR>
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 nnoremap j gjzz
 nnoremap k gkzz
 " 大文字でも保存/終了コマンドを受け付ける
-cmap W w
-cmap Q q
-cmap WQ wq
+cnoremap W w
+cnoremap Q q
+cnoremap WQ wq
 
 " 英字キーボードでの ; -> : 変換
 nnoremap ; :
@@ -499,8 +499,8 @@ inoremap jj <ESC>
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
 " 日付の挿入
-nmap <F6> <ESC>i<C-R>=strftime("[%Y/%m/%d]")<CR><CR>
-imap <F6> <C-R>=strftime("%Y%m%d%H%M")<CR>
+nnoremap <F6> <ESC>i<C-R>=strftime("[%Y/%m/%d]")<CR><CR>
+inoremap <F6> <C-R>=strftime("%Y%m%d%H%M")<CR>
 
 "--------------------------------------
 " Local settings
