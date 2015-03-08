@@ -223,9 +223,14 @@ let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_camel_case  = 0
+let g:neocomplete#enable_cursor_hold_i = 1
 let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#enable_insert_char_pre = 1
+let g:neocomplete#enable_auto_select = 0
+let g:neocomplete#force_overwrite_completefunc = 1
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#skip_auto_completion_time = '0.6'
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
@@ -235,10 +240,6 @@ if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-let g:neocomplete#enable_cursor_hold_i = 1
-let g:neocomplete#enable_insert_char_pre = 1
-let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#skip_auto_completion_time = '0.6'
 
 augroup vimrc_neocomplete
   autocmd!
