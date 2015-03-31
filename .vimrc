@@ -51,6 +51,7 @@ NeoBundle 'mxw/vim-jsx'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'groenewege/vim-less'
+NeoBundle 'elzr/vim-json'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -457,6 +458,11 @@ let g:tern_show_argument_hints = 1
 " $ rm -Rf /Applications/MacVim.app/Contents/Resources/vim/plugins/golang
 "--------------------------------------
 let g:go_fmt_command = "goimports"
+
+"--------------------------------------
+" vim-json
+"--------------------------------------
+let g:vim_json_syntax_conceal = 0
 
 "--------------------------------------
 " ctrlp
