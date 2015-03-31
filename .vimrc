@@ -62,6 +62,8 @@ NeoBundle 'L9'
 NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'cohama/vim-smartinput-endwise'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
 NeoBundle 'ctrlpvim/ctrlp.vim'
@@ -249,7 +251,7 @@ augroup vimrc_neocomplete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-inoremap <expr><CR>    pumvisible() ? neocomplete#close_popup() : "\<CR>"
+imap     <expr><CR>    pumvisible() ? neocomplete#close_popup()  : "\<Plug>(smartinput_CR)"
 inoremap <expr><Right> pumvisible() ? neocomplete#cancel_popup() : "\<Right>"
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
@@ -493,6 +495,13 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+"--------------------------------------
+" smartinput-endwise
+"--------------------------------------
+" http://qiita.com/todashuta/items/bdad8e28843bfb3cd8bf
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
+call smartinput_endwise#define_default_rules()
 
 "--------------------------------------
 " Other key maps
