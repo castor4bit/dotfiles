@@ -371,6 +371,25 @@ let g:quickrun_config={
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 set splitbelow
 
+function! s:close_quickrun()
+  for winnr in range(1,  winnr('$'))
+    if getwinvar(winnr, '&filetype') == 'quickrun'
+      execute winnr . 'wincmd w'
+      execute winnr . 'wincmd c'
+    endif
+  endfor
+endfunction
+
+nnoremap tw :call <SID>close_quickrun()<CR>
+
+augroup QuickRunCommands
+  autocmd!
+  " 保存時にquickrunを閉じる
+  autocmd BufWritePre * call <SID>close_quickrun()
+  " 最後にquickrunのみ残った場合は閉じる
+  autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype') == 'quickrun') | quit | endif
+augroup END
+
 "--------------------------------------
 " tagbar
 "--------------------------------------
