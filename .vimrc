@@ -304,6 +304,7 @@ let g:syntastic_mode_map = {
   \ 'active_filetypes':  ['php', 'ruby', 'javascript'],
   \ 'passive_filetypes': []
 \}
+let g:syntastic_javascript_checkers = ['eslint']
 
 "--------------------------------------
 " YankTmp

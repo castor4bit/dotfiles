@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # install dotfiles
-FILES=(.gemrc .gitconfig .gitignore .gvimrc .inputrc .screenrc .vimrc .zshrc .zshenv)
+FILES=(.eslintrc .gemrc .gitconfig .gitignore .gvimrc .inputrc .screenrc .vimrc .zshrc .zshenv)
 
 for file in ${FILES[@]}; do
   if [ ! -f "$HOME/$file" ]; then
@@ -45,9 +45,12 @@ nodebrew selfupdate
 nodebrew install-binary v0.12.1
 nodebrew use v0.12.1
 
+npm install -g babel-eslint
 npm install -g bower
+npm install -g browserify
 npm install -g casperjs
 npm install -g coffee-script
+npm install -g eslint
 npm install -g expect
 npm install -g express
 npm install -g generator-chrome-extension
@@ -64,6 +67,7 @@ npm install -g jshint
 npm install -g mocha
 npm install -g sinon
 npm install -g testem
+npm install -g watchify
 npm install -g yo
 
 # setup vim
