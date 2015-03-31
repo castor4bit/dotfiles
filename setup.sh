@@ -45,14 +45,26 @@ nodebrew selfupdate
 nodebrew install-binary v0.12.1
 nodebrew use v0.12.1
 
-npm install -g grunt-cli gulp
-npm install -g yo bower
-npm install -g less
-npm install -g coffee-script
-npm install -g mocha expect.js testem sinon
-npm install -g hubot
+npm install -g bower
 npm install -g casperjs
+npm install -g coffee-script
+npm install -g expect
+npm install -g express
+npm install -g generator-chrome-extension
+npm install -g generator-jasmine
+npm install -g generator-ko
+npm install -g generator-mocha
+npm install -g grunt-cli
+npm install -g gulp
 npm install -g http-server
+npm install -g hubot
+npm install -g less
+npm install -g jsctags
+npm install -g jshint
+npm install -g mocha
+npm install -g sinon
+npm install -g testem
+npm install -g yo
 
 # setup vim
 [ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
