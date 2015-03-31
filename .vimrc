@@ -435,18 +435,6 @@ augroup vimrc_refvim
 augroup END
 
 "--------------------------------------
-" simple-javascript-indenter
-"--------------------------------------
-let g:SimpleJsIndenter_BriefMode = 1
-let g:SimpleJsIndenter_CaseIndentLevel = -1
-
-"--------------------------------------
-" jscomplete-vim
-"--------------------------------------
-"autocmd FileType javascript setlocal omnifunc=jscomplete#CompleteJS
-let g:jscomplete_use = ['dom', 'moz']
-
-"--------------------------------------
 " tern_for_vim
 "--------------------------------------
 let g:tern_show_argument_hints = 1
