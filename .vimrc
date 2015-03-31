@@ -432,6 +432,14 @@ let g:jscomplete_use = ['dom', 'moz']
 let g:tern_show_argument_hints = 1
 
 "--------------------------------------
+" vim-go
+"
+" (for MacVim-Kaoriya)
+" $ rm -Rf /Applications/MacVim.app/Contents/Resources/vim/plugins/golang
+"--------------------------------------
+let g:go_fmt_command = "goimports"
+
+"--------------------------------------
 " ctrlp
 "--------------------------------------
 let g:ctrlp_follow_symlinks = 1
