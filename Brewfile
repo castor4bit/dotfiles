@@ -162,6 +162,7 @@ cask install libreoffice
 cask install licecap
 cask install limechat
 cask install mplayerx
+cask install mpv
 cask install nosleep
 cask install opera
 cask install sequel-pro
