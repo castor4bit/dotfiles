@@ -15,6 +15,7 @@ tap caskroom/cask
 tap caskroom/versions
 tap peco/peco
 tap sanemat/font
+tap mpv-player/mpv
 
 # Packages
 install ant
@@ -42,7 +43,7 @@ install docker
 install ec2-api-tools
 install erlang
 install faac
-install ffmpeg
+install ffmpeg --HEAD
 install fontconfig
 install fontforge --env-std
 install freetype
@@ -87,6 +88,7 @@ install memcached
 install mercurial
 install mhash
 install mongodb
+install mpv --with-bundle --HEAD
 install msgpack
 install mysql --enable-local-infile
 install newt
@@ -162,7 +164,6 @@ cask install libreoffice
 cask install licecap
 cask install limechat
 cask install mplayerx
-cask install mpv
 cask install nosleep
 cask install opera
 cask install sequel-pro
