@@ -68,6 +68,10 @@ NeoBundle 'cohama/vim-smartinput-endwise'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'nixprime/cpsm', {
+  \ 'build': {
+  \   'others': 'sh install.sh'
+  \}}
 NeoBundle 'marijnh/tern_for_vim', {
   \ 'build': {
   \   'others': 'npm install'
@@ -456,6 +460,7 @@ let g:vim_json_syntax_conceal = 0
 " ctrlp
 "--------------------------------------
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 nnoremap <silent> ,cp :<C-u>CtrlP<CR>
 
 "--------------------------------------
