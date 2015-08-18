@@ -155,9 +155,9 @@ defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
 
 # Customize terminal theme
-/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:columnCount 160'           ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:rowCount 50'               ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:EastAsianAmbiguousWide 1'  ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:columnCount integer 160'         ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:rowCount integer 50'             ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c 'Add :"Window Settings":Pro:EastAsianAmbiguousWide bool YES' ~/Library/Preferences/com.apple.Terminal.plist
 
 # Power Manegement
 sudo pmset -b sleep 120 displaysleep 60 disksleep 120

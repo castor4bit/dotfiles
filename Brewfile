@@ -1,183 +1,175 @@
-# Make sure using latest Homebrew
-update
-
-# Update already-installed formula
-upgrade
-
 # Add Repository
-tap homebrew/versions
-tap homebrew/dupes
-tap homebrew/binary
-tap homebrew/science
-tap homebrew/apache
-tap homebrew/php
-tap caskroom/cask
-tap caskroom/versions
-tap peco/peco
-tap sanemat/font
-tap mpv-player/mpv
+tap 'homebrew/versions'
+tap 'homebrew/dupes'
+tap 'homebrew/binary'
+tap 'homebrew/science'
+tap 'homebrew/apache'
+tap 'homebrew/php'
+tap 'caskroom/cask'
+tap 'caskroom/versions'
+tap 'peco/peco'
+tap 'sanemat/font'
+tap 'mpv-player/mpv'
 
 # Packages
-install ant
-install antiword
-install asciidoc
-install autoconf
-install automake
-install bats
-install boot2docker
-install brew-cask
-install byobu
-install bzr
-install cairo
-install chrome-cli
-install chromedriver
-install cloud-watch
-install cmake
-install colordiff
-install coreutils
-install ctags
-install curl
-install docbook
-install docbook-xsl
-install docker
-install ec2-api-tools
-install erlang
-install faac
-install ffmpeg --HEAD
-install fontconfig
-install fontforge --env-std
-install freetype
-install gawk
-install gdbm
-install gettext
-install git
-install glib
-install gnu-getopt
-install gnu-sed
-install gnu-tar
-install go --cross-compile-common
-install groonga
-install groonga-normalizer-mysql
-install harfbuzz
-install haproxy
-install hg
-install htop-osx
-install httpd24
-install hub
-install icu4c
-install imagemagick
-install jenkins
-install jpeg
-install jq
-install lame
-install libevent
-install libjpeg
-install libjpeg-turbo
-install libmemcached
-install libogg
-install libpng
-install libtiff
-install libtool
-install libvorbis
-install libxml2
-install libyaml
-install lua
-install lynx
-install mcrypt
-install memcached
-install mercurial
-install mhash
-install mongodb
-install mpv --with-bundle --HEAD
-install msgpack
-install mysql --enable-local-infile
-install newt
-install nginx
-install oniguruma
-install opencv
-install openssl
-install pcre
-install peco
-install phantomjs
-install php-build
-install php-version
-install phpenv --HEAD
-install pixman
-install pkg-config
-install potrace
-install pstree
-install pwgen
-install python
-install rbenv
-install rbenv-binstubs
-install rbenv-gem-rehash
-install rbenv-vars
-install re2c
-install readline
-link readline --force
-install redis
-install ricty
-install rsense
-install rtmpdump
-install ruby-build
-install s-lang
-install s3cmd
-install scala
-install screen
-install sqlite
-install subversion
-install syck
-install texi2html
-install the_platinum_searcher
-install tig
-install tmux
-install tree
-install typesafe-activator
-install unar
-install unixodbc
-install wget
-install wxmac
-install x264
-install xmlto
-install xvid
-install xz
-install yasm
-install z
-install zlib
-install zsh
+cask 'caskroom/versions/java7'
 
-cask install atom
-cask install charles
-cask install dash
-cask install dropbox
-cask install google-chrome
-cask install google-drive
-cask install google-japanese-ime
-cask install gyazo
-cask install firefox
-cask install hyperswitch
-cask install intellij-idea-ce
-cask install istat-menus
-cask install iterm2
-cask install caskroom/versions/java7
-cask install libreoffice
-cask install licecap
-cask install limechat
-cask install mplayerx
-cask install nosleep
-cask install opera
-cask install sequel-pro
-cask install skype
-cask install slack
-cask install sublime-text3
-cask install the-unarchiver
-cask install thunderbird
-cask install quicksilver
-cask install virtualbox
-cask install vagrant
-cask install vlc
-cask install xtrafinder
-cask install yorufukurou
+brew 'ant'
+brew 'antiword'
+brew 'asciidoc'
+brew 'autoconf'
+brew 'automake'
+brew 'bats'
+brew 'boot2docker'
+brew 'brew-cask'
+brew 'byobu'
+brew 'bzr'
+brew 'cairo'
+brew 'chrome-cli'
+brew 'chromedriver'
+brew 'cloud-watch'
+brew 'cmake'
+brew 'colordiff'
+brew 'coreutils'
+brew 'ctags'
+brew 'curl'
+brew 'docbook'
+brew 'docbook-xsl'
+brew 'docker'
+brew 'ec2-api-tools'
+brew 'erlang'
+brew 'faac'
+brew 'ffmpeg', args: ['HEAD']
+brew 'fontconfig'
+brew 'fontforge', args: ['env-std']
+brew 'freetype'
+brew 'gawk'
+brew 'gdbm'
+brew 'gettext'
+brew 'git'
+brew 'glib'
+brew 'gnu-getopt'
+brew 'gnu-sed'
+brew 'gnu-tar'
+brew 'go', args: ['cross-compile-common']
+brew 'groonga'
+brew 'groonga-normalizer-mysql'
+brew 'harfbuzz'
+brew 'haproxy'
+brew 'hg'
+brew 'htop-osx'
+brew 'httpd24'
+brew 'hub'
+brew 'icu4c'
+brew 'imagemagick'
+brew 'jenkins'
+brew 'jpeg'
+brew 'jq'
+brew 'lame'
+brew 'libevent'
+brew 'libjpeg'
+brew 'libjpeg-turbo'
+brew 'libmemcached'
+brew 'libogg'
+brew 'libpng'
+brew 'libtiff'
+brew 'libtool'
+brew 'libvorbis'
+brew 'libxml2'
+brew 'libyaml'
+brew 'lua'
+brew 'lynx'
+brew 'mcrypt'
+brew 'memcached'
+brew 'mercurial'
+brew 'mhash'
+brew 'mongodb'
+brew 'mpv', args: ['with-bundle', 'HEAD']
+brew 'msgpack'
+brew 'mysql', args: ['enable-local-infile']
+brew 'newt'
+brew 'nginx'
+brew 'oniguruma'
+brew 'opencv'
+brew 'openssl'
+brew 'pcre'
+brew 'peco'
+brew 'phantomjs'
+brew 'php-build'
+brew 'php-version'
+brew 'phpenv', args: ['HEAD']
+brew 'pixman'
+brew 'pkg-config'
+brew 'potrace'
+brew 'pstree'
+brew 'pwgen'
+brew 'python'
+brew 'rbenv'
+brew 'rbenv-binstubs'
+brew 'rbenv-gem-rehash'
+brew 'rbenv-vars'
+brew 're2c'
+brew 'readline'
+#link 'readline --force
+brew 'redis'
+brew 'ricty'
+brew 'rsense'
+brew 'rtmpdump'
+brew 'ruby-build'
+brew 's-lang'
+brew 's3cmd'
+brew 'scala'
+brew 'screen'
+brew 'sqlite'
+brew 'subversion'
+brew 'syck'
+brew 'texi2html'
+brew 'the_platinum_searcher'
+brew 'tig'
+brew 'tmux'
+brew 'tree'
+brew 'typesafe-activator'
+brew 'unar'
+brew 'unixodbc'
+brew 'wget'
+brew 'wxmac'
+brew 'x264'
+brew 'xmlto'
+brew 'xvid'
+brew 'xz'
+brew 'yasm'
+brew 'z'
+brew 'zlib'
+brew 'zsh'
 
-# Remove outdated versions
-cleanup
+cask 'atom'
+cask 'charles'
+cask 'dash'
+cask 'dropbox'
+cask 'google-chrome'
+cask 'google-drive'
+cask 'google-japanese-ime'
+cask 'gyazo'
+cask 'firefox'
+cask 'hyperswitch'
+cask 'intellij-idea-ce'
+cask 'istat-menus'
+cask 'iterm2'
+cask 'libreoffice'
+cask 'licecap'
+cask 'limechat'
+cask 'mplayerx'
+cask 'nosleep'
+cask 'opera'
+cask 'sequel-pro'
+cask 'skype'
+cask 'slack'
+cask 'sublime-text3'
+cask 'the-unarchiver'
+cask 'thunderbird'
+cask 'quicksilver'
+cask 'virtualbox'
+cask 'vagrant'
+cask 'vlc'
+cask 'xtrafinder'
+cask 'night-owl'

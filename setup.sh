@@ -31,7 +31,7 @@ rbenv rehash
 # install perl
 curl -skL http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
-perl_version=$(perlbrew available | grep perl-5.20)
+perl_version=$(perlbrew available | grep perl-5.22)
 perlbrew install $perl_version
 perlbrew switch  $perl_version
 
@@ -42,8 +42,8 @@ cpanm Data::Dumper LWP::UserAgent
 curl -sL git.io/nodebrew | perl - setup
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 nodebrew selfupdate
-nodebrew install-binary v0.12.4
-nodebrew use v0.12.4
+nodebrew install-binary v0.12.7
+nodebrew use v0.12.7
 
 npm install -g babel-eslint
 npm install -g bower
