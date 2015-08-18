@@ -63,8 +63,7 @@ NeoBundle 'L9'
 NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'cohama/vim-smartinput-endwise'
+NeoBundle 'cohama/lexima.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
 NeoBundle 'ctrlpvim/ctrlp.vim'
@@ -256,7 +255,7 @@ augroup vimrc_neocomplete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-imap     <expr><CR>    pumvisible() ? neocomplete#close_popup()  : "\<Plug>(smartinput_CR)"
+imap     <expr><CR>    pumvisible() ? neocomplete#close_popup()  : "\<CR>"
 inoremap <expr><Right> pumvisible() ? neocomplete#cancel_popup() : "\<Right>"
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
@@ -524,13 +523,6 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 "--------------------------------------
-" smartinput-endwise
-"--------------------------------------
-" http://qiita.com/todashuta/items/bdad8e28843bfb3cd8bf
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
-call smartinput_endwise#define_default_rules()
-
-"--------------------------------------
 " Other key maps
 "--------------------------------------
 " <Esc>キー2回で検索結果ハイライトを無効化
@@ -547,11 +539,11 @@ cnoremap W w
 cnoremap Q q
 cnoremap WQ wq
 
-" カーソルキーのシーケンスを打ち消す
-map OA <Up>
-map OB <Down>
-map OC <Right>
-map OD <Left>
+" " カーソルキーのシーケンスを打ち消す
+nmap OA <Up>
+nmap OB <Down>
+nmap OC <Right>
+nmap OD <Left>
 " 英字キーボードでの ; -> : 変換
 nnoremap ; :
 " 挿入モードでも jj でノーマルモードに遷移する
