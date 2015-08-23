@@ -33,7 +33,7 @@ $ sudo xcodebuild -license
 ### Install Homebrew and packages
 
 ```sh
-$ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 $ cd ~/Projects/dotfiles
 $ brew bundle
 ```
@@ -51,7 +51,6 @@ $ fc-cache -vf
 $ cd ~/Projects/dotfiles
 $ ./setup.sh
 $ ln -s $HOME/Projects/dotfiles/.zshrc.mine.ricotte $HOME/.zshrc.mine
-$ vim -c ':NeoBundleInstall'
 ```
 
 ### Edit .zshenv.local
@@ -63,9 +62,6 @@ $ vi ~/.zshenv.local
 export HOMEBREW_GITHUB_API_TOKEN=
 
 # aws
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
-export AWS_KEYPAIR_NAME=
-export SSH_PRIVATE_KEY_PATH=
+export AWS_ACCESS_KEY=
+export AWS_SECRET_KEY=
 ```
-
