@@ -35,6 +35,7 @@ $ sudo xcodebuild -license
 ```sh
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 $ cd ~/Projects/dotfiles
+$ brew tap Homebrew/bundle
 $ brew bundle
 ```
 

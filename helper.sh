@@ -20,7 +20,7 @@ vagrant plugin install vagrant-aws
 vagrant plugin install vagrant-cachier
 
 # Yogafire
-cpanm install LWP::Protocol::https
+cpanm install LWP::Protocol::https --force
 cpanm https://github.com/toritori0318/p5-Yogafire/tarball/master
 
 # rbenv plugins
