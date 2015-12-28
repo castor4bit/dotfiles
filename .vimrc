@@ -212,6 +212,8 @@ augroup vimrc
   autocmd FileType html       setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
   autocmd FileType javascript setlocal nowrap tabstop=2 shiftwidth=2 softtabstop=2
   autocmd FileType text       setlocal nowrap textwidth=0
+  " 閉じタグ補完
+  autocmd FileType html inoremap <silent> <buffer> </ </<C-x><C-o>
 augroup END
 
 "--------------------------------------
@@ -252,12 +254,14 @@ augroup vimrc_neocomplete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-imap     <expr><CR>    pumvisible() ? neocomplete#close_popup()  : "\<CR>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
 inoremap <expr><Right> pumvisible() ? neocomplete#cancel_popup() : "\<Right>"
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 inoremap <expr><C-g>  neocomplete#undo_completion()
 inoremap <expr><C-l>  neocomplete#complete_common_string()
@@ -456,6 +460,12 @@ let g:vim_json_syntax_conceal = 0
 " ctrlp
 "--------------------------------------
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_user_command = {
+\   'types': {
+\     1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+\   },
+\   'fallback': 'find %s -type f'
+\ }
 nnoremap <silent> ,cp :<C-u>CtrlP<CR>
 
 "--------------------------------------
