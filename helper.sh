@@ -30,5 +30,8 @@ git clone https://github.com/sstephenson/rbenv-vars.git
 git clone https://github.com/sstephenson/rbenv-gem-rehash.git
 git clone https://github.com/ianheggie/rbenv-binstubs.git
 
+# rsense init
+ruby /usr/local/opt/rsense/libexec/etc/config.rb > ~/.rsense
+
 # git-contrib
 ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin

@@ -52,6 +52,10 @@ NeoBundle 'marijnh/tern_for_vim', {
   \}}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/sonictemplate-vim'
+NeoBundle 'marcus/rsense', {
+  \ 'build': {
+  \   'others': 'find doc -name ''*.ja.txt'' -print0 | perl -pe ''s/\.txt\0/\0/g'' | xargs -0 -I% mv %.txt %x'
+  \}}
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-textobj-multiblock'
@@ -59,6 +63,7 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'supermomonga/neocomplete-rsense.vim'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
@@ -220,6 +225,11 @@ augroup vimrc
   autocmd FileType html inoremap <silent> <buffer> </ </<C-x><C-o>
 augroup END
 
+" matchit
+if !exists('loaded_matchit')
+  runtime macros/matchit.vim
+endif
+
 "--------------------------------------
 " ZenCoding
 "--------------------------------------
@@ -250,6 +260,12 @@ if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:rsenseUseOmniFunc = 1
 
 augroup vimrc_neocomplete
   autocmd!
