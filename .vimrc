@@ -74,6 +74,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/caw.vim'
+NeoBundle 'ujihisa/neco-look'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'vim-ruby/vim-ruby', {'autoload': {'filetypes': ['ruby']}}
 NeoBundle 'vim-scripts/buftabs'
