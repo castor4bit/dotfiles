@@ -75,6 +75,10 @@ npm install -g yo
 [ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 vim -c "silent exe 'NeoBundleInstall | q'"
 
+mkdir -p $HOME/.vim/ref/php
+curl -Ls http://php.net/get/php_manual_en.tar.gz/from/this/mirror | tar -zx
+mv php-chunked-xhtml $HOME/.vim/ref/php/
+
 # cdd
 git clone https://github.com/m4i/cdd.git ~/.zsh/cdd
 
