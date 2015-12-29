@@ -544,6 +544,12 @@ call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
 call smartinput_endwise#define_default_rules()
 
+call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
+call smartinput#define_rule({'at': '\({\|\<do\>\)\s*\%#', 'char': '<Bar>', 'input': '<Bar><Bar><Left>', 'filetype': ['ruby'] })
+call smartinput#define_rule({'at': '\%#|',   'char': '<Bar>', 'input': '<Right>'})
+call smartinput#define_rule({'at': '''''\%#', 'char': '<BS>', 'input': '<BS>'})
+call smartinput#define_rule({'at': '""\%#',   'char': '<BS>', 'input': '<BS>'})
+
 "--------------------------------------
 " Other key maps
 "--------------------------------------
