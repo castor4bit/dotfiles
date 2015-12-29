@@ -67,7 +67,10 @@ NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'techlivezheng/tagbar-phpctags'
+NeoBundle 'vim-scripts/tagbar-phpctags', {
+  \ 'build': {
+  \   'others': 'curl -s http://vim-php.com/phpctags/install/phpctags.phar -o bin/phpctags.php && chmod +x bin/phpctags.php',
+  \}}
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'marijnh/tern_for_vim', {
   \ 'build': {
@@ -401,7 +404,7 @@ let g:tagbar_autoclose = 1
 let g:tagbar_foldlevel = 1
 if has("mac")
   let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
-  let g:tagbar_phpctags_bin = '~/.vim/tools/phpctags/phpctags'
+  let g:tagbar_phpctags_bin = '~/.vim/bundle/tagbar-phpctags/bin/phpctags.php'
 endif
 let g:tagbar_type_javascript = {
   \ 'ctagsbin' : '~/.nodebrew/current/bin/jsctags'
