@@ -556,10 +556,15 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 nnoremap j gjzz
 nnoremap k gkzz
+" Tabで対応ペアに移動
+nnoremap <Tab> %
+vnoremap <Tab> %
 " 大文字でも保存/終了コマンドを受け付ける
 cnoremap W w
 cnoremap Q q
 cnoremap WQ wq
+" sudoで保存
+cmap w!! w !sudo tee > /dev/null %
 
 " " カーソルキーのシーケンスを打ち消す
 nmap OA <Up>
