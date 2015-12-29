@@ -405,7 +405,7 @@ endif
 let g:tagbar_type_javascript = {
   \ 'ctagsbin' : '~/.nodebrew/current/bin/jsctags'
 \ }
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
+nnoremap <silent> ,tt :TagbarToggle<CR>
 
 "--------------------------------------
 " ref.vim
