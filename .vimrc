@@ -527,6 +527,17 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 "--------------------------------------
+" emmet-vim
+"--------------------------------------
+let g:user_emmet_leader_key = '<C-t>'
+
+"--------------------------------------
+" sonictemplate-vim
+"--------------------------------------
+let g:sonictemplate_key = "\<Plug>(sonictemplate-select)"
+let g:sonictemplate_intelligent_key = "\<Plug>(sonictemplate-select-intelligent)"
+
+"--------------------------------------
 " smartinput / smartinput-endwise
 "--------------------------------------
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
