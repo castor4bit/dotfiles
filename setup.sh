@@ -79,6 +79,9 @@ mkdir -p $HOME/.vim/ref/php
 curl -Ls http://php.net/get/php_manual_en.tar.gz/from/this/mirror | tar -zx
 mv php-chunked-xhtml $HOME/.vim/ref/php/
 
+mkdir -p $HOME/.vim/dict
+curl -Ls https://arcane-tor-6144.herokuapp.com/ -o $HOME/.vim/dict/PHP.dict
+
 # cdd
 git clone https://github.com/m4i/cdd.git ~/.zsh/cdd
 
