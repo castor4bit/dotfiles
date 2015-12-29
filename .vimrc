@@ -53,6 +53,8 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'cohama/vim-smartinput-endwise'
 NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'terryma/vim-expand-region'
@@ -64,7 +66,6 @@ NeoBundle 'L9'
 NeoBundle 'buftabs'
 NeoBundle 'sudo.vim'
 NeoBundle 'kana/vim-tabpagecd'
-"NeoBundle 'cohama/lexima.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
 NeoBundle 'ctrlpvim/ctrlp.vim'
@@ -254,15 +255,11 @@ augroup vimrc_neocomplete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-inoremap <expr><Right> pumvisible() ? neocomplete#cancel_popup() : "\<Right>"
+imap     <expr><CR>    pumvisible() ? "\<C-y>" : "\<Plug>(smartinput_CR)"
+inoremap <expr><Right> pumvisible() ? "\<C-e>" : "\<Right>"
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-e>  neocomplete#cancel_popup()
+imap     <expr><BS>   neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+inoremap <expr><C-h>  neocomplete#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-g>  neocomplete#undo_completion()
 inoremap <expr><C-l>  neocomplete#complete_common_string()
 
@@ -524,6 +521,13 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+"--------------------------------------
+" smartinput / smartinput-endwise
+"--------------------------------------
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
+call smartinput_endwise#define_default_rules()
 
 "--------------------------------------
 " Other key maps
