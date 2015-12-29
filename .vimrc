@@ -36,34 +36,38 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'dhruvasagar/vim-table-mode'
 NeoBundle 'elzr/vim-json'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
+NeoBundleLazy 'groenewege/vim-less', {'autoload': {'filetypes': ['less']}}
+NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload': {'filetypes': ['html', 'css', 'less']}}
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload': {'filetypes': ['coffee']}}
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'marijnh/tern_for_vim', {
   \ 'build': {
   \   'others': 'npm install'
-  \}}
-NeoBundle 'mattn/emmet-vim'
+  \ },
+  \ 'autoload': {'filetypes': ['javascript']}
+  \}
+NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}}
 NeoBundle 'mattn/sonictemplate-vim'
-NeoBundle 'marcus/rsense', {
+NeoBundleLazy 'marcus/rsense', {
   \ 'build': {
   \   'others': 'find doc -name ''*.ja.txt'' -print0 | perl -pe ''s/\.txt\0/\0/g'' | xargs -0 -I% mv %.txt %x'
-  \}}
-NeoBundle 'mxw/vim-jsx'
+  \ },
+  \ 'autoload': {'filetypes': ['ruby'], 'insert': 1}
+  \}
+NeoBundleLazy 'mxw/vim-jsx', {'autoload': {'filetypes': ['javascript']}}
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-textobj-multiblock'
-NeoBundle 'othree/html5.vim'
+NeoBundleLazy 'othree/html5.vim', {'autoload': {'filetypes': ['html']}}
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'supermomonga/neocomplete-rsense.vim'
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {'autoload': {'filetypes': ['ruby'], 'insert': 1}}
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
@@ -71,16 +75,18 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'vim-ruby/vim-ruby'
+NeoBundleLazy 'vim-ruby/vim-ruby', {'autoload': {'filetypes': ['ruby']}}
 NeoBundle 'vim-scripts/buftabs'
 NeoBundle 'vim-scripts/Colour-Sampler-Pack'
 NeoBundle 'vim-scripts/FuzzyFinder'
 NeoBundle 'vim-scripts/L9'
 NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'vim-scripts/tagbar-phpctags', {
+NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
   \ 'build': {
   \   'others': 'curl -s http://vim-php.com/phpctags/install/phpctags.phar -o bin/phpctags.php && chmod +x bin/phpctags.php',
-  \}}
+  \ },
+  \ 'autoload': {'filetypes': ['php'], 'insert': 1}
+  \}
 NeoBundle 'vim-scripts/wombat256.vim'
 NeoBundle 'vim-scripts/yanktmp.vim'
 
