@@ -42,8 +42,8 @@ cpanm Data::Dumper LWP::UserAgent
 curl -sL git.io/nodebrew | perl - setup
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 nodebrew selfupdate
-nodebrew install-binary v0.12.7
-nodebrew use v0.12.7
+nodebrew install-binary v4.2.4
+nodebrew use v4.2.4
 
 npm install -g babel-eslint
 npm install -g bower
