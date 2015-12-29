@@ -22,7 +22,6 @@ $ sh ./.osx
 
 * Restart (not logout) computer
 * Install Xcode (from App Store)
-* Install [MacVim-Kaoriya](https://code.google.com/p/macvim-kaoriya/)
 
 ### Agree to the Xcode license agreements
 

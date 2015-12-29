@@ -11,6 +11,7 @@ tap 'caskroom/versions'
 tap 'peco/peco'
 tap 'sanemat/font'
 tap 'mpv-player/mpv'
+tap 'splhack/splhack'
 
 # Packages
 cask 'caskroom/versions/java7'
@@ -36,6 +37,7 @@ brew 'chromedriver'
 brew 'clisp'
 brew 'cloud-watch'
 brew 'cmake'
+brew 'cmigemo-mk', args: ['HEAD']
 brew 'colordiff'
 brew 'coreutils'
 brew 'ctags'
@@ -143,6 +145,7 @@ brew 'tmux'
 brew 'tree'
 brew 'typesafe-activator'
 brew 'unar'
+brew 'universal-ctags', args: ['HEAD']
 brew 'unixodbc'
 brew 'wget'
 brew 'wxmac'
@@ -154,6 +157,8 @@ brew 'yasm'
 brew 'z'
 brew 'zlib'
 brew 'zsh'
+
+brew 'macvim-kaoriya', args: ['HEAD']
 
 cask 'android-studio'
 cask 'atom'

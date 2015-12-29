@@ -72,6 +72,7 @@ npm install -g watchify
 npm install -g yo
 
 # setup vim
+sudo brew linkapps macvim-kaoriya
 [ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 vim -c "silent exe 'NeoBundleInstall | q'"
 
