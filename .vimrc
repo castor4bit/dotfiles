@@ -36,7 +36,12 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'dhruvasagar/vim-table-mode'
 NeoBundle 'elzr/vim-json'
-NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
+NeoBundleLazy 'fatih/vim-go', {
+  \ 'build': {
+  \   'others': '/usr/local/opt/macvim-kaoriya/MacVim.app/Contents/Resources/vim/plugins/golang'
+  \ },
+  \ 'autoload': {'filetypes': ['go']}
+  \}
 NeoBundleLazy 'groenewege/vim-less', {'autoload': {'filetypes': ['less']}}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload': {'filetypes': ['html', 'css', 'less']}}
 NeoBundle 'haya14busa/incsearch.vim'
@@ -272,6 +277,7 @@ if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'
 let g:rsenseUseOmniFunc = 1
 
 augroup vimrc_neocomplete
@@ -330,10 +336,11 @@ let g:NERDShutUp = 1
 "--------------------------------------
 let g:syntastic_mode_map = {
   \ 'mode': 'passive',
-  \ 'active_filetypes':  ['php', 'ruby', 'javascript'],
+  \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go'],
   \ 'passive_filetypes': []
 \}
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_go_checkers = ['go', 'golint']
 
 "--------------------------------------
 " YankTmp
@@ -469,11 +476,11 @@ let g:tern_show_argument_hints = 1
 
 "--------------------------------------
 " vim-go
-"
-" (for MacVim-Kaoriya)
-" $ rm -Rf /Applications/MacVim.app/Contents/Resources/vim/plugins/golang
 "--------------------------------------
+exe "set rtp+=" . globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+
 let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 1
 
 "--------------------------------------
 " vim-json
@@ -572,6 +579,7 @@ call smartinput#define_rule({'at': '\({\|\<do\>\)\s*\%#', 'char': '<Bar>', 'inpu
 call smartinput#define_rule({'at': '\%#|',   'char': '<Bar>', 'input': '<Right>'})
 call smartinput#define_rule({'at': '''''\%#', 'char': '<BS>', 'input': '<BS>'})
 call smartinput#define_rule({'at': '""\%#',   'char': '<BS>', 'input': '<BS>'})
+call smartinput#define_rule({'at': '()\%#',   'char': '<BS>', 'input': '<BS>'})
 
 "--------------------------------------
 " Other key maps

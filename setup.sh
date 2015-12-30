@@ -74,7 +74,7 @@ npm install -g yo
 # setup vim
 sudo brew linkapps macvim-kaoriya
 [ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-vim -c "silent exe 'NeoBundleInstall | q'"
+vim -c ":NeoBundleInstall" -c ":GoInstallBinaries" -c ":q"
 
 mkdir -p $HOME/.vim/ref/php
 curl -Ls http://php.net/get/php_manual_en.tar.gz/from/this/mirror | tar -zx
