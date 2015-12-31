@@ -613,8 +613,8 @@ nnoremap ; :
 " 挿入モードでも jj でノーマルモードに遷移する
 inoremap jj <ESC>
 " 数字のインクリメント/デクリメント
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap <F8> <C-a>
+nnoremap <F7> <C-x>
 
 " ファイル名の変更
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
