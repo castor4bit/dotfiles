@@ -3,7 +3,7 @@
 # install dotfiles
 FILES=(\
   .eslintrc .gemrc .gitconfig .gitignore .gvimrc .inputrc .screenrc .zshrc .zshenv \
-  .vimrc .vimrc.neobundle.toml .vimrc.neobundlelazy.toml \
+  .vimrc .vimrc.neobundle.toml .vimrc.neobundlelazy.toml .tern-config \
 )
 
 for file in ${FILES[@]}; do
