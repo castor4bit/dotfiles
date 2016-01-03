@@ -12,89 +12,17 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-  \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-  \     'cygwin'  : 'make -f make_cygwin.mak',
-  \     'mac'     : 'make -f make_mac.mak',
-  \     'unix'    : 'make -f make_unix.mak',
-  \    },
-  \ }
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/vinarise.vim'
-NeoBundle 'castor4bit/inside-motion.vim'
-NeoBundle 'cohama/vim-smartinput-endwise'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'dhruvasagar/vim-table-mode'
-NeoBundle 'elzr/vim-json'
-NeoBundleLazy 'fatih/vim-go', {
-  \ 'build': {
-  \   'others': 'rm -Rf /usr/local/opt/macvim-kaoriya/MacVim.app/Contents/Resources/vim/plugins/golang'
-  \ },
-  \ 'autoload': {'filetypes': ['go']}
-  \}
-NeoBundleLazy 'groenewege/vim-less', {'autoload': {'filetypes': ['less']}}
-NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload': {'filetypes': ['html', 'css', 'less']}}
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload': {'filetypes': ['coffee']}}
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'marijnh/tern_for_vim', {
-  \ 'build': {
-  \   'others': 'npm install'
-  \ },
-  \ 'autoload': {'filetypes': ['javascript']}
-  \}
-NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}}
-NeoBundle 'mattn/sonictemplate-vim'
-NeoBundleLazy 'marcus/rsense', {
-  \ 'build': {
-  \   'others': 'find doc -name ''*.ja.txt'' -print0 | perl -pe ''s/\.txt\0/\0/g'' | xargs -0 -I% mv %.txt %x'
-  \ },
-  \ 'autoload': {'filetypes': ['ruby'], 'insert': 1}
-  \}
-NeoBundleLazy 'mxw/vim-jsx', {'autoload': {'filetypes': ['javascript']}}
-NeoBundle 'osyo-manga/vim-anzu'
-NeoBundle 'osyo-manga/vim-textobj-multiblock'
-NeoBundleLazy 'othree/html5.vim', {'autoload': {'filetypes': ['html']}}
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/syntastic'
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {'autoload': {'filetypes': ['ruby'], 'insert': 1}}
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tyru/caw.vim'
-NeoBundle 'ujihisa/neco-look'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundleLazy 'vim-ruby/vim-ruby', {'autoload': {'filetypes': ['ruby']}}
-NeoBundle 'vim-scripts/buftabs'
-NeoBundle 'vim-scripts/Colour-Sampler-Pack'
-NeoBundle 'vim-scripts/FuzzyFinder'
-NeoBundle 'vim-scripts/L9'
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
-  \ 'build': {
-  \   'others': 'curl -s http://vim-php.com/phpctags/install/phpctags.phar -o bin/phpctags.php && chmod +x bin/phpctags.php',
-  \ },
-  \ 'autoload': {'filetypes': ['php'], 'insert': 1}
-  \}
-NeoBundle 'vim-scripts/wombat256.vim'
-NeoBundle 'vim-scripts/yanktmp.vim'
+if neobundle#load_cache(
+      \ expand('<sfile>'),
+      \ '~/.vimrc.neobundle.toml',
+      \ '~/.vimrc.neobundlelazy.toml')
+  NeoBundleFetch 'Shougo/neobundle.vim'
+
+  call neobundle#load_toml('~/.vimrc.neobundle.toml')
+  call neobundle#load_toml('~/.vimrc.neobundlelazy.toml', {'lazy' : 1})
+
+  NeoBundleSaveCache
+endif
 
 call neobundle#end()
 
@@ -318,12 +246,16 @@ endif
 "--------------------------------------
 " Buftabs
 "--------------------------------------
-let g:buftabs_only_basename=1
-let g:buftabs_in_statusline=1
-let g:buftabs_active_highlight_group="Visual"
+if neobundle#tap('buftabs')
+  let g:buftabs_only_basename=1
+  let g:buftabs_in_statusline=1
+  let g:buftabs_active_highlight_group="Visual"
 
-nnoremap <Space>   :bnext<CR>
-nnoremap <S-Space> :bprev<CR>
+  nnoremap <Space>   :bnext<CR>
+  nnoremap <S-Space> :bprev<CR>
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " NERD_comments
@@ -334,20 +266,28 @@ let g:NERDShutUp = 1
 "--------------------------------------
 " Syntastic
 "--------------------------------------
-let g:syntastic_mode_map = {
-  \ 'mode': 'passive',
-  \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go'],
-  \ 'passive_filetypes': []
-\}
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_go_checkers = ['go', 'golint']
+if neobundle#tap('syntastic')
+  let g:syntastic_mode_map = {
+    \ 'mode': 'passive',
+    \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go'],
+    \ 'passive_filetypes': []
+  \}
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_go_checkers = ['go', 'golint']
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " YankTmp
 "--------------------------------------
-map <silent> sy :call YanktmpYank()<CR>
-map <silent> sp :call YanktmpPaste_p()<CR>
-map <silent> sP :call YanktmpPaste_P()<CR>
+if neobundle#tap('yanktmp.vim')
+  map <silent> sy :call YanktmpYank()<CR>
+  map <silent> sp :call YanktmpPaste_p()<CR>
+  map <silent> sP :call YanktmpPaste_P()<CR>
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " caw
@@ -397,49 +337,57 @@ augroup END
 "--------------------------------------
 " QuickRun
 "--------------------------------------
-let g:quickrun_config={
-\ '_': {
-  \ 'split': '',
-  \ 'hook/time/enable': '1',
-  \ 'runner': 'vimproc',
-  \ 'runner/vimproc/updatetime': 100,
-\}}
-nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-set splitbelow
+if neobundle#tap('vim-quickrun')
+  let g:quickrun_config = {
+  \ '_': {
+    \ 'split': '',
+    \ 'hook/time/enable': '1',
+    \ 'runner': 'vimproc',
+    \ 'runner/vimproc/updatetime': 100,
+  \}}
+  nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+  set splitbelow
 
-function! s:close_quickrun()
-  for winnr in range(1,  winnr('$'))
-    if getwinvar(winnr, '&filetype') == 'quickrun'
-      execute winnr . 'wincmd w'
-      execute winnr . 'wincmd c'
-    endif
-  endfor
-endfunction
+  function! s:close_quickrun()
+    for winnr in range(1,  winnr('$'))
+      if getwinvar(winnr, '&filetype') == 'quickrun'
+        execute winnr . 'wincmd w'
+        execute winnr . 'wincmd c'
+      endif
+    endfor
+  endfunction
 
-nnoremap tw :call <SID>close_quickrun()<CR>
+  nnoremap tw :call <SID>close_quickrun()<CR>
 
-augroup QuickRunCommands
-  autocmd!
-  " 保存時にquickrunを閉じる
-  autocmd BufWritePre * call <SID>close_quickrun()
-  " 最後にquickrunのみ残った場合は閉じる
-  autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype') == 'quickrun') | quit | endif
-augroup END
+  augroup QuickRunCommands
+    autocmd!
+    " 保存時にquickrunを閉じる
+    autocmd BufWritePre * call <SID>close_quickrun()
+    " 最後にquickrunのみ残った場合は閉じる
+    autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype') == 'quickrun') | quit | endif
+  augroup END
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " tagbar
 "--------------------------------------
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-let g:tagbar_foldlevel = 1
-if has("mac")
-  let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
-  let g:tagbar_phpctags_bin = '~/.vim/bundle/tagbar-phpctags/bin/phpctags.php'
+if neobundle#tap('tagbar')
+  let g:tagbar_autofocus = 1
+  let g:tagbar_autoclose = 1
+  let g:tagbar_foldlevel = 1
+  if has("mac")
+    let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+    let g:tagbar_phpctags_bin = '~/.vim/bundle/tagbar-phpctags/bin/phpctags.php'
+  endif
+  let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : '~/.nodebrew/current/bin/jsctags'
+  \ }
+  nnoremap <silent> ,tt :TagbarToggle<CR>
+
+  call neobundle#untap()
 endif
-let g:tagbar_type_javascript = {
-  \ 'ctagsbin' : '~/.nodebrew/current/bin/jsctags'
-\ }
-nnoremap <silent> ,tt :TagbarToggle<CR>
 
 "--------------------------------------
 " ref.vim
@@ -517,7 +465,11 @@ augroup END
 "--------------------------------------
 " anzu
 "--------------------------------------
-let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
+if neobundle#tap('vim-anzu')
+  let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " textobj-multiblock
@@ -544,17 +496,21 @@ nmap <Leader>, <Plug>(easymotion-prev)
 "--------------------------------------
 " incsearch.vim
 "--------------------------------------
-let g:incsearch#auto_nohlsearch = 0
+if neobundle#tap('incsearch.vim')
+  let g:incsearch#auto_nohlsearch = 0
 
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " emmet-vim
@@ -570,17 +526,25 @@ let g:sonictemplate_intelligent_key = "\<Plug>(sonictemplate-select-intelligent)
 "--------------------------------------
 " smartinput / smartinput-endwise
 "--------------------------------------
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
-call smartinput_endwise#define_default_rules()
+let s:bundle = neobundle#get('vim-smartinput')
+function! s:bundle.hooks.on_source(bundle)
+  call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
+  call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
+  call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
+  call smartinput#define_rule({'at': '\({\|\<do\>\)\s*\%#', 'char': '<Bar>', 'input': '<Bar><Bar><Left>', 'filetype': ['ruby'] })
+  call smartinput#define_rule({'at': '\%#|',   'char': '<Bar>', 'input': '<Right>'})
+  call smartinput#define_rule({'at': '''''\%#', 'char': '<BS>', 'input': '<BS>'})
+  call smartinput#define_rule({'at': '""\%#',   'char': '<BS>', 'input': '<BS>'})
+  call smartinput#define_rule({'at': '()\%#',   'char': '<BS>', 'input': '<BS>'})
+  call smartinput#define_rule({'at': '\[\%#\]', 'char': '<Enter>', 'input': '<Enter><Enter><Up><Esc>"_S'})
+endfunction
+unlet s:bundle
 
-call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
-call smartinput#define_rule({'at': '\({\|\<do\>\)\s*\%#', 'char': '<Bar>', 'input': '<Bar><Bar><Left>', 'filetype': ['ruby'] })
-call smartinput#define_rule({'at': '\%#|',   'char': '<Bar>', 'input': '<Right>'})
-call smartinput#define_rule({'at': '''''\%#', 'char': '<BS>', 'input': '<BS>'})
-call smartinput#define_rule({'at': '""\%#',   'char': '<BS>', 'input': '<BS>'})
-call smartinput#define_rule({'at': '()\%#',   'char': '<BS>', 'input': '<BS>'})
-call smartinput#define_rule({'at': '\[\%#\]', 'char': '<Enter>', 'input': '<Enter><Enter><Up><Esc>"_S'})
+let s:bundle = neobundle#get('vim-smartinput-endwise')
+function! s:bundle.hooks.on_source(bundle)
+  call smartinput_endwise#define_default_rules()
+endfunction
+unlet s:bundle
 
 "--------------------------------------
 " Other key maps
