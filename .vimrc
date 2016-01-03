@@ -171,84 +171,87 @@ if !exists('loaded_matchit')
 endif
 
 "--------------------------------------
-" ZenCoding
-"--------------------------------------
-let g:use_zen_complete_tag = 1
-
-"--------------------------------------
 " neocomplete
 "--------------------------------------
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_camel_case  = 0
-let g:neocomplete#enable_cursor_hold_i = 1
-let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#enable_insert_char_pre = 1
-let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplete#skip_auto_completion_time = '0.6'
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions',
-    \ 'php' : $HOME.'/.vim/dict/PHP.dict'
-    \ }
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
+if neobundle#tap('neocomplete.vim')
+  let g:acp_enableAtStartup = 0
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_camel_case  = 0
+  let g:neocomplete#enable_cursor_hold_i = 1
+  let g:neocomplete#enable_fuzzy_completion = 1
+  let g:neocomplete#enable_insert_char_pre = 1
+  let g:neocomplete#enable_auto_select = 0
+  let g:neocomplete#force_overwrite_completefunc = 1
+  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+  let g:neocomplete#skip_auto_completion_time = '0.6'
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  let g:neocomplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions',
+      \ 'php' : $HOME.'/.vim/dict/PHP.dict'
+      \ }
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'
+  let g:rsenseUseOmniFunc = 1
+
+  augroup vimrc_neocomplete
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  augroup END
+
+  imap     <expr><CR>    pumvisible() ? "\<C-y>" : "\<Plug>(smartinput_CR)"
+  inoremap <expr><Right> pumvisible() ? "\<C-e>" : "\<Right>"
+  inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+  imap     <expr><BS>   neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+  inoremap <expr><C-h>  neocomplete#smart_close_popup() . "\<C-h>"
+  inoremap <expr><C-g>  neocomplete#undo_completion()
+  inoremap <expr><C-l>  neocomplete#complete_common_string()
+
+  call neobundle#untap()
 endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-let g:neocomplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'
-let g:rsenseUseOmniFunc = 1
-
-augroup vimrc_neocomplete
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup END
-
-imap     <expr><CR>    pumvisible() ? "\<C-y>" : "\<Plug>(smartinput_CR)"
-inoremap <expr><Right> pumvisible() ? "\<C-e>" : "\<Right>"
-inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-imap     <expr><BS>   neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
-inoremap <expr><C-h>  neocomplete#smart_close_popup() . "\<C-h>"
-inoremap <expr><C-g>  neocomplete#undo_completion()
-inoremap <expr><C-l>  neocomplete#complete_common_string()
 
 "--------------------------------------
 " NeoSnippet
 "--------------------------------------
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-set completeopt-=preview
+if neobundle#tap('neosnippet.vim')
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  set completeopt-=preview
 
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: "\<TAB>"
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: "\<TAB>"
 
-if has('conceal')
-  set conceallevel=2 concealcursor=i
+  if has('conceal')
+    set conceallevel=2 concealcursor=i
+  endif
+
+  call neobundle#untap()
 endif
 
 "--------------------------------------
-" Buftabs
+" buftabs
 "--------------------------------------
 if neobundle#tap('buftabs')
-  let g:buftabs_only_basename=1
-  let g:buftabs_in_statusline=1
+  let g:buftabs_only_basename = 1
+  let g:buftabs_in_statusline = 1
   let g:buftabs_active_highlight_group="Visual"
 
   nnoremap <Space>   :bnext<CR>
@@ -258,20 +261,24 @@ if neobundle#tap('buftabs')
 endif
 
 "--------------------------------------
-" NERD_comments
+" nerdcommenter
 "--------------------------------------
-let g:NERDSpaceDelims = 1
-let g:NERDShutUp = 1
+if neobundle#tap('nerdcommenter')
+  let g:NERDSpaceDelims = 1
+  let g:NERDShutUp = 1
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " Syntastic
 "--------------------------------------
 if neobundle#tap('syntastic')
   let g:syntastic_mode_map = {
-    \ 'mode': 'passive',
-    \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go'],
-    \ 'passive_filetypes': []
-  \}
+        \ 'mode': 'passive',
+        \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go'],
+        \ 'passive_filetypes': []
+        \}
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_go_checkers = ['go', 'golint']
 
@@ -279,7 +286,7 @@ if neobundle#tap('syntastic')
 endif
 
 "--------------------------------------
-" YankTmp
+" yamktmp.vim
 "--------------------------------------
 if neobundle#tap('yanktmp.vim')
   map <silent> sy :call YanktmpYank()<CR>
@@ -290,49 +297,61 @@ if neobundle#tap('yanktmp.vim')
 endif
 
 "--------------------------------------
-" caw
+" caw.vim
 "--------------------------------------
-nmap <Leader>c <Plug>(caw:I:toggle)
-vmap <Leader>c <Plug>(caw:I:toggle)
+if neobundle#tap('caw.vim')
+  nmap <Leader>c <Plug>(caw:I:toggle)
+  vmap <Leader>c <Plug>(caw:I:toggle)
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " unite.vim
 "--------------------------------------
-let g:unite_enable_start_insert=1
-let g:unite_enable_ignore_case=1
-let g:unite_enable_smart_case=1
-let g:unite_source_grep_command='pt'
-let g:unite_source_grep_default_opts='--nocolor --nogroup -S'
-let g:unite_source_grep_recursive_opt=''
-let g:unite_source_grep_encoding='utf-8'
-let g:unite_source_grep_max_candidates=200
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> ,up :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
-nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-augroup vimrc_unite
-  autocmd!
-  autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-  autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-augroup END
+if neobundle#tap('unite.vim')
+  let g:unite_enable_start_insert=1
+  let g:unite_enable_ignore_case=1
+  let g:unite_enable_smart_case=1
+  let g:unite_source_grep_command='pt'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup -S'
+  let g:unite_source_grep_recursive_opt=''
+  let g:unite_source_grep_encoding='utf-8'
+  let g:unite_source_grep_max_candidates=200
+  nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+  nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+  nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+  nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+  nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+  nnoremap <silent> ,up :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
+  nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+  augroup vimrc_unite
+    autocmd!
+    autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+    autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  augroup END
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " VimFiler
 "--------------------------------------
-let g:vimfiler_as_default_explorer=1
-let g:vimfiler_safe_mode_by_default=0
-let g:vimfiler_restore_alternate_file=0
-nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -force-quit<CR>
-nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -force-quit<CR>
-augroup vimrc_vimfiler
-  autocmd!
-  autocmd FileType vimfiler setlocal nobuflisted
-  autocmd FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
-  autocmd FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-augroup END
+if neobundle#tap('vimfiler.vim')
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_safe_mode_by_default = 0
+  let g:vimfiler_restore_alternate_file = 0
+  nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -force-quit<CR>
+  nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -force-quit<CR>
+  augroup vimrc_vimfiler
+    autocmd!
+    autocmd FileType vimfiler setlocal nobuflisted
+    autocmd FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
+    autocmd FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+  augroup END
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " QuickRun
@@ -392,66 +411,80 @@ endif
 "--------------------------------------
 " ref.vim
 "--------------------------------------
-let g:ref_use_vimproc=1
-let g:ref_phpmanual_path=$HOME ."/Documents/refs/php-chunked-xhtml"
-let g:ref_source_webdict_sites = {
-\   'alc': {
-\     'url': 'http://eow.alc.co.jp/search?q=%s',
-\   },
-\   'wikipedia': {
-\     'url': 'http://ja.wikipedia.org/wiki/%s',
-\   },
-\ }
-function! g:ref_source_webdict_sites.alc.filter(output)
-  return join(split(a:output, "\n")[42 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.wikipedia.filter(output)
-  return join(split(a:output, "\n")[17 :], "\n")
-endfunction
-nnoremap ,rr :<C-u>Ref refe<Space>
-nnoremap ,rp :<C-u>Ref phpmanual<Space>
-nnoremap ,ra :<C-u>Ref webdict alc<Space>
-nnoremap ,rw :<C-u>Ref webdict wikipedia<Space>
-augroup vimrc_refvim
-  autocmd!
-  autocmd FileType ref nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-augroup END
+if neobundle#tap('vim-ref')
+  let g:ref_use_vimproc = 1
+  let g:ref_phpmanual_path = $HOME ."/Documents/refs/php-chunked-xhtml"
+  let g:ref_source_webdict_sites = {
+        \   'alc': {
+        \     'url': 'http://eow.alc.co.jp/search?q=%s',
+        \   },
+        \   'wikipedia': {
+        \     'url': 'http://ja.wikipedia.org/wiki/%s',
+        \   },
+        \ }
+  function! g:ref_source_webdict_sites.alc.filter(output)
+    return join(split(a:output, "\n")[42 :], "\n")
+  endfunction
+  function! g:ref_source_webdict_sites.wikipedia.filter(output)
+    return join(split(a:output, "\n")[17 :], "\n")
+  endfunction
+  nnoremap ,rr :<C-u>Ref refe<Space>
+  nnoremap ,rp :<C-u>Ref phpmanual<Space>
+  nnoremap ,ra :<C-u>Ref webdict alc<Space>
+  nnoremap ,rw :<C-u>Ref webdict wikipedia<Space>
+  augroup vimrc_refvim
+    autocmd!
+    autocmd FileType ref nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+  augroup END
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " tern_for_vim
 "--------------------------------------
-let g:tern_show_argument_hints = 1
+if neobundle#tap('tern_for_vim')
+  let g:tern_show_argument_hints = 1
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " vim-go
 "--------------------------------------
-exe "set rtp+=" . globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+if neobundle#tap('vim-go')
+  exe "set rtp+=" . globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
-let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 1
+  let g:go_fmt_command = "goimports"
+  let g:go_fmt_autosave = 1
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " vim-json
 "--------------------------------------
-let g:vim_json_syntax_conceal = 0
+if neobundle#tap('vim-json')
+  let g:vim_json_syntax_conceal = 0
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " ctrlp
 "--------------------------------------
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_user_command = {
-\   'types': {
-\     1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
-\   },
-\   'fallback': 'find %s -type f'
-\ }
-nnoremap <silent> ,cp :<C-u>CtrlP<CR>
+if neobundle#tap('ctrlp.vim')
+  let g:ctrlp_follow_symlinks = 1
+  let g:ctrlp_user_command = {
+  \   'types': {
+  \     1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+  \   },
+  \   'fallback': 'find %s -type f'
+  \ }
+  nnoremap <silent> ,cp :<C-u>CtrlP<CR>
 
-"--------------------------------------
-" FuzzyFinder
-"--------------------------------------
-nnoremap <silent> ,fb :<C-u>FufBuffer<CR>
-nnoremap <silent> ,fl :<C-u>FufLine<CR>
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " MS Word
@@ -474,24 +507,32 @@ endif
 "--------------------------------------
 " textobj-multiblock
 "--------------------------------------
-omap ab <Plug>(textobj-multiblock-a)
-omap ib <Plug>(textobj-multiblock-i)
-vmap ab <Plug>(textobj-multiblock-a)
-vmap ib <Plug>(textobj-multiblock-i)
+if neobundle#tap('vim-textobj-multiblock')
+  omap ab <Plug>(textobj-multiblock-a)
+  omap ib <Plug>(textobj-multiblock-i)
+  vmap ab <Plug>(textobj-multiblock-a)
+  vmap ib <Plug>(textobj-multiblock-i)
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " easymotion
 "--------------------------------------
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
+if neobundle#tap('easymotion')
+  let g:EasyMotion_do_mapping = 0
+  let g:EasyMotion_smartcase = 1
 
-nmap s <Plug>(easymotion-s2)
-xmap s <Plug>(easymotion-s2)
-omap z <Plug>(easymotion-s2)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-nmap <Leader>; <Plug>(easymotion-next)
-nmap <Leader>, <Plug>(easymotion-prev)
+  nmap s <Plug>(easymotion-s2)
+  xmap s <Plug>(easymotion-s2)
+  omap z <Plug>(easymotion-s2)
+  map  <Leader>j <Plug>(easymotion-j)
+  map  <Leader>k <Plug>(easymotion-k)
+  nmap <Leader>; <Plug>(easymotion-next)
+  nmap <Leader>, <Plug>(easymotion-prev)
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " incsearch.vim
@@ -515,13 +556,21 @@ endif
 "--------------------------------------
 " emmet-vim
 "--------------------------------------
-let g:user_emmet_leader_key = '<C-t>'
+if neobundle#tap('emmet-vim')
+  let g:user_emmet_leader_key = '<C-t>'
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " sonictemplate-vim
 "--------------------------------------
-let g:sonictemplate_key = "\<Plug>(sonictemplate-select)"
-let g:sonictemplate_intelligent_key = "\<Plug>(sonictemplate-select-intelligent)"
+if neobundle#tap('sonictemplate-vim')
+  let g:sonictemplate_key = "\<Plug>(sonictemplate-select)"
+  let g:sonictemplate_intelligent_key = "\<Plug>(sonictemplate-select-intelligent)"
+
+  call neobundle#untap()
+endif
 
 "--------------------------------------
 " smartinput / smartinput-endwise

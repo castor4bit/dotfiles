@@ -8,16 +8,43 @@ repo = 'Shougo/vimproc.vim'
   unix    = 'make -f make_unix.mak'
 
 [[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+
+[[plugins]]
 repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'kana/vim-tabpagecd'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
+repo = 'castor4bit/inside-motion.vim'
+
+[[plugins]]
 repo = 'scrooloose/syntastic'
 
 [[plugins]]
-repo = 'thinca/vim-quickrun'
+repo = 'terryma/vim-expand-region'
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'vim-scripts/buftabs'

@@ -17,41 +17,28 @@ on_unite = ['neosnippet', 'neosnippet/user', 'neosnippet/runtime']
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'Shougo/neomru.vim'
-
-  [plugins.on_cmd]
-  name = 'Unite'
-  complete = 'customlist,unite#complete_source'
+on_cmd = 'Unite'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
+depends = 'Shougo/unite.vim'
+on_cmd = 'Unite'
 
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
 depends = 'Shougo/unite.vim'
 on_map = '<Plug>'
 on_path = '.*'
-
-  [plugins.on_cmd]
-  name = ['VimFiler']
-  complete = 'customlist,vimfiler#complete'
+on_cmd = 'VimFiler'
 
 [[plugins]]
 repo = 'Shougo/vimshell.vim'
 on_map = '<Plug>'
-
-  [plugins.on_cmd]
-  name = 'VimShell'
-  complete = 'customlist,vimshell#complete'
+on_cmd = 'VimShell'
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
-
-  [plugins.on_cmd]
-  name = 'Vinarise'
-  complete = 'file'
-
-[[plugins]]
-repo = 'castor4bit/inside-motion.vim'
+on_cmd = 'Vinarise'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -60,16 +47,15 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'cohama/vim-smartinput-endwise'
 depends = 'kana/vim-smartinput'
+on_i = 1
 
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
+pre_cmd = 'CtrlP'
 
 [[plugins]]
 repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
-
-[[plugins]]
-repo = 'dhruvasagar/vim-table-mode'
 
 [[plugins]]
 repo = 'elzr/vim-json'
@@ -77,10 +63,8 @@ on_ft = 'json'
 
 [[plugins]]
 repo = 'fatih/vim-go'
+build = 'rm -Rf /usr/local/opt/macvim-kaoriya/MacVim.app/Contents/Resources/vim/plugins/golang'
 on_ft = 'go'
-
-  [plugins.build]
-  mac     = 'rm -Rf /usr/local/opt/macvim-kaoriya/MacVim.app/Contents/Resources/vim/plugins/golang'
 
 [[plugins]]
 repo = 'groenewege/vim-less'
@@ -95,21 +79,16 @@ repo = 'kana/vim-smartinput'
 on_i = 1
 
 [[plugins]]
-repo = 'kana/vim-tabpagecd'
-
-[[plugins]]
-repo = 'kana/vim-textobj-user'
-
-[[plugins]]
 repo = 'kchmck/vim-coffee-script'
 on_ft = 'coffee'
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
-on_map = '<Plug>'
+pre_cmd = 'Tagbar'
 
 [[plugins]]
 repo = 'marijnh/tern_for_vim'
@@ -119,9 +98,6 @@ on_ft = 'javascript'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = 'html'
-
-[[plugins]]
-repo = 'mattn/sonictemplate-vim'
 
 [[plugins]]
 repo = 'marcus/rsense'
@@ -136,6 +112,7 @@ on_ft = 'javascript'
 [[plugins]]
 repo = 'osyo-manga/vim-textobj-multiblock'
 depends = 'kana/vim-textobj-user'
+on_map = [['ox', '<Plug>']]
 
 [[plugins]]
 repo = 'othree/html5.vim'
@@ -146,25 +123,18 @@ repo = 'pangloss/vim-javascript'
 on_ft = 'javascript'
 
 [[plugins]]
-repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
 repo = 'supermomonga/neocomplete-rsense.vim'
 depends = 'marcus/rsense'
 on_ft = 'ruby'
 on_i = 1
 
 [[plugins]]
-repo = 'terryma/vim-expand-region'
+repo = 'thinca/vim-themis'
+on_ft = 'vim'
 
 [[plugins]]
-repo = 'thinca/vim-ref'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'thinca/vim-quickrun'
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
@@ -172,9 +142,12 @@ on_map = '<Plug>'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
+on_i = 1
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
+depends = 'Shougo/unite.vim'
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'vim-ruby/vim-ruby'
@@ -182,10 +155,6 @@ on_ft = 'ruby'
 
 [[plugins]]
 repo = 'vim-scripts/Colour-Sampler-Pack'
-
-[[plugins]]
-repo = 'vim-scripts/FuzzyFinder'
-depends = 'vim-scripts/L9'
 
 [[plugins]]
 repo = 'vim-scripts/sudo.vim'
