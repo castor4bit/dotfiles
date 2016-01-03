@@ -38,7 +38,7 @@ NeoBundle 'dhruvasagar/vim-table-mode'
 NeoBundle 'elzr/vim-json'
 NeoBundleLazy 'fatih/vim-go', {
   \ 'build': {
-  \   'others': '/usr/local/opt/macvim-kaoriya/MacVim.app/Contents/Resources/vim/plugins/golang'
+  \   'others': 'rm -Rf /usr/local/opt/macvim-kaoriya/MacVim.app/Contents/Resources/vim/plugins/golang'
   \ },
   \ 'autoload': {'filetypes': ['go']}
   \}
