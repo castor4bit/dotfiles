@@ -580,6 +580,7 @@ call smartinput#define_rule({'at': '\%#|',   'char': '<Bar>', 'input': '<Right>'
 call smartinput#define_rule({'at': '''''\%#', 'char': '<BS>', 'input': '<BS>'})
 call smartinput#define_rule({'at': '""\%#',   'char': '<BS>', 'input': '<BS>'})
 call smartinput#define_rule({'at': '()\%#',   'char': '<BS>', 'input': '<BS>'})
+call smartinput#define_rule({'at': '\[\%#\]', 'char': '<Enter>', 'input': '<Enter><Enter><Up><Esc>"_S'})
 
 "--------------------------------------
 " Other key maps
