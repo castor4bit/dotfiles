@@ -27,7 +27,3 @@ export EC2_CERT=$HOME/.aws/credentials/cert.pem
 export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/libexec"
 export AWS_CLOUDWATCH_HOME="/usr/local/Library/LinkedKegs/cloud-watch/libexec"
 export SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
-
-# Homebrew
-export PATH="$(brew --prefix)/bin:$PATH"
-export GISTY_DIR="$HOME/Project/gists"

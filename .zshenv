@@ -7,6 +7,9 @@ export PAGER=less               # デフォルトページャ指定
 typeset -U path cdpath fpath manpath  # 重複パスは設定しない
 path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
 
+# homebrew
+export PATH="$(brew --prefix)/bin:$PATH"
+
 # perlbrew
 if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
   source ~/perl5/perlbrew/etc/bashrc
@@ -38,6 +41,9 @@ export PATH=$PATH:$GOPATH/bin
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export NODE_PATH=$HOME/.nodebrew/current/lib/node_modules
+
+# others
+export GISTY_DIR="$HOME/Project/gists"
 
 # 環境個別設定を読み込む (.zshenv.local)
 if [[ -s $HOME/.zshenv.local ]] ; then source $HOME/.zshenv.local ]] ; fi
