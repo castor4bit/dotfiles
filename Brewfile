@@ -12,6 +12,7 @@ tap 'peco/peco'
 tap 'sanemat/font'
 tap 'mpv-player/mpv'
 tap 'splhack/splhack'
+tap 'universal-ctags/universal-ctags'
 
 # Packages
 cask 'caskroom/versions/java7'
