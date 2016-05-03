@@ -212,7 +212,7 @@ if neobundle#tap('neocomplete.vim')
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   augroup END
 
-  imap     <expr><CR>    pumvisible() ? "\<C-y>" : "\<Plug>(smartinput_CR)"
+  imap     <silent> <expr><CR>    pumvisible() ? "\<C-y>" : "\<Plug>(smartinput_CR)"
   inoremap <expr><Right> pumvisible() ? "\<C-e>" : "\<Right>"
   inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
   imap     <expr><BS>   neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
