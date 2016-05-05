@@ -54,6 +54,7 @@ npm install -g browserify
 npm install -g casperjs
 npm install -g coffee-script
 npm install -g eslint
+npm install -g eslint-plugin-react
 npm install -g expect
 npm install -g express
 npm install -g generator-chrome-extension
