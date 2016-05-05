@@ -2,12 +2,24 @@
 
 # install dotfiles
 FILES=(\
-  .eslintrc .gemrc .gitconfig .gitignore .gvimrc .inputrc .screenrc .zshrc .zshenv \
-  .vimrc .vimrc.neobundle.toml .vimrc.neobundlelazy.toml .tern-config \
+  .config/mpv/mpv.conf \
+  .config/vim/init.vim \
+  .eslintrc \
+  .gemrc \
+  .gitconfig \
+  .gitignore \
+  .gvimrc \
+  .inputrc \
+  .screenrc \
+  .tern-config \
+  .vimrc \
+  .zshrc \
+  .zshenv \
 )
 
 for file in ${FILES[@]}; do
   if [ ! -f "$HOME/$file" ]; then
+    mkdir -p $(dirname $HOME/$file)
     ln -s $(cd $(dirname $0) && pwd)/$file $HOME/$file
   fi
 done
