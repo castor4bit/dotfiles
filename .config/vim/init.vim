@@ -152,8 +152,6 @@ filetype plugin on
 " シンタックスカラーリング有効化
 syntax on
 
-" カラースキーマ
-
 augroup vimrc
   autocmd!
   " vimgrep時にQuickFixを開く
