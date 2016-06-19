@@ -24,3 +24,5 @@
   diff = diff-highlight | less
 [diff "minjs"]
   textconv = js-beautify
+[diff]
+  compactionHeuristic = true
