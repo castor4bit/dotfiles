@@ -1,11 +1,12 @@
 # Open chrome extension install pages
 extensions=( \
 	autopagerize/igiofjhpmpihnifddepnpngfjhkfenbp \
+	go-back-with-backspace/eekailopagacbcdloonjhbiecobagjci \
 	google-docs/aohghmighlieiainnegkcijnfilokake \
 	hatebu/dnlfpnhinnjdgmjfpccajboogcjocdla \
 	onetab/chphlpgkkbolifaimnlloiipkdnihall \
 	vimium/dbepggeogbaibhgnhhndojpepiihcmeb \
-	pagespeed-insights-by-goo/gplegfbjlmmehdoakndmohflojccocli \
+	website-ip/ghbmhlgniedlklkpimlibbaoomlpacmk \
 	yslow/ninejjcohidippngpapiilnmkgllmakh \
 )
 
@@ -20,15 +21,8 @@ vagrant plugin install vagrant-aws
 vagrant plugin install vagrant-cachier
 
 # Yogafire
-cpanm install LWP::Protocol::https --force
-cpanm https://github.com/toritori0318/p5-Yogafire/tarball/master
-
-# rbenv plugins
-mkdir -p ~/.rbenv/plugins
-cd ~/.rbenv/plugins
-git clone https://github.com/sstephenson/rbenv-vars.git
-git clone https://github.com/sstephenson/rbenv-gem-rehash.git
-git clone https://github.com/ianheggie/rbenv-binstubs.git
+#cpanm install LWP::Protocol::https --force
+#cpanm https://github.com/toritori0318/p5-Yogafire/tarball/master
 
 # rsense init
 ruby /usr/local/opt/rsense/libexec/etc/config.rb > ~/.rsense

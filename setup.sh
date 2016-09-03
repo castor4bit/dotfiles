@@ -36,8 +36,8 @@ grep PATH /etc/zshenv > /dev/null || sudo sed -i '' -e $'3 i\\\nPATH=""' /etc/zs
 
 # install ruby
 eval "$(rbenv init -)"
-CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.3.0
-rbenv global 2.3.0
+CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.3.1
+rbenv global 2.3.1
 rbenv rehash
 
 gem install bundler --no-ri --no-rdoc
@@ -46,7 +46,7 @@ rbenv rehash
 # install perl
 curl -skL http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
-perl_version=$(perlbrew available | grep perl-5.22)
+perl_version=$(perlbrew available | grep perl-5.24)
 perlbrew install $perl_version
 perlbrew switch  $perl_version
 
@@ -57,8 +57,8 @@ cpanm Data::Dumper LWP::UserAgent
 curl -sL git.io/nodebrew | perl - setup
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 nodebrew selfupdate
-nodebrew install-binary v4.4.3
-nodebrew use v4.4.3
+nodebrew install-binary v4.5.0
+nodebrew use v4.5.0
 
 npm install -g babel-eslint
 npm install -g bower
@@ -86,11 +86,12 @@ npm install -g sinon
 npm install -g testem
 npm install -g watchify
 npm install -g yo
+npm upgrade -g npm
 
 # setup vim
-sudo brew linkapps macvim-kaoriya
-[ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-vim -c ":NeoBundleInstall" -c ":GoInstallBinaries" -c ":q"
+brew linkapps macvim-kaoriya
+[ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/dein.vim ~/.vim/bundle/dein.vim
+vim -c ":call dein#install()" -c ":GoInstallBinaries" -c ":q"
 
 mkdir -p $HOME/.vim/ref/php
 curl -Ls http://php.net/get/php_manual_en.tar.gz/from/this/mirror | tar -zx
