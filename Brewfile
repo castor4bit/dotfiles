@@ -13,6 +13,7 @@ tap 'sanemat/font'
 tap 'mpv-player/mpv'
 tap 'splhack/splhack'
 tap 'universal-ctags/universal-ctags'
+tap 'alehouse/homebrew-unofficial'
 
 # Packages
 cask 'java7'
