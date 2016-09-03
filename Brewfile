@@ -15,7 +15,8 @@ tap 'splhack/splhack'
 tap 'universal-ctags/universal-ctags'
 
 # Packages
-cask 'caskroom/versions/java7'
+cask 'java7'
+cask 'java'
 
 brew 'ag'
 brew 'ansible'
