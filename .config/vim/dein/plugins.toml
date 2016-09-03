@@ -74,7 +74,55 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+hook_add = '''
+  let g:unite_enable_start_insert=1
+  let g:unite_enable_ignore_case=1
+  let g:unite_enable_smart_case=1
+  let g:unite_source_grep_command='pt'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup -S'
+  let g:unite_source_grep_recursive_opt=''
+  let g:unite_source_grep_encoding='utf-8'
+  let g:unite_source_grep_max_candidates=200
+  nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+  nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+  nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+  nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+  nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+  nnoremap <silent> ,up :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
+  nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+  augroup vimrc_unite
+    autocmd!
+    autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+    autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  augroup END
+'''
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+hook_add = '''
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_safe_mode_by_default = 0
+  let g:vimfiler_restore_alternate_file = 0
+  nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -force-quit<CR>
+  nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -force-quit<CR>
+'''
+hook_source = '''
+  augroup vimrc_vimfiler
+    autocmd!
+    autocmd FileType vimfiler setlocal nobuflisted
+    autocmd FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
+    autocmd FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+  augroup END
+'''
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
