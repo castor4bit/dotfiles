@@ -244,6 +244,10 @@ on_cmd = 'VimShell'
 repo = 'Shougo/vinarise.vim'
 on_cmd = 'Vinarise'
 
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_ft = 'slim'
+
 # [[plugins]]
 # repo = 'supermomonga/neocomplete-rsense.vim'
 # depends = 'marcus/rsense'

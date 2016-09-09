@@ -65,6 +65,7 @@ hook_add = '''
         \}
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_go_checkers = ['go', 'golint']
+  let g:syntastic_ruby_checkers = ['rubocop']
 '''
 
 [[plugins]]
