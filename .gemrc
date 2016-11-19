@@ -8,4 +8,5 @@
 :bulk_threshold: 1000
 :backtrace: false
 :update_sources: true
-gem: --no-rdoc --no-ri
+install: --no-document
+update:  --no-document
