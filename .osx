@@ -62,6 +62,9 @@ ioreg -rn IOHIDKeyboard | grep -E 'VendorID"|ProductID' | awk '{ print $4 }' | p
   defaults -currentHost write -g com.apple.keyboard.modifiermapping.${kid}-0 -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>2</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
 done
 
+# Replace next window shortcut to `option + tab`
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "{ enabled = 1; value = { parameters = (65535, 48, 524288); type = 'standard'; }; }"
+
 # Spotlight menu keyboard shortcut: none
 /usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Delete AppleSymbolicHotKeys:64' > /dev/null 2>&1
 /usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Add AppleSymbolicHotKeys:64:enabled bool false'
