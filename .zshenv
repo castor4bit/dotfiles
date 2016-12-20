@@ -7,6 +7,9 @@ export PAGER=less               # デフォルトページャ指定
 typeset -U path cdpath fpath manpath  # 重複パスは設定しない
 path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
 
+# don't load global rc files
+setopt no_global_rcs
+
 # homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
 
