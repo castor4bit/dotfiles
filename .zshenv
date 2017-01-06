@@ -3,11 +3,24 @@ export LANG=ja_JP.UTF-8         # 日本語環境(ja_JP.UTF-8)
 export EDITOR=vim               # デフォルトエディタ指定
 export PAGER=less               # デフォルトページャ指定
 
-# PATH
+# PATH (See: man zshexpn)
+#   N-/ ... NULL_GLOB, follow symlinks, directories
+#   u ... Expand only the first occurrence of each unique word
+#   A ... Turn a file name into an absolute path
 typeset -U path cdpath fpath manpath  # 重複パスは設定しない
-path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
+path=(
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
+  ${path}
+)
+path=( ${(u)path:A} )
 
-# don't load global rc files
+# don't load global rc files (disable path_helper)
+# append /etc/paths, /etc/paths.d, /etc/manpaths.d manually
 setopt no_global_rcs
 
 # homebrew
