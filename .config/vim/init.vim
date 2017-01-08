@@ -81,6 +81,8 @@ set list
 set listchars=tab:\ \ ,extends:<,trail:-
 " 行が画面内に収まらない場合でも可能な限り表示する
 set display=lastline
+" マウス無効
+set mouse=
 
 "--------------------------------------
 " Search Settings
