@@ -83,6 +83,7 @@ npm install -g jshint
 npm install -g js-beautify
 npm install -g mocha
 npm install -g sinon
+npm install -g stylelint
 npm install -g testem
 npm install -g watchify
 npm install -g yo
