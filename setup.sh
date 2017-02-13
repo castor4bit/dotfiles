@@ -57,36 +57,20 @@ cpanm Data::Dumper LWP::UserAgent
 curl -sL git.io/nodebrew | perl - setup
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 nodebrew selfupdate
-nodebrew install-binary v6.9.1
-nodebrew use v6.9.1
+nodebrew install-binary v7.5.0
+nodebrew use v7.5.0
 
 npm install -g babel-eslint
-npm install -g bower
 npm install -g browserify
-npm install -g casperjs
-npm install -g coffee-script
 npm install -g eslint
 npm install -g eslint-plugin-react
-npm install -g expect
-npm install -g express
-npm install -g generator-chrome-extension
-npm install -g generator-jasmine
-npm install -g generator-ko
-npm install -g generator-mocha
-npm install -g grunt-cli
 npm install -g gulp
 npm install -g http-server
-npm install -g hubot
-npm install -g less
 npm install -g jsctags
 npm install -g jshint
 npm install -g js-beautify
-npm install -g mocha
-npm install -g sinon
 npm install -g stylelint
-npm install -g testem
-npm install -g watchify
-npm install -g yo
+npm install -g yarn
 npm upgrade -g npm
 
 # setup vim
