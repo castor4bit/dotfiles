@@ -37,8 +37,8 @@ grep PATH /etc/zshenv > /dev/null || sudo sed -i '' -e $'3 i\\\nPATH=""' /etc/zs
 
 # install ruby
 eval "$(rbenv init -)"
-CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.3.2
-rbenv global 2.3.2
+CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.4.1
+rbenv global 2.4.1
 rbenv rehash
 
 gem install bundler --no-ri --no-rdoc
@@ -58,8 +58,8 @@ cpanm Data::Dumper LWP::UserAgent
 curl -sL git.io/nodebrew | perl - setup
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 nodebrew selfupdate
-nodebrew install-binary v7.5.0
-nodebrew use v7.5.0
+nodebrew install-binary v7.8.0
+nodebrew use v7.8.0
 
 npm install -g babel-eslint
 npm install -g browserify
