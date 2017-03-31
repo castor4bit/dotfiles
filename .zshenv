@@ -25,6 +25,7 @@ setopt no_global_rcs
 
 # homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 # perlbrew
 if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
