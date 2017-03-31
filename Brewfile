@@ -5,6 +5,7 @@ tap 'homebrew/binary'
 tap 'homebrew/science'
 tap 'homebrew/services'
 tap 'homebrew/apache'
+tap 'homebrew/nginx'
 tap 'homebrew/php'
 tap 'caskroom/cask'
 tap 'caskroom/versions'
@@ -107,7 +108,7 @@ brew 'mpv', args: ['with-bundle', 'HEAD']
 brew 'msgpack'
 brew 'mysql', args: ['enable-local-infile']
 brew 'newt'
-brew 'nginx'
+brew 'nginx-full', args: ['devel', 'with-headers-more-module', 'with-mruby-module', 'with-lua-module', 'with-gzip-static']
 brew 'nkf'
 brew 'oniguruma'
 brew 'opencv'
