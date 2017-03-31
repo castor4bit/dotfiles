@@ -12,6 +12,7 @@ FILES=(\
   .inputrc \
   .screenrc \
   .tern-config \
+  .tigrc \
   .vimrc \
   .zshrc \
   .zshenv \
