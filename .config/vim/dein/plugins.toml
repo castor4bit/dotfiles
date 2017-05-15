@@ -60,12 +60,14 @@ repo = 'scrooloose/syntastic'
 hook_add = '''
   let g:syntastic_mode_map = {
         \ 'mode': 'passive',
-        \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go'],
+        \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go', 'css', 'scss'],
         \ 'passive_filetypes': []
         \}
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_go_checkers = ['go', 'golint']
   let g:syntastic_ruby_checkers = ['rubocop']
+  let g:syntastic_css_checkers = ['stylelint']
+  let g:syntastic_scss_checkers = ['stylelint']
 '''
 
 [[plugins]]
