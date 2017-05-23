@@ -26,3 +26,5 @@
   textconv = js-beautify
 [diff]
   compactionHeuristic = true
+[user]
+  useConfigOnly = true
