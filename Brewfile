@@ -92,6 +92,7 @@ brew 'yarn', args: ['without-node']
 brew 'z'
 brew 'zlib'
 brew 'zsh'
+brew 'zsh-completions'
 
 cask 'android-studio'
 cask 'atom'
