@@ -50,12 +50,10 @@ rbenv rehash
 # install perl
 curl -skL http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
-perl_version=$(perlbrew available | grep perl-5.26.1)
+perl_version=$(perlbrew available | grep perl-5.26.1 | awk '{print $1}')
 perlbrew install $perl_version
 perlbrew switch  $perl_version
-
 perlbrew install-cpanm
-cpanm Data::Dumper LWP::UserAgent
 
 # install nodejs
 curl -sL git.io/nodebrew | perl - setup
