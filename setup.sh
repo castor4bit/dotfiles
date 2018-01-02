@@ -62,17 +62,7 @@ nodebrew selfupdate
 nodebrew install-binary v8.9.3
 nodebrew use v8.9.3
 
-npm install -g babel-eslint
-npm install -g browserify
-npm install -g eslint
-npm install -g eslint-plugin-react
-npm install -g gulp
-npm install -g http-server
-npm install -g jsctags
-npm install -g jshint
 npm install -g js-beautify
-npm install -g stylelint
-npm install -g yarn
 npm upgrade -g npm
 
 # setup vim

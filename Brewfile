@@ -88,6 +88,7 @@ brew 'tree'
 brew 'unar'
 brew 'valgrind', args: ['HEAD']
 brew 'wget'
+brew 'yarn', args: ['without-node']
 brew 'z'
 brew 'zlib'
 brew 'zsh'
