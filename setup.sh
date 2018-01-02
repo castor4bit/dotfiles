@@ -14,8 +14,8 @@ FILES=(\
   .tmux.conf \
   .tigrc \
   .vimrc \
-  .zshrc \
   .zshenv \
+  .zshrc \
 )
 
 for file in ${FILES[@]}; do
