@@ -132,12 +132,11 @@ function zshaddhistory() {
 # PROMPT設定
 if [ "$TERM" != "dumb" ] ; then
     # 通常時プロンプト
-    # %B, %b    太字開始/終了
-    # %n        ユーザ名
-    # %m        ホスト名(最初の.まで)
-    PROMPT="[%B%n%b@%m] $ "
+    # %n    ユーザ名
+    # %m    ホスト名(最初の.まで)
+    PROMPT="[%n@%m] $ "
     # 右側プロンプト
-    # %d        カレントディレクトリ
+    # %d    カレントディレクトリ
     RPROMPT="%d%1(v| %F{cyan}%1v%f|)"
 fi
 
