@@ -37,8 +37,8 @@ grep PATH /etc/zshenv > /dev/null || sudo sed -i '' -e $'3 i\\\nPATH=""' /etc/zs
 
 # install ruby
 eval "$(rbenv init -)"
-CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.4.1
-rbenv global 2.4.1
+CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install 2.5.0
+rbenv global 2.5.0
 rbenv rehash
 
 gem install bundler --no-ri --no-rdoc
@@ -47,7 +47,7 @@ rbenv rehash
 # install perl
 curl -skL http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
-perl_version=$(perlbrew available | grep perl-5.24.1)
+perl_version=$(perlbrew available | grep perl-5.26.1)
 perlbrew install $perl_version
 perlbrew switch  $perl_version
 
@@ -58,8 +58,8 @@ cpanm Data::Dumper LWP::UserAgent
 curl -sL git.io/nodebrew | perl - setup
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 nodebrew selfupdate
-nodebrew install-binary v7.10.0
-nodebrew use v7.10.0
+nodebrew install-binary v8.9.3
+nodebrew use v8.9.3
 
 npm install -g babel-eslint
 npm install -g browserify
