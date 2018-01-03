@@ -8,6 +8,10 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+" enable python3
+if has('python3')
+endif
+
 "--------------------------------------
 " Dein Settings
 "--------------------------------------

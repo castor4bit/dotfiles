@@ -1,5 +1,7 @@
 # vim
-alias vim='env LANG=ja_JP.UTF-8 DYLD_FORCE_FLAT_NAMESPACE=1 nvim'
+alias gvim='env LANG=ja_JP.UTF-8 gvim'
+alias vim='env LANG=ja_JP.UTF-8 DYLD_FORCE_FLAT_NAMESPACE=1 vim'
+
 
 # ctags
 alias ctags="/usr/local/bin/ctags"
