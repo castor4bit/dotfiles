@@ -96,6 +96,7 @@ brew 'zsh-completions'
 
 brew 'macvim-kaoriya', args: ['HEAD']
 
+cask 'alfred'
 cask 'android-studio'
 cask 'atom'
 cask 'charles'
