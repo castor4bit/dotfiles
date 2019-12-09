@@ -24,6 +24,9 @@
   diff = diff-highlight | less
 [diff "minjs"]
   textconv = js-beautify
+[diff "xlsx"]
+  binary = true
+  textconv = $GOPATH/bin/git-xlsx-textconv
 [diff]
   compactionHeuristic = true
 [user]
