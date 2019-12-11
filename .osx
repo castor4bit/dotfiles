@@ -68,7 +68,31 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 defaults write -g com.apple.keyboard.fnState -bool true
 
 # Remap Caps Lock to Ctrl
+LOGINHOOK_SCRIPT_PATH=$HOME/loginhook.sh
+cat <<EOT > $LOGINHOOK_SCRIPT_PATH
+#/bin/sh
 hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000e0}]}'
+defaults write com.apple.loginwindow LoginHook $LOGINHOOK_SCRIPT_PATH
+EOT
+chmod +x $LOGINHOOK_SCRIPT_PATH
+
+LOGINHOOK_PLIST_FILEPATH=$HOME/Library/LaunchAgents/com.user.loginscript.plist
+mkdir -p $(dirname $LOGINHOOK_PLIST_FILEPATH)
+cat <<EOT > $LOGINHOOK_PLIST_FILEPATH
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+   <key>Label</key>
+   <string>com.user.loginscript</string>
+   <key>ProgramArguments</key>
+   <array><string>$LOGINHOOK_SCRIPT_PATH</string></array>
+   <key>RunAtLoad</key>
+   <true/>
+</dict>
+</plist>
+EOT
+launchctl load $LOGINHOOK_PLIST_FILEPATH
 
 # Replace next window shortcut to `option + tab`
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "{ enabled = 1; value = { parameters = (65535, 48, 524288); type = 'standard'; }; }"
