@@ -50,7 +50,7 @@ $ fc-cache -vf
 ```sh
 $ cd ~/Projects/dotfiles
 $ ./setup.sh
-$ ln -s $HOME/Projects/dotfiles/.zshrc.mine.ricotte $HOME/.zshrc.mine
+$ cp ./.zshrc.mine $HOME/.zshrc.mine
 ```
 
 ### Edit .zshenv.local
@@ -60,8 +60,4 @@ $ vi ~/.zshenv.local
 ---
 # github
 export HOMEBREW_GITHUB_API_TOKEN=
-
-# aws
-export AWS_ACCESS_KEY=
-export AWS_SECRET_KEY=
 ```
