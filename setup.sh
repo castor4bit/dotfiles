@@ -35,6 +35,9 @@ chsh -s /usr/local/bin/zsh
 # ssh settings for sierra (or later)
 echo -e "Host *\n  UseKeychain yes\n  AddKeysToAgent yes\n" >> ~/.ssh/config
 
+# symlink diff-highlight
+ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
+
 # install ruby
 eval "$(rbenv init -)"
 ruby_version=2.6.5
