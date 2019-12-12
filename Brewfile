@@ -74,7 +74,7 @@ brew 'tmux'
 brew 'tree'
 brew 'unar'
 brew 'universal-ctags', args: ['HEAD']
-brew 'vim'
+brew 'macvim'
 brew 'wget'
 brew 'yarn', args: ['ignore-dependencies']
 brew 'z'
