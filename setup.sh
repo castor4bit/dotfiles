@@ -34,6 +34,9 @@ chsh -s /usr/local/bin/zsh
 # fix path_helper
 grep PATH /etc/zshenv > /dev/null || sudo sed -i '' -e $'3 i\\\nPATH=""' /etc/zshenv
 
+# ssh settings for sierra (or later)
+echo -e "Host *\n  UseKeychain yes\n  AddKeysToAgent yes\n" >> ~/.ssh/config
+
 # install ruby
 eval "$(rbenv init -)"
 ruby_version=2.6.5
