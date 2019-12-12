@@ -1,5 +1,6 @@
 # Open chrome extension install pages
 extensions=( \
+	1password-x-–-password-ma/aeblfdkhhhdcdjpifhhbdiojplfjncoa \
 	autopagerize/igiofjhpmpihnifddepnpngfjhkfenbp \
 	go-back-with-backspace/eekailopagacbcdloonjhbiecobagjci \
 	hatebu/dnlfpnhinnjdgmjfpccajboogcjocdla \

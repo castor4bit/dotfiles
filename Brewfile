@@ -82,6 +82,7 @@ brew 'zlib'
 brew 'zsh'
 brew 'zsh-completions'
 
+cask '1password'
 cask 'alfred'
 cask 'charles'
 cask 'chromedriver'
