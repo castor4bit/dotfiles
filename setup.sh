@@ -79,6 +79,11 @@ mv php-chunked-xhtml $HOME/.vim/ref/php/
 mkdir -p $HOME/.vim/dict
 curl -Ls https://arcane-tor-6144.herokuapp.com/ -o $HOME/.vim/dict/PHP.dict
 
+# dircolors
+mkdir -p ~/.zsh/dircolors
+git clone https://github.com/seebi/dircolors-solarized.git ~/.zsh/dircolors/dircolors-solarized
+ln -s ~/.zsh/dircolors/dircolors-solarized/dircolors.256dark ~/.zsh/dircolors/current
+
 # cdd
 git clone https://github.com/m4i/cdd.git ~/.zsh/cdd
 

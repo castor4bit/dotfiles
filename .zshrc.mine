@@ -15,3 +15,10 @@ if [ -f ~/.zsh/cdd/cdd ]; then
   typeset -ga chpwd_functions
   chpwd_functions+=_cdd_chpwd
 fi
+
+# dircolors
+if [[ -x `which gdircolors` && -e ~/.zsh/dircolors/current ]]; then
+  eval $(gdircolors ~/.zsh/dircolors/current)
+  unalias ls
+  alias ls='gls --color=auto'
+fi
