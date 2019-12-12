@@ -4,6 +4,7 @@
 FILES=(\
   .config/mpv/mpv.conf \
   .config/vim/init.vim \
+  .zsh/functions/tmux.zsh \
   .eslintrc \
   .gemrc \
   .gitconfig \
