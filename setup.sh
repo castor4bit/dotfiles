@@ -11,6 +11,7 @@ FILES=(\
   .gvimrc \
   .inputrc \
   .tern-config \
+  .tmux.conf \
   .tigrc \
   .vimrc \
   .zshrc \
