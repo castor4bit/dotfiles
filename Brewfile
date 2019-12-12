@@ -89,6 +89,7 @@ brew 'yarn', args: ['without-node']
 brew 'z'
 brew 'zlib'
 brew 'zsh'
+brew 'zsh-completions'
 
 cask 'charles'
 cask 'docker'

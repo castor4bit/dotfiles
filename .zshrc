@@ -40,6 +40,7 @@ setopt cdable_vars        # 変数展開する
 setopt pushd_ignore_dups  # 同じディレクトリを重複pushしない
 
 # 補完
+fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -Uz compinit && compinit # 補完有効化
 setopt always_last_prompt         # 補完時にカーソル位置(行)を移動しない
 setopt auto_list                  # 補完候補をリスト表示
