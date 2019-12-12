@@ -8,6 +8,7 @@ tap 'caskroom/cask'
 tap 'caskroom/versions'
 tap 'sanemat/font'
 tap 'mpv-player/mpv'
+tap 'universal-ctags/universal-ctags'
 tap 'alehouse/homebrew-unofficial'
 tap 'ringohub/tfenv'
 
@@ -31,7 +32,6 @@ brew 'chromedriver'
 brew 'cmake'
 brew 'colordiff'
 brew 'coreutils'
-brew 'ctags'
 brew 'curl'
 brew 'docbook'
 brew 'docbook-xsl'
@@ -52,7 +52,7 @@ brew 'jpegoptim'
 brew 'jq'
 brew 'lua'
 brew 'mercurial'
-brew 'mpv'
+brew 'mpv', args: ['with-bundle']
 brew 'msgpack'
 brew 'newt'
 brew 'nkf'
@@ -83,14 +83,17 @@ brew 'tig'
 brew 'tmux'
 brew 'tree'
 brew 'unar'
+brew 'universal-ctags', args: ['HEAD']
 brew 'valgrind', args: ['HEAD']
+brew 'vim', args: ['with-override-system-vi']
 brew 'wget'
-brew 'yarn', args: ['without-node']
+brew 'yarn', args: ['ignore-dependencies']
 brew 'z'
 brew 'zlib'
 brew 'zsh'
 brew 'zsh-completions'
 
+cask 'alfred'
 cask 'charles'
 cask 'docker'
 cask 'dropbox'

@@ -131,9 +131,9 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 hook_post_update = '''
-  if dein#util#_is_windows()
+  if has('win32')
     let cmd = 'tools\\update-dll-mingw'
-  elseif dein#util#_is_cygwin()
+  elseif has('win32unix')
     let cmd = 'make -f make_cygwin.mak'
   elseif executable('gmake')
     let cmd = 'gmake'

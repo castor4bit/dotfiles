@@ -69,16 +69,8 @@ npm install -g js-beautify
 npm upgrade -g npm
 
 # setup vim
-brew linkapps macvim-kaoriya
-[ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/dein.vim ~/.vim/bundle/dein.vim
+curl -sL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s -- ~/.cache/dein
 vim -c ":call dein#install()" -c ":GoInstallBinaries" -c ":q"
-
-mkdir -p $HOME/.vim/ref/php
-curl -Ls http://php.net/get/php_manual_en.tar.gz/from/this/mirror | tar -zx
-mv php-chunked-xhtml $HOME/.vim/ref/php/
-
-mkdir -p $HOME/.vim/dict
-curl -Ls https://arcane-tor-6144.herokuapp.com/ -o $HOME/.vim/dict/PHP.dict
 
 # dircolors
 mkdir -p ~/.zsh/dircolors
