@@ -44,6 +44,8 @@ $ brew bundle
 $ cd ~/Projects/dotfiles
 $ ./setup.sh
 $ cp ./.zshrc.mine $HOME/.zshrc.mine
+
+$ ./helper.sh
 ```
 
 ### Edit .zshenv.local
