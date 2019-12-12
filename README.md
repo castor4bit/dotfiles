@@ -38,13 +38,6 @@ $ brew tap Homebrew/bundle
 $ brew bundle
 ```
 
-#### Install Ricty font
-
-```sh
-$ cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
-$ fc-cache -vf
-```
-
 ### Install dotfiles and misc
 
 ```sh
