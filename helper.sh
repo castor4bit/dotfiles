@@ -6,7 +6,6 @@ extensions=( \
 	raindropio/ldgfbffkinooeloadekpmfoklnobpien \
 	vimium/dbepggeogbaibhgnhhndojpepiihcmeb \
 	website-ip/ghbmhlgniedlklkpimlibbaoomlpacmk \
-	yslow/ninejjcohidippngpapiilnmkgllmakh \
 )
 
 for name in ${extensions[@]}; do
