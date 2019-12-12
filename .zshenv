@@ -25,17 +25,10 @@ setopt no_global_rcs
 
 # homebrew
 export PATH="$(brew --prefix)/bin:$PATH"
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 # perlbrew
 if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
   source ~/perl5/perlbrew/etc/bashrc
-fi
-
-# phpenv
-if [ -f ~/.phpenv/bin/phpenv ]; then
-  export PATH=~/.phpenv/bin:$PATH
-  eval "$(phpenv init -)"
 fi
 
 # rbenv
