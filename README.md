@@ -41,7 +41,7 @@ $ brew bundle
 #### Install Ricty font
 
 ```sh
-$ cp -f /usr/local/Library/LinkedKegs/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
+$ cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
 $ fc-cache -vf
 ```
 
