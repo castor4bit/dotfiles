@@ -10,7 +10,6 @@ FILES=(\
   .gitignore \
   .gvimrc \
   .inputrc \
-  .screenrc \
   .tern-config \
   .tigrc \
   .vimrc \
