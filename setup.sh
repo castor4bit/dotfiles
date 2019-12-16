@@ -58,12 +58,10 @@ perlbrew switch  $perl_version
 perlbrew install-cpanm
 
 # install nodejs
-curl -sL git.io/nodebrew | perl - setup
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-node_version=v12.13.1
-nodebrew selfupdate
-nodebrew install-binary $node_version
-nodebrew use $node_version
+eval "$(nodenv init -)"
+node_version=12.13.1
+nodenv install $node_version
+nodenv global $node_version
 
 npm install -g js-beautify
 npm upgrade -g npm

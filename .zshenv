@@ -31,8 +31,9 @@ if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
   source ~/perl5/perlbrew/etc/bashrc
 fi
 
-# rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# *env
+if which rbenv  > /dev/null; then eval "$(rbenv  init -)"; fi
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
 # python
 export WORKON_HOME=$HOME/.virtualenvs
@@ -47,10 +48,6 @@ if [ -z "${GOPATH:-}" ]; then
   export GOPATH=$HOME/.go
 fi
 export PATH=$PATH:$GOPATH/bin
-
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export NODE_PATH=$HOME/.nodebrew/current/lib/node_modules
 
 # others
 export GISTY_DIR="$HOME/Project/gists"
