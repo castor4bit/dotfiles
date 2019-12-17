@@ -46,7 +46,8 @@ RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv insta
 rbenv global $ruby_version
 rbenv rehash
 
-gem install bundler --no-ri --no-rdoc
+gem install bundler --no-document
+gem install pry     --no-document
 rbenv rehash
 
 # install perl
