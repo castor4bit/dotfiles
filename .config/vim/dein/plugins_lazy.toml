@@ -219,35 +219,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets', 'context_filetype.vim']
-on_i = 1
-on_ft = 'snippet'
-on_unite = ['neosnippet', 'neosnippet/user', 'neosnippet/runtime']
-hook_add = '''
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
-  set completeopt-=preview
-
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: "\<TAB>"
-
-  if has('conceal')
-    set conceallevel=2 concealcursor=i
-  endif
-'''
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-depends = 'unite.vim'
-on_cmd = 'Unite'
-
-[[plugins]]
 repo = 'Shougo/vimshell.vim'
 on_map = '<Plug>'
 on_cmd = 'VimShell'
@@ -316,11 +287,6 @@ hook_add = '''
 [[plugins]]
 repo = 'ujihisa/neco-look'
 on_i = 1
-
-[[plugins]]
-repo = 'ujihisa/unite-colorscheme'
-depends = 'unite.vim'
-on_map = '<Plug>'
 
 [[plugins]]
 repo = 'vim-ruby/vim-ruby'

@@ -49,6 +49,12 @@ repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 
 [[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
 repo = 'scrooloose/nerdcommenter'
 hook_add = '''
   let g:NERDSpaceDelims = 1
@@ -77,56 +83,128 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc', 'neomru.vim']
+hook_add = '''
+  " Define mappings
+  autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d    denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p    denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q    denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i    denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+    nnoremap <silent><buffer><expr> <ESC><ESC> denite#do_map('quit')
+  endfunction
+
+  autocmd FileType denite-filter call s:denite_filter_my_settings()
+  function! s:denite_filter_my_settings() abort
+    imap <silent><buffer> <CR> <Plug>(denite_filter_quit)
+  endfunction
+
+  " Options
+  call denite#custom#option('_', 'direction', 'topleft')
+  call denite#custom#option('_', 'start_filter', v:true)
+
+  " Change file/rec command.
+  call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+  " Change matchers.
+  call denite#custom#source('file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+  call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
+
+  " Change sorters.
+  call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
+
+  " Change default action.
+  call denite#custom#kind('file', 'default_action', 'drop')
+
+  " Ag command on grep source
+  call denite#custom#var('grep', 'command', ['ag'])
+  call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', [])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
+
+  " Define alias
+  call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+  call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
+
+  call denite#custom#alias('source', 'file/rec/py', 'file/rec')
+  call denite#custom#var('file/rec/py', 'command', ['scantree.py', '--path', ':directory'])
+
+  " Change ignore_globs
+  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+        \ [ '.git/', '.ropeproject/', '__pycache__/',
+        \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+
+  " grep
+  command! -nargs=? Dgrep call s:Dgrep(<f-args>)
+  function s:Dgrep(...)
+    if a:0 > 0
+      execute(':Denite -buffer-name=grep-buffer-denite grep -path='.a:1)
+    else
+      execute(':Denite -buffer-name=grep-buffer-denite grep')
+    endif
+  endfunction
+
+  command! Dresume execute(':Denite -resume -buffer-name=grep-buffer-denite')
+  command! Dnext   execute(':Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately')
+  command! Dprev   execute(':Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=-1 -immediately')
+
+  " Others
+  call denite#custom#source('grep', 'max_candidates', 200)
+
+  nnoremap <silent> ,gr :<C-u>Denite          -buffer-name=grep-buffer-denite grep<CR>
+  nnoremap <silent> ,uu :<C-u>Denite          buffer file_mru<CR>
+  nnoremap <silent> ,uf :<C-u>DeniteBufferDir file<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+depends = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
+hook_add = '''
+  nnoremap <silent> ,vf :<C-u>Defx -split=vertical -winwidth=30 -direction=topleft `expand('%:p:h')` -search=`expand('%:p')`<CR>
+
+  call defx#custom#option('_', { 'show_ignored_files': 1 })
+
+  autocmd FileType defx call s:defx_my_settings()
+  function! s:defx_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+          \ defx#is_directory() ?
+          \ defx#do_action('open_directory') :
+          \ defx#do_action('multi', ['drop', 'quit'])
+    nnoremap <silent><buffer><expr> l
+          \ defx#is_directory() ?
+          \ defx#do_action('open_directory') :
+          \ defx#do_action('multi', ['drop', 'quit'])
+
+    nnoremap <silent><buffer><expr> c   defx#do_action('copy')
+    nnoremap <silent><buffer><expr> m   defx#do_action('move')
+    nnoremap <silent><buffer><expr> p   defx#do_action('paste')
+    nnoremap <silent><buffer><expr> N   defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> K   defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> d   defx#do_action('remove')
+    nnoremap <silent><buffer><expr> r   defx#do_action('rename')
+
+    nnoremap <silent><buffer><expr> t   defx#do_action('open_or_close_tree')
+    nnoremap <silent><buffer><expr> .   defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
+    nnoremap <silent><buffer><expr> *   defx#do_action('toggle_select_all')
+
+    nnoremap <silent><buffer><expr> h   defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> j   line('.') == line('$') ? 'gg' : 'j'
+    nnoremap <silent><buffer><expr> k   line('.') == 1 ? 'G' : 'k'
+
+    nnoremap <silent><buffer><expr> <Esc> defx#do_action('quit')
+    nnoremap <silent><buffer><expr> q     defx#do_action('quit')
+  endfunction
+'''
+
+[[plugins]]
 repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-depends = 'neomru.vim'
-hook_add = '''
-  let g:unite_enable_start_insert=1
-  let g:unite_enable_ignore_case=1
-  let g:unite_enable_smart_case=1
-  let g:unite_source_grep_command='pt'
-  let g:unite_source_grep_default_opts='--nocolor --nogroup -S'
-  let g:unite_source_grep_recursive_opt=''
-  let g:unite_source_grep_encoding='utf-8'
-  nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-  nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-  nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-  nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
-  nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-  nnoremap <silent> ,up :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
-  nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-  augroup vimrc_unite
-    autocmd!
-    autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-    autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-  augroup END
-
-  call unite#custom#source('grep', 'max_candidates', 200)
-'''
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-depends = 'unite.vim'
-hook_add = '''
-  let g:vimfiler_as_default_explorer = 1
-  let g:vimfiler_safe_mode_by_default = 0
-  let g:vimfiler_restore_alternate_file = 0
-  nnoremap <silent> ,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=30 -force-quit<CR>
-  nnoremap <silent> ,vp :<C-u>VimFiler -project -split -simple -winwidth=30 -force-quit<CR>
-'''
-hook_source = '''
-  augroup vimrc_vimfiler
-    autocmd!
-    autocmd FileType vimfiler setlocal nobuflisted
-    autocmd FileType vimfiler nmap <silent> <buffer> <ESC><ESC> Q
-    autocmd FileType vimfiler nmap <silent> <buffer> <expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-  augroup END
-'''
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
