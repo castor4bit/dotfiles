@@ -166,6 +166,9 @@ repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
 [[plugins]]
+repo = 'Shougo/deol.nvim'
+
+[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
 if = 'has("lua")'
@@ -185,7 +188,6 @@ hook_add = '''
   let g:neocomplete#sources#syntax#min_keyword_length = 3
   let g:neocomplete#sources#dictionary#dictionaries = {
       \ 'default' : '',
-      \ 'vimshell' : $HOME.'/.vimshell_hist',
       \ 'scheme' : $HOME.'/.gosh_completions',
       \ 'php' : $HOME.'/.vim/dict/PHP.dict'
       \ }
@@ -217,11 +219,6 @@ hook_add = '''
   inoremap <expr><C-g>  neocomplete#undo_completion()
   inoremap <expr><C-l>  neocomplete#complete_common_string()
 '''
-
-[[plugins]]
-repo = 'Shougo/vimshell.vim'
-on_map = '<Plug>'
-on_cmd = 'VimShell'
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
