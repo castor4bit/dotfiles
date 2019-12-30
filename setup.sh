@@ -74,7 +74,8 @@ vim -c ":call dein#install()" -c ":GoInstallBinaries" -c ":q"
 # dircolors
 mkdir -p ~/.zsh/dircolors
 git clone https://github.com/seebi/dircolors-solarized.git ~/.zsh/dircolors/dircolors-solarized
-ln -s ~/.zsh/dircolors/dircolors-solarized/dircolors.256dark ~/.zsh/dircolors/current
+ln -sf ~/.zsh/dircolors/dircolors-solarized/dircolors.256dark ~/.zsh/dircolors/current
+sed -i -e "s/^NORMAL 00;38;5;244/NORMAL 00;38;5;250/" ~/.zsh/dircolors/current
 
 # cdd
 git clone https://github.com/m4i/cdd.git ~/.zsh/cdd
