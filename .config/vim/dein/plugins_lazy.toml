@@ -28,10 +28,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'hashivim/vim-terraform'
-on_ft = 'terraform'
-
-[[plugins]]
 repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
 
@@ -60,6 +56,10 @@ on_ft = 'less'
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
 on_ft = ['html', 'css', 'less']
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'terraform'
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
