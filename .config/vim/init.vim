@@ -230,6 +230,9 @@ command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 nnoremap <F6> <ESC>i<C-R>=strftime("[%Y/%m/%d]")<CR><CR>
 inoremap <F6> <C-R>=strftime("%Y%m%d%H%M")<CR>
 
+" 相対行番号の表示切り替え
+nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
+
 "--------------------------------------
 " Local settings
 "--------------------------------------
