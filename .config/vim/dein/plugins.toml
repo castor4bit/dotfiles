@@ -275,9 +275,10 @@ repo = 'vim-scripts/wombat256.vim'
 hook_add = '''
   set t_Co=256
   autocmd MyAutoCmd VimEnter * colorscheme wombat256mod
+  autocmd MyAutoCmd VimEnter,ColorScheme * hi CursorLine ctermbg=239 ctermfg=NONE cterm=NONE
+  autocmd MyAutoCmd VimEnter,ColorScheme * hi CursorLine guibg=#555555 guifg=NONE gui=NONE
   autocmd MyAutoCmd VimEnter,ColorScheme * hi MatchParen ctermbg=NONE
   autocmd MyAutoCmd VimEnter,ColorScheme * hi ModeMsg    ctermfg=111
-  autocmd MyAutoCmd VimEnter,ColorScheme * hi CursorLine ctermbg=none ctermfg=none cterm=underline
 '''
 
 [[plugins]]
