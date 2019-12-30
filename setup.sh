@@ -41,7 +41,7 @@ ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local
 
 # install ruby
 eval "$(rbenv init -)"
-ruby_version=2.6.5
+ruby_version=2.7.0
 RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install $ruby_version
 rbenv global $ruby_version
 rbenv rehash
