@@ -7,6 +7,30 @@ on_ft = 'toml'
 repo = 'castor4bit/inside-motion.vim'
 
 [[plugins]]
+repo = 'dense-analysis/ale'
+hook_add = '''
+  let g:ale_completion_enabled = 1
+  let g:ale_fix_on_save = 1
+  let b:ale_fixers = {
+        \ 'javascript': ['prettier']
+        \}
+  let b:ale_linters = {
+        \ 'javascript': ['eslint'],
+        \ 'ruby': ['rubocop'],
+        \ 'css': ['stylelint']
+        \}
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_insert_leave = 0
+  let g:ale_lint_on_enter = 0
+
+  let g:ale_pattern_options_enabled = 1
+  let g:ale_pattern_options = {
+        \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+        \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+        \}
+'''
+
+[[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
 
 [[plugins]]
@@ -59,21 +83,6 @@ repo = 'scrooloose/nerdcommenter'
 hook_add = '''
   let g:NERDSpaceDelims = 1
   let g:NERDShutUp = 1
-'''
-
-[[plugins]]
-repo = 'scrooloose/syntastic'
-hook_add = '''
-  let g:syntastic_mode_map = {
-        \ 'mode': 'passive',
-        \ 'active_filetypes':  ['php', 'ruby', 'javascript', 'go', 'css', 'scss'],
-        \ 'passive_filetypes': []
-        \}
-  let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_go_checkers = ['go', 'golint']
-  let g:syntastic_ruby_checkers = ['rubocop']
-  let g:syntastic_css_checkers = ['stylelint']
-  let g:syntastic_scss_checkers = ['stylelint']
 '''
 
 [[plugins]]
