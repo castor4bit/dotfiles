@@ -207,6 +207,8 @@ vnoremap <Tab> %
 cnoremap W<CR> w<CR>
 cnoremap Q<CR> q<CR>
 cnoremap WQ wq
+" 誤爆防止
+nnoremap q: <NOP>
 " sudoで保存
 cmap w!! w !sudo tee > /dev/null %
 
