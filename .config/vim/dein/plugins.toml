@@ -143,8 +143,17 @@ hook_add = '''
   call denite#custom#option('_', 'direction', 'topleft')
   call denite#custom#option('_', 'start_filter', v:true)
 
+  " Change ignore_globs
+  let s:ignore_globs = [
+        \ '.git', '.svn',
+        \ 'images/', 'img/', 'fonts/',
+        \]
+  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', s:ignore_globs)
+
   " Change file/rec command.
-  call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+  let s:ag_ignore_options = map(deepcopy(s:ignore_globs), { k, v -> '--ignore=' . v })
+  let s:ag_options = ['ag', '--follow'] + s:ag_ignore_options + ['--nocolor', '--nogroup', '-g', '']
+  call denite#custom#var('file/rec', 'command', s:ag_options)
 
   " Change matchers.
   call denite#custom#source('file_mru', 'matchers', ['matcher/cpsm'])
@@ -170,11 +179,6 @@ hook_add = '''
 
   call denite#custom#alias('source', 'file/rec/py', 'file/rec')
   call denite#custom#var('file/rec/py', 'command', ['scantree.py', '--path', ':directory'])
-
-  " Change ignore_globs
-  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-        \ [ '.git/', '.ropeproject/', '__pycache__/',
-        \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
 
   " grep
   command! -nargs=? Dgrep call s:Dgrep(<f-args>)
