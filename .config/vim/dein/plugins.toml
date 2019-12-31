@@ -9,15 +9,15 @@ repo = 'castor4bit/inside-motion.vim'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
-  let g:ale_completion_enabled = 1
   let g:ale_fix_on_save = 1
-  let b:ale_fixers = {
-        \ 'javascript': ['prettier']
+  let g:ale_fixers = {
+        \ 'javascript': ['prettier'],
+        \ 'ruby': ['rubocop'],
         \}
-  let b:ale_linters = {
+  let g:ale_linters = {
         \ 'javascript': ['eslint'],
         \ 'ruby': ['rubocop'],
-        \ 'css': ['stylelint']
+        \ 'css': ['stylelint'],
         \}
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_lint_on_insert_leave = 0
@@ -131,7 +131,7 @@ hook_add = '''
   call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
 
   " Change default action.
-  call denite#custom#kind('file', 'default_action', 'drop')
+  call denite#custom#kind('file', 'default_action', 'open')
 
   " Ag command on grep source
   call denite#custom#var('grep', 'command', ['ag'])
@@ -170,8 +170,8 @@ hook_add = '''
   " Others
   call denite#custom#source('grep', 'max_candidates', 200)
 
-  nnoremap <silent> ,gr :<C-u>Denite          -buffer-name=grep-buffer-denite grep<CR>
-  nnoremap <silent> ,uu :<C-u>Denite          buffer file_mru<CR>
+  nnoremap <silent> ,gr :<C-u>Denite -buffer-name=grep-buffer-denite grep<CR>
+  nnoremap <silent> ,uu :<C-u>Denite buffer file_mru<CR>
   nnoremap <silent> ,uf :<C-u>DeniteBufferDir file<CR>
 '''
 

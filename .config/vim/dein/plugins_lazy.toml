@@ -117,12 +117,6 @@ hook_add = '''
   let g:user_emmet_leader_key = '<C-t>'
 '''
 
-# [[plugins]]
-# repo = 'marcus/rsense'
-# build = "find doc -name '*.ja.txt' -print0 | perl -pe 's/\.txt\0/\0/g' | xargs -0 -I% mv %.txt %x"
-# on_ft = 'ruby'
-# on_i = 1
-
 [[plugins]]
 repo = 'mxw/vim-jsx'
 on_ft = 'javascript'
