@@ -5,7 +5,7 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_i = 1
+on_event = ['InsertEnter']
 
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
@@ -64,21 +64,6 @@ hook_add = '''
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
 '''
-
-[[plugins]]
-repo = 'kana/vim-smartinput'
-on_i = 1
-hook_post_source = """
-	call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
-	call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
-	call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
-	call smartinput#define_rule({'at': '\({\|\<do\>\)\s*\%#', 'char': '<Bar>', 'input': '<Bar><Bar><Left>', 'filetype': ['ruby'] })
-	call smartinput#define_rule({'at': '\%#|',   'char': '<Bar>', 'input': '<Right>'})
-	call smartinput#define_rule({'at': '''''\%#', 'char': '<BS>', 'input': '<BS>'})
-	call smartinput#define_rule({'at': '""\%#',   'char': '<BS>', 'input': '<BS>'})
-	call smartinput#define_rule({'at': '()\%#',   'char': '<BS>', 'input': '<BS>'})
-	call smartinput#define_rule({'at': '\[\%#\]', 'char': '<Enter>', 'input': '<Enter><Enter><Up><Esc>"_S'})
-"""
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
