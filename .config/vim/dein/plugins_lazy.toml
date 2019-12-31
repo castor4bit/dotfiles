@@ -4,10 +4,6 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
-repo = 'cohama/lexima.vim'
-on_event = ['InsertEnter']
-
-[[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
 pre_cmd = 'CtrlP'
 hook_add = '''
@@ -142,6 +138,39 @@ on_ft = 'javascript'
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = ['context_filetype.vim', 'lexima.vim']
+on_event = 'InsertEnter'
+hook_post_source = '''
+  let g:deoplete#enable_at_startup = 0
+  autocmd InsertEnter * call deoplete#enable()
+
+  call deoplete#custom#option({
+       \ 'auto_complete_delay': 200,
+       \ 'keyword_patterns': {
+       \    '_': '[a-zA-Z_]\k*',
+       \    'ruby': '[a-zA-Z_]\w*[!?]?',
+       \  },
+       \ 'min_pattern_length': 3,
+       \ 'smart_case': v:true,
+       \ 'yarp': v:true
+       \})
+  call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+
+  "call deoplete#custom#option('profile', v:true)
+  "call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
+  "call deoplete#custom#source('file', 'is_debug_enabled', 1)
+
+  imap     <silent> <expr><CR>    pumvisible() ? "\<C-y>" :"\<CR>"
+  inoremap <expr><Right>  pumvisible() ? "\<C-e>" : "\<Right>"
+  inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr><C-l>    deoplete#complete_common_string()
+  inoremap <expr><C-h>    deoplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS>     deoplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-g>    deoplete#undo_completion()
+'''
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
