@@ -63,6 +63,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'nixprime/cpsm'
+build = 'sh -c "PY3=ON ./install.sh"'
+
+[[plugins]]
 repo = 'osyo-manga/vim-anzu'
 hook_add = '''
   let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
@@ -93,7 +97,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-depends = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc', 'neomru.vim']
+depends = ['nvim-yarp', 'vim-hug-neovim-rpc', 'neomru.vim']
 hook_add = '''
   " Define mappings
   autocmd FileType denite call s:denite_my_settings()
@@ -120,7 +124,7 @@ hook_add = '''
   call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
   " Change matchers.
-  call denite#custom#source('file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+  call denite#custom#source('file_mru', 'matchers', ['matcher/cpsm'])
   call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
 
   " Change sorters.
@@ -173,7 +177,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
-depends = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
+depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
 hook_add = '''
   nnoremap <silent> ,vf :<C-u>Defx -split=vertical -winwidth=30 -direction=topleft `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
