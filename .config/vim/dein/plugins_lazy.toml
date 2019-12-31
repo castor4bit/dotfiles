@@ -66,6 +66,10 @@ repo = 'kchmck/vim-coffee-script'
 on_ft = 'coffee'
 
 [[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+on_event = ['InsertEnter']
+
+[[plugins]]
 repo = 'Lokaltog/vim-easymotion'
 on_map = '<Plug>'
 hook_add = '''
@@ -148,20 +152,21 @@ hook_post_source = '''
   autocmd InsertEnter * call deoplete#enable()
 
   call deoplete#custom#option({
-       \ 'auto_complete_delay': 200,
-       \ 'keyword_patterns': {
-       \    '_': '[a-zA-Z_]\k*',
-       \    'ruby': '[a-zA-Z_]\w*[!?]?',
-       \  },
-       \ 'min_pattern_length': 3,
-       \ 'smart_case': v:true,
-       \ 'yarp': v:true
-       \})
+        \ 'auto_complete_delay': 200,
+        \ 'keyword_patterns': {
+        \    '_': '[a-zA-Z_]\k*',
+        \    'ruby': '[a-zA-Z_]\w*[!?]?',
+        \  },
+        \ 'smart_case': v:true,
+        \ 'sources': {
+        \   '_': ['lsp', 'around', 'buffer', 'file', 'member', 'omni']
+        \ },
+        \ 'yarp': v:true
+        \})
   call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
 
   "call deoplete#custom#option('profile', v:true)
   "call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
-  "call deoplete#custom#source('file', 'is_debug_enabled', 1)
 
   imap     <silent> <expr><CR>    pumvisible() ? "\<C-y>" :"\<CR>"
   inoremap <expr><Right>  pumvisible() ? "\<C-e>" : "\<Right>"

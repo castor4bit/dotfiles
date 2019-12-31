@@ -111,6 +111,9 @@ set matchtime=1
 set wildmenu
 set shortmess+=I
 
+"--------------------------------------
+" Other Settings
+"--------------------------------------
 " タブをスペースで置き換える
 set expandtab
 " タブ文字を空白2文字で表示する
@@ -143,6 +146,8 @@ set scrolloff=15
 set whichwrap=b,s,h,l,<,>,[,]
 " クリップボードを共有
 set clipboard+=unnamed,autoselect
+" 補完時にプレビューウィンドウを表示しない
+set completeopt-=preview
 " 補完メニューの高さ
 set pumheight=10
 set visualbell t_vb=

@@ -66,6 +66,11 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'mattn/vim-lsp-settings'
+depends = ['vim-lsp']
+merged = 0
+
+[[plugins]]
 repo = 'nixprime/cpsm'
 build = 'sh -c "PY3=ON ./install.sh"'
 
@@ -78,6 +83,21 @@ hook_add = '''
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = ['async.vim']
+hook_add = '''
+  let g:lsp_fold_enabled = 0
+  let g:lsp_diagnostics_enabled = 0
+  "let g:lsp_log_verbose = 1
+  "let g:lsp_log_file = expand('/tmp/vim-lsp.log')
+
+  highlight clear LspWarningHighlight
+'''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
