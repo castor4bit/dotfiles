@@ -145,12 +145,12 @@ repo = 'Shougo/deol.nvim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['context_filetype.vim', 'lexima.vim']
-on_event = 'InsertEnter'
+depends = ['context_filetype.vim']
+on_event = ['InsertEnter']
+hook_add='''
+  let g:deoplete#enable_at_startup = 1
+'''
 hook_post_source = '''
-  let g:deoplete#enable_at_startup = 0
-  autocmd InsertEnter * call deoplete#enable()
-
   call deoplete#custom#option({
         \ 'auto_complete_delay': 200,
         \ 'keyword_patterns': {
