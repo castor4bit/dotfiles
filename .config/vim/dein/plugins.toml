@@ -12,7 +12,7 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
-  let g:ale_fix_on_save = 1
+  let g:ale_fix_on_save = 0
   let g:ale_fixers = {
         \ 'javascript': ['prettier'],
         \ 'ruby': ['rubocop'],
