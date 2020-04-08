@@ -154,8 +154,8 @@ hook_post_source = '''
   call deoplete#custom#option({
         \ 'auto_complete_delay': 200,
         \ 'keyword_patterns': {
-        \    '_': '[a-zA-Z_]\k*',
-        \    'ruby': '[a-zA-Z_]\w*[!?]?',
+        \    '_': '\$?[a-zA-Z_]\k*',
+        \    'ruby': '@?[a-zA-Z_]\w*[!?]?',
         \  },
         \ 'smart_case': v:true,
         \ 'sources': {
