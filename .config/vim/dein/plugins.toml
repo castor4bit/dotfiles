@@ -4,6 +4,9 @@ repo = 'castor4bit/inside-motion.vim'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+hook_add = '''
+let g:lexima_accept_pum_with_enter = 1
+'''
 
 [[plugins]]
 repo = 'dense-analysis/ale'
