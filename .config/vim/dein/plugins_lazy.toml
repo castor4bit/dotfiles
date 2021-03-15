@@ -8,6 +8,7 @@ repo = 'ctrlpvim/ctrlp.vim'
 pre_cmd = 'CtrlP'
 hook_add = '''
   nnoremap <silent> ,cp :<C-u>CtrlP<CR>
+  nnoremap <silent> ,cm :<C-u>CtrlPMRU<CR>
 '''
 hook_source = '''
   let g:ctrlp_follow_symlinks = 1
