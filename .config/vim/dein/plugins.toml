@@ -1,9 +1,5 @@
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
 repo = 'castor4bit/inside-motion.vim'
 
 [[plugins]]
