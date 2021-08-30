@@ -177,6 +177,9 @@ augroup vimrc
   autocmd FileType text       setlocal nowrap textwidth=0
   " 閉じタグ補完
   autocmd FileType html inoremap <silent> <buffer> </ </<C-x><C-o>
+
+  " 拡張子指定でのFileType変更
+  autocmd BufNewFile,BufRead *.pcss setfiletype scss
 augroup END
 
 " matchit
