@@ -60,12 +60,16 @@ perlbrew install-cpanm
 
 # install nodejs
 eval "$(nodenv init -)"
-node_version=12.13.1
+node_version=16.8.0
 nodenv install $node_version
 nodenv global $node_version
 
 npm install -g js-beautify
 npm upgrade -g npm
+
+# install nodenv plugins
+mkdir -p "$(nodenv root)"/plugins
+git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
 
 # setup vim
 curl -sL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s -- ~/.cache/dein
