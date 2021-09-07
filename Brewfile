@@ -8,7 +8,7 @@ tap 'universal-ctags/universal-ctags'
 tap 'ringohub/tfenv'
 
 # Packages
-cask 'java'
+cask 'temurin'
 
 brew 'ag'
 brew 'ansible'
