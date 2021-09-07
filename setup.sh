@@ -41,7 +41,7 @@ ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local
 
 # install ruby
 eval "$(rbenv init -)"
-ruby_version=2.7.0
+ruby_version=3.0.2
 RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install $ruby_version
 rbenv global $ruby_version
 rbenv rehash
@@ -53,7 +53,7 @@ rbenv rehash
 # install perl
 curl -skL http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
-perl_version=$(perlbrew available | grep perl-5.30.1 | awk '{print $1}')
+perl_version=$(perlbrew available | grep perl-5.34.0 | awk '{print $1}')
 perlbrew install $perl_version
 perlbrew switch  $perl_version
 perlbrew install-cpanm
