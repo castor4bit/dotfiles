@@ -71,6 +71,9 @@ npm upgrade -g npm
 mkdir -p "$(nodenv root)"/plugins
 git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
 
+# install python library
+PIP_REQUIRE_VIRTUALENV=false pip3 install pynvim
+
 # setup vim
 curl -sL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s -- ~/.cache/dein
 vim -c ":call dein#install()" -c ":GoInstallBinaries" -c ":q"
