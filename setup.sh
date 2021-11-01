@@ -60,7 +60,7 @@ perlbrew install-cpanm
 
 # install nodejs
 eval "$(nodenv init -)"
-node_version=16.8.0
+node_version=16.13.0
 nodenv install $node_version
 nodenv global $node_version
 
@@ -69,7 +69,8 @@ npm upgrade -g npm
 
 # install nodenv plugins
 mkdir -p "$(nodenv root)"/plugins
-git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update"
+git clone https://github.com/nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
 
 # install python library
 PIP_REQUIRE_VIRTUALENV=false pip3 install pynvim
