@@ -104,14 +104,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'marijnh/tern_for_vim'
-build = 'npm install'
-on_ft = 'javascript'
-hook_add = '''
-  let g:tern_show_argument_hints = 1
-'''
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = 'html'
 hook_add = '''
