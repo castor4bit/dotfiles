@@ -41,7 +41,7 @@ ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local
 
 # install ruby
 eval "$(rbenv init -)"
-ruby_version=3.0.2
+ruby_version=3.1.0
 RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install $ruby_version
 rbenv global $ruby_version
 rbenv rehash
@@ -60,7 +60,7 @@ perlbrew install-cpanm
 
 # install nodejs
 eval "$(nodenv init -)"
-node_version=16.13.0
+node_version=17.3.0
 nodenv install $node_version
 nodenv global $node_version
 
