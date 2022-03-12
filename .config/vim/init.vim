@@ -200,7 +200,7 @@ augroup END
 " Other key maps
 "--------------------------------------
 " <Esc>キー2回で検索結果ハイライトを無効化
-nmap <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+nmap <Esc><Esc> <Esc>:nohlsearch<CR>:redraw!<CR><Esc>
 vnoremap _ :w !nkf -Ws\|pbcopy<CR><CR>
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
