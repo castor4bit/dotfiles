@@ -8,6 +8,8 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 # Menu bar: show remaining battery percentage; hide time
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write com.apple.menuextra.battery ShowTime -string "NO"
+# Menu bar: show remaining battery percentage (with Big Sur or Monterey)
+defaults write com.apple.controlcenter.plist BatteryShowPercentage -bool true
 
 # Disable the "Are you sure you want to open this application?" dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
