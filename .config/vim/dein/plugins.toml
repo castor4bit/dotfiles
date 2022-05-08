@@ -52,10 +52,28 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+
+[[plugins]]
 repo = 'kana/vim-tabpagecd'
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+hook_add = '''
+  let g:lsp_signature_help_enabled = 0
+'''
 
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
@@ -120,7 +138,60 @@ hook_add = '''
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['context_filetype.vim']
+hook_add = '''
+  call ddc#custom#patch_global('sources', ['around', 'vim-lsp', 'file'])
+  call ddc#custom#patch_global('sourceOptions', {
+        \ '_': {
+        \   'matchers': ['matcher_head'],
+        \   'sorters': ['sorter_rank'],
+        \   'converters': ['converter_remove_overlap'],
+        \ },
+        \ 'around': {'mark': 'A'},
+        \ 'vim-lsp': {
+        \   'matchers': ['matcher_head', 'matcher_length'],
+        \   'mark': 'lsp',
+        \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+        \ },
+        \ 'file': {
+        \   'mark': 'file',
+        \   'isVolatile': v:true,
+        \   'forceCompletionPattern': '\S/\S*',
+        \ },
+        \ })
+  call ddc#custom#patch_global('sourceParams', {
+        \ 'around': {'maxSize': 500},
+        \ 'nvim-lsp': {'maxSize': 500, 'kindLabels': { 'Class': 'c' } },
+        \ })
+  call ddc#custom#patch_global('autoCompleteEvents',
+        \ ['InsertEnter', 'TextChangedI', 'TextChangedP'])
+
+  call ddc#enable()
+  call popup_preview#enable()
+  call signature_help#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+
+[[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
+hook_add = '''
+  let g:dein#auto_recache = v:true
+'''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -266,6 +337,10 @@ hook_post_update = '''
 '''
 
 [[plugins]]
+repo = 'shun/ddc-vim-lsp'
+on_source = 'Shougo/ddc.vim'
+
+[[plugins]]
 repo = 'terryma/vim-expand-region'
 
 [[plugins]]
@@ -302,6 +377,9 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'vim-scripts/buftabs'
