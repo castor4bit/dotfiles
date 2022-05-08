@@ -68,6 +68,11 @@ hook_add = '''
 repo = 'mattn/vim-lsp-settings'
 depends = ['vim-lsp']
 merged = 0
+hook_add = '''
+  let g:lsp_settings = {
+      \  'typeprof': {'disabled': v:true}
+      \}
+'''
 
 [[plugins]]
 repo = 'nixprime/cpsm'
