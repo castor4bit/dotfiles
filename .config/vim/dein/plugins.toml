@@ -64,6 +64,12 @@ repo = 'kana/vim-tabpagecd'
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
+repo = 'kuuote/ddu-source-mr'
+
+[[plugins]]
+repo = 'lambdalisue/mr.vim'
+
+[[plugins]]
 repo = 'LumaKernel/ddc-file'
 
 [[plugins]]
@@ -120,12 +126,6 @@ hook_add = '''
 
   highlight clear LspWarningHighlight
 '''
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
@@ -188,138 +188,128 @@ repo = 'Shougo/ddc-matcher_length'
 repo = 'Shougo/ddc-sorter_rank'
 
 [[plugins]]
+repo = 'Shougo/ddu.vim'
+hook_add = '''
+  call ddu#custom#patch_global({
+        \   'ui': 'ff',
+        \   'sources': [
+        \     {
+        \       'name':'mr',
+        \     },
+        \     {
+        \       'name':'file_rec',
+        \       'params': {
+        \         'ignoredDirectories': ['.git', 'node_modules', 'vendor', '.next']
+        \       }
+        \     },
+        \   ],
+        \   'sourceOptions': {
+        \     '_': {
+        \       'matchers': ['matcher_fzf'],
+        \     },
+        \   },
+        \   'kindOptions': {
+        \     'file': {
+        \       'defaultAction': 'open',
+        \     },
+        \   },
+        \   'filterParams': {
+        \     'matcher_substring': {
+        \       'highlightMatched': 'Title',
+        \     },
+        \     'matcher_fzf': {
+        \       'highlightMatched': 'Search',
+        \     },
+        \   },
+        \   'uiParams': {
+        \     'ff': {
+        \       'startFilter': v:true,
+        \       'prompt': '> ',
+        \     },
+        \     'filer': {
+        \       'split': 'vertical',
+        \       'splitDirection': 'topleft',
+        \     },
+        \   },
+        \ })
+
+  call ddu#custom#patch_local('grep', {
+        \   'sourceParams' : {
+        \     'rg' : {
+        \       'args': ['--column', '--no-heading', '--color', 'never'],
+        \     },
+        \   },
+        \   'uiParams': {
+        \     'ff': {
+        \       'startFilter': v:false,
+        \     }
+        \   },
+        \ })
+
+  autocmd FileType ddu-ff call s:ddu_my_settings()
+  function! s:ddu_my_settings() abort
+    nnoremap <buffer><silent> <CR>      <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+    nnoremap <buffer><silent> <Space>   <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+    nnoremap <buffer><silent> i         <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+    nnoremap <buffer><silent> <Esc>     <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+    nnoremap <buffer><silent> q         <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+  endfunction
+
+  autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+  function! s:ddu_filter_my_settings() abort
+    inoremap <buffer><silent> <CR>  <Esc><Cmd>close<CR>
+    nnoremap <buffer><silent> <CR>  <Cmd>close<CR>
+    nnoremap <buffer><silent> q     <Cmd>close<CR>
+  endfunction
+
+  autocmd FileType ddu-filer call s:ddu_filer_my_settings()
+  function! s:ddu_filer_my_settings() abort
+    nnoremap <buffer><expr> l ddu#ui#filer#is_directory() ?
+          \ "<Cmd>call ddu#ui#filer#do_action('expandItem')<CR>" :
+          \ "<Cmd>call ddu#ui#filer#do_action('itemAction')<CR>"
+    nnoremap <buffer><silent> <Esc><Esc>   <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+  endfunction
+
+  nnoremap <silent> ,uf <Cmd>call ddu#start({})<CR>
+  nnoremap <silent> ,uu <Cmd>call ddu#start({'name': 'mr'})<CR>
+  nnoremap <silent> ,gr <Cmd>call ddu#start({
+        \ 'name': 'grep',
+        \ 'sources': [
+        \   { 'name': 'rg', 'params': { 'input': expand('<cword>') } }
+        \ ]})<CR>
+  nnoremap <silent> ,vf <Cmd>call ddu#start({
+        \ 'ui':'filer',
+        \ 'sources': [
+        \   { 'name': 'file', 'params': {} }
+        \ ]})<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-register'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
 hook_add = '''
-  let g:dein#auto_recache = v:true
+  let g:dein#auto_recache = v:false
 '''
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-depends = ['nvim-yarp', 'vim-hug-neovim-rpc', 'neomru.vim']
-hook_add = '''
-  " Define mappings
-  autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d    denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p    denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q    denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i    denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-    nnoremap <silent><buffer><expr> <ESC><ESC> denite#do_map('quit')
-  endfunction
-
-  autocmd FileType denite-filter call s:denite_filter_my_settings()
-  function! s:denite_filter_my_settings() abort
-    imap <silent><buffer> <CR> <Plug>(denite_filter_quit)
-  endfunction
-
-  " Options
-  call denite#custom#option('_', 'direction', 'topleft')
-  call denite#custom#option('_', 'start_filter', v:true)
-
-  " Change ignore_globs
-  let s:ignore_globs = [
-        \ '.git', '.svn',
-        \ 'images/', 'img/', 'fonts/',
-        \]
-  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', s:ignore_globs)
-
-  " Change file/rec command.
-  let s:ag_ignore_options = map(deepcopy(s:ignore_globs), { k, v -> '--ignore=' . v })
-  let s:ag_options = ['ag', '--follow'] + s:ag_ignore_options + ['--nocolor', '--nogroup', '-g', '']
-  call denite#custom#var('file/rec', 'command', s:ag_options)
-
-  " Change matchers.
-  call denite#custom#source('file_mru', 'matchers', ['matcher/cpsm'])
-  call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
-
-  " Change sorters.
-  call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
-
-  " Change default action.
-  call denite#custom#kind('file', 'default_action', 'open')
-
-  " Ag command on grep source
-  call denite#custom#var('grep', 'command', ['ag'])
-  call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', [])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
-
-  " Define alias
-  call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-  call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
-
-  call denite#custom#alias('source', 'file/rec/py', 'file/rec')
-  call denite#custom#var('file/rec/py', 'command', ['scantree.py', '--path', ':directory'])
-
-  " grep
-  command! -nargs=? Dgrep call s:Dgrep(<f-args>)
-  function s:Dgrep(...)
-    if a:0 > 0
-      execute(':Denite -buffer-name=grep-buffer-denite grep -path='.a:1)
-    else
-      execute(':Denite -buffer-name=grep-buffer-denite grep')
-    endif
-  endfunction
-
-  command! Dresume execute(':Denite -resume -buffer-name=grep-buffer-denite')
-  command! Dnext   execute(':Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately')
-  command! Dprev   execute(':Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=-1 -immediately')
-
-  " Others
-  call denite#custom#source('grep', 'max_candidates', 200)
-
-  nnoremap <silent> ,gr :<C-u>Denite -buffer-name=grep-buffer-denite grep<CR>
-  nnoremap <silent> ,uu :<C-u>Denite buffer file_mru<CR>
-  nnoremap <silent> ,uf :<C-u>DeniteBufferDir file<CR>
-'''
-
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
-hook_add = '''
-  nnoremap <silent> ,vf :<C-u>Defx -split=vertical -winwidth=30 -direction=topleft `expand('%:p:h')` -search=`expand('%:p')`<CR>
-
-  call defx#custom#option('_', { 'show_ignored_files': 1 })
-
-  autocmd FileType defx call s:defx_my_settings()
-  function! s:defx_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-          \ defx#is_directory() ?
-          \ defx#do_action('open_directory') :
-          \ defx#do_action('multi', ['drop', 'quit'])
-    nnoremap <silent><buffer><expr> l
-          \ defx#is_directory() ?
-          \ defx#do_action('open_directory') :
-          \ defx#do_action('multi', ['drop', 'quit'])
-
-    nnoremap <silent><buffer><expr> c   defx#do_action('copy')
-    nnoremap <silent><buffer><expr> m   defx#do_action('move')
-    nnoremap <silent><buffer><expr> p   defx#do_action('paste')
-    nnoremap <silent><buffer><expr> N   defx#do_action('new_file')
-    nnoremap <silent><buffer><expr> K   defx#do_action('new_directory')
-    nnoremap <silent><buffer><expr> d   defx#do_action('remove')
-    nnoremap <silent><buffer><expr> r   defx#do_action('rename')
-
-    nnoremap <silent><buffer><expr> t   defx#do_action('open_or_close_tree')
-    nnoremap <silent><buffer><expr> .   defx#do_action('toggle_ignored_files')
-    nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
-    nnoremap <silent><buffer><expr> *   defx#do_action('toggle_select_all')
-
-    nnoremap <silent><buffer><expr> h   defx#do_action('cd', ['..'])
-    nnoremap <silent><buffer><expr> j   line('.') == line('$') ? 'gg' : 'j'
-    nnoremap <silent><buffer><expr> k   line('.') == 1 ? 'G' : 'k'
-
-    nnoremap <silent><buffer><expr> <Esc> defx#do_action('quit')
-    nnoremap <silent><buffer><expr> q     defx#do_action('quit')
-  endfunction
-'''
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -339,6 +329,12 @@ hook_post_update = '''
 [[plugins]]
 repo = 'shun/ddc-vim-lsp'
 on_source = 'Shougo/ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-buffer'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
 
 [[plugins]]
 repo = 'terryma/vim-expand-region'
@@ -410,3 +406,6 @@ hook_add = '''
   map <silent> sp :call YanktmpPaste_p()<CR>
   map <silent> sP :call YanktmpPaste_P()<CR>
 '''
+
+[[plugins]]
+repo = 'yuki-yano/ddu-filter-fzf'
