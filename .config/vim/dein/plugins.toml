@@ -279,10 +279,15 @@ hook_add = '''
         \ 'sources': [
         \   { 'name': 'rg', 'params': { 'input': expand('<cword>') } }
         \ ]})<CR>
-  nnoremap <silent> ,vf <Cmd>call ddu#start({
+  nnoremap <silent> ,vp <Cmd>call ddu#start({
         \ 'ui':'filer',
         \ 'sources': [
         \   { 'name': 'file', 'params': {} }
+        \ ]})<CR>
+  nnoremap <silent> ,vf <Cmd>call ddu#start({
+        \ 'ui':'filer',
+        \ 'sources': [
+        \   { 'name': 'file', 'options': { 'path': expand('%:p:h') } }
         \ ]})<CR>
 '''
 
