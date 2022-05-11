@@ -267,6 +267,8 @@ hook_add = '''
     nnoremap <buffer><expr> l ddu#ui#filer#is_directory() ?
           \ "<Cmd>call ddu#ui#filer#do_action('expandItem')<CR>" :
           \ "<Cmd>call ddu#ui#filer#do_action('itemAction')<CR>"
+    nnoremap <buffer><expr> h ddu#ui#filer#is_directory() ?
+          \ "<Cmd>call ddu#ui#filer#do_action('collapseItem')<CR>" : "h"
     nnoremap <buffer><silent> <Esc><Esc>   <Cmd>call ddu#ui#filer#do_action('quit')<CR>
   endfunction
 
