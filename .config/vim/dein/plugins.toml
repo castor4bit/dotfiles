@@ -67,6 +67,25 @@ repo = 'kana/vim-textobj-user'
 repo = 'kuuote/ddu-source-mr'
 
 [[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+  let g:fern#default_hidden = 1
+
+  nnoremap <silent> ,vp <Cmd>Fern .   -drawer<CR>
+  nnoremap <silent> ,vf <Cmd>Fern %:h -drawer<CR>
+
+  function! s:init_fern() abort
+    nmap <buffer> h           <Plug>(fern-action-leave)
+    nmap <buffer> <Esc><Esc>  <Cmd>q<CR>
+  endfunction
+
+  augroup fern-custom
+    autocmd! *
+    autocmd FileType fern call s:init_fern()
+  augroup END
+'''
+
+[[plugins]]
 repo = 'lambdalisue/mr.vim'
 
 [[plugins]]
@@ -279,16 +298,16 @@ hook_add = '''
         \ 'sources': [
         \   { 'name': 'rg', 'params': { 'input': expand('<cword>') } }
         \ ]})<CR>
-  nnoremap <silent> ,vp <Cmd>call ddu#start({
-        \ 'ui':'filer',
-        \ 'sources': [
-        \   { 'name': 'file', 'params': {} }
-        \ ]})<CR>
-  nnoremap <silent> ,vf <Cmd>call ddu#start({
-        \ 'ui':'filer',
-        \ 'sources': [
-        \   { 'name': 'file', 'options': { 'path': expand('%:p:h') } }
-        \ ]})<CR>
+"   nnoremap <silent> ,vp <Cmd>call ddu#start({
+"        \ 'ui':'filer',
+"        \ 'sources': [
+"        \   { 'name': 'file', 'params': {} }
+"        \ ]})<CR>
+"   nnoremap <silent> ,vf <Cmd>call ddu#start({
+"        \ 'ui':'filer',
+"        \ 'sources': [
+"        \   { 'name': 'file', 'options': { 'path': expand('%:p:h') } }
+"        \ ]})<CR>
 '''
 
 [[plugins]]
