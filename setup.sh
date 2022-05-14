@@ -2,6 +2,7 @@
 
 # install dotfiles
 FILES=(\
+  .config/alacritty/alacritty.yml \
   .config/mpv/mpv.conf \
   .config/vim/init.vim \
   .zsh/functions/tmux.zsh \
