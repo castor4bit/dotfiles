@@ -71,11 +71,10 @@ repo = 'lambdalisue/fern.vim'
 hook_add = '''
   let g:fern#default_hidden = 1
 
-  nnoremap <silent> ,vp <Cmd>Fern .   -drawer<CR>
-  nnoremap <silent> ,vf <Cmd>Fern %:h -drawer<CR>
+  nnoremap <silent> ,vp <Cmd>Fern . -drawer<CR>
+  nnoremap <silent> ,vf <Cmd>Fern . -drawer -reveal=%<CR>
 
   function! s:init_fern() abort
-    nmap <buffer> h           <Plug>(fern-action-leave)
     nmap <buffer> <Esc><Esc>  <Cmd>q<CR>
   endfunction
 
