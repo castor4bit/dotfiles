@@ -420,11 +420,21 @@ hook_add = '''
 repo = 'vim-scripts/wombat256.vim'
 hook_add = '''
   set t_Co=256
-  autocmd MyAutoCmd VimEnter * colorscheme wombat256mod
-  autocmd MyAutoCmd VimEnter,ColorScheme * hi CursorLine ctermbg=239 ctermfg=NONE cterm=NONE
-  autocmd MyAutoCmd VimEnter,ColorScheme * hi CursorLine guibg=#555555 guifg=NONE gui=NONE
-  autocmd MyAutoCmd VimEnter,ColorScheme * hi MatchParen ctermbg=NONE
-  autocmd MyAutoCmd VimEnter,ColorScheme * hi ModeMsg    ctermfg=111
+  colorscheme wombat256mod
+
+  augroup wmbt
+    autocmd!
+    autocmd VimEnter,ColorScheme * hi CursorLine ctermbg=239 ctermfg=NONE cterm=NONE
+    autocmd VimEnter,ColorScheme * hi CursorLine guibg=#555555 guifg=NONE gui=NONE
+    autocmd VimEnter,ColorScheme * hi MatchParen ctermbg=NONE
+    autocmd VimEnter,ColorScheme * hi ModeMsg    ctermfg=111
+
+    autocmd VimEnter,ColorScheme * hi Normal      ctermbg=NONE guibg=NONE
+    autocmd VimEnter,ColorScheme * hi LineNr      ctermbg=NONE guibg=NONE
+    autocmd VimEnter,ColorScheme * hi SignColumn  ctermbg=NONE guibg=NONE
+    autocmd VimEnter,ColorScheme * hi VertSplit   ctermbg=NONE guibg=NONE
+    autocmd VimEnter,ColorScheme * hi NonText     ctermbg=NONE guibg=NONE
+  augroup END
 '''
 
 [[plugins]]
