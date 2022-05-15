@@ -42,7 +42,7 @@ ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local
 
 # install ruby
 eval "$(rbenv init -)"
-ruby_version=3.1.0
+ruby_version=3.1.2
 RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install $ruby_version
 rbenv global $ruby_version
 rbenv rehash
@@ -61,7 +61,7 @@ perlbrew install-cpanm
 
 # install nodejs
 eval "$(nodenv init -)"
-node_version=17.3.0
+node_version=18.1.0
 nodenv install $node_version
 nodenv global $node_version
 
@@ -72,9 +72,6 @@ npm upgrade -g npm
 mkdir -p "$(nodenv root)"/plugins
 git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update"
 git clone https://github.com/nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
-
-# install python library
-PIP_REQUIRE_VIRTUALENV=false pip3 install pynvim
 
 # setup vim
 curl -sL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s -- ~/.cache/dein
