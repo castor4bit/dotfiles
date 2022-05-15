@@ -3,13 +3,13 @@
 # install dotfiles
 FILES=(\
   .config/alacritty/alacritty.yml \
+  .config/git/config \
+  .config/git/ignore \
   .config/mpv/mpv.conf \
   .config/vim/init.vim \
   .zsh/functions/tmux.zsh \
   .eslintrc \
   .gemrc \
-  .gitconfig \
-  .gitignore \
   .gvimrc \
   .inputrc \
   .tern-config \
