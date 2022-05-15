@@ -214,7 +214,7 @@ vnoremap <Tab> %
 " 大文字でも保存/終了コマンドを受け付ける
 cnoremap W<CR> w<CR>
 cnoremap Q<CR> q<CR>
-cnoremap WQ wq
+cnoremap Wq wq
 " 誤爆防止
 nnoremap q: <NOP>
 " sudoで保存
