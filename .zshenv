@@ -49,6 +49,9 @@ if [ -z "${GOPATH:-}" ]; then
 fi
 export PATH=$PATH:$GOPATH/bin
 
+# rust (cargo)
+. "$HOME/.cargo/env"
+
 # google-cloud-sdk
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
