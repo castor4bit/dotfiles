@@ -73,9 +73,21 @@ hook_add = '''
 
   nnoremap <silent> ,vp <Cmd>Fern . -drawer<CR>
   nnoremap <silent> ,vf <Cmd>Fern . -drawer -reveal=%<CR>
+  nnoremap <Plug>(fern-close-drawer) :<C-u>FernDo close -drawer -stay<CR>
 
   function! s:init_fern() abort
     nmap <buffer> <Esc><Esc>  <Cmd>q<CR>
+    nmap <buffer><silent> <Plug>(fern-myaction-open-and-close)
+          \ <Plug>(fern-action-open)
+          \ <Plug>(fern-close-drawer)
+
+    nmap <buffer><expr>
+          \ <Plug>(fern-myaction-open-or-expand)
+          \ fern#smart#leaf(
+          \   "\<Plug>(fern-myaction-open-and-close)",
+          \   "\<Plug>(fern-action-expand)",
+          \ )
+    nmap <buffer> l <Plug>(fern-myaction-open-or-expand)
   endfunction
 
   augroup fern-custom
