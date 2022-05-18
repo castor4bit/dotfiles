@@ -13,6 +13,7 @@ FILES=(\
   .gvimrc \
   .inputrc \
   .rgignore \
+  .ripgreprc \
   .tern-config \
   .tmux.conf \
   .tigrc \

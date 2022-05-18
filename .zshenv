@@ -60,6 +60,7 @@ source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 
 # others
 export GISTY_DIR="$HOME/Project/gists"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # 環境個別設定を読み込む (.zshenv.local)
 if [[ -s $HOME/.zshenv.local ]] ; then source $HOME/.zshenv.local ]] ; fi
