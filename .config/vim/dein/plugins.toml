@@ -11,15 +11,17 @@ let g:lexima_accept_pum_with_enter = 1
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
-  let g:ale_fix_on_save = 0
+  let g:ale_fix_on_save = 1
   let g:ale_fixers = {
         \ 'javascript': ['prettier'],
         \ 'ruby': ['rubocop'],
+        \ 'php': ['php_cs_fixer'],
         \}
   let g:ale_linters = {
         \ 'javascript': ['eslint'],
         \ 'ruby': ['rubocop'],
         \ 'css': ['stylelint'],
+        \ 'php': ['php'],
         \}
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_lint_on_insert_leave = 0
@@ -30,6 +32,8 @@ hook_add = '''
         \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
         \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
         \}
+
+  let g:php_cs_fixer_options = '--rules=@PSR2'
 '''
 
 [[plugins]]
