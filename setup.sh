@@ -14,7 +14,6 @@ FILES=(\
   .inputrc \
   .rgignore \
   .ripgreprc \
-  .tern-config \
   .tmux.conf \
   .tigrc \
   .vimrc \
