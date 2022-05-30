@@ -1,3 +1,8 @@
+if [ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]; then
+  # Fig pre block. Keep at the top of this file.
+  . "$HOME/.fig/shell/zshrc.pre.zsh"
+fi
+
 # Builtin Commands
 bindkey -v    # viキーバインド
 umask 022     # umask
@@ -154,3 +159,8 @@ source "$HOME/.zsh/functions/tmux.zsh"
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+if [ -f "$HOME/.fig/shell/zshrc.post.zsh" ]; then
+  # Fig post block. Keep at the bottom of this file.
+  . "$HOME/.fig/shell/zshrc.post.zsh"
+fi
