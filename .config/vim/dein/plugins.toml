@@ -83,8 +83,7 @@ hook_add = '''
   function! s:init_fern() abort
     nmap <buffer> <Esc><Esc>  <Cmd>q<CR>
     nmap <buffer><silent> <Plug>(fern-myaction-open-and-close)
-          \ <Plug>(fern-action-open)
-          \ <Plug>(fern-close-drawer)
+          \ <Plug>(fern-action-open)<Plug>(fern-close-drawer)
 
     nmap <buffer><expr>
           \ <Plug>(fern-myaction-open-or-expand)
