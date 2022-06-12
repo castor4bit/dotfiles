@@ -23,7 +23,6 @@ tags
 # Persistent undo
 [._]*.un~
 
-
 #----------------------------
 # macOS
 # https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
@@ -54,3 +53,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#----------------------------
+# Others
+#----------------------------
+Brewfile.lock.json
