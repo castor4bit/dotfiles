@@ -23,3 +23,9 @@ if [[ -x `which gdircolors` && -e ~/.zsh/dircolors/current ]]; then
   unalias ls
   alias ls='gls --color=auto'
 fi
+
+# git shortcut
+function g() {
+  [[ $# > 0 ]] && git $@ || git st
+}
+compdef g git
