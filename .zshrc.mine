@@ -24,6 +24,11 @@ if [[ -x `which gdircolors` && -e ~/.zsh/dircolors/current ]]; then
   alias ls='gls --color=auto'
 fi
 
+# snowsql alias
+if [ -f /Applications/SnowSQL.app/Contents/MacOS/snowsql ]; then
+  alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+fi
+
 # git shortcut
 function g() {
   [[ $# > 0 ]] && git $@ || git st
