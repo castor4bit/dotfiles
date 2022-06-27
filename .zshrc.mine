@@ -28,9 +28,3 @@ fi
 if [ -f /Applications/SnowSQL.app/Contents/MacOS/snowsql ]; then
   alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 fi
-
-# git shortcut
-function g() {
-  [[ $# > 0 ]] && git $@ || git st
-}
-compdef g git
