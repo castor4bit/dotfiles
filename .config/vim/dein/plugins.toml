@@ -309,6 +309,17 @@ hook_add = '''
   nnoremap <silent> ,uf <Cmd>call ddu#start({})<CR>
   nnoremap <silent> ,uu <Cmd>call ddu#start({'name': 'mr'})<CR>
   nnoremap <silent> ,gr <Cmd>call ddu#start({
+        \   'volatile': v:true,
+        \   'sources': [{
+        \     'name': 'rg',
+        \     'options': {'matchers': []},
+        \   }],
+        \   'uiParams': {'ff': {
+        \     'ignoreEmpty': v:false,
+        \     'autoResize': v:false,
+        \   }},
+        \ })<CR>
+  nnoremap <silent> ,ggr <Cmd>call ddu#start({
         \ 'name': 'grep',
         \ 'sources': [
         \   { 'name': 'rg', 'params': { 'input': expand('<cword>') } }
