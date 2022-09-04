@@ -7,6 +7,7 @@ FILES=(\
   .config/git/ignore \
   .config/mpv/mpv.conf \
   .config/vim/init.vim \
+  .config/wezterm/wezterm.lua \
   .zsh/functions/tmux.zsh \
   .eslintrc \
   .gemrc \
