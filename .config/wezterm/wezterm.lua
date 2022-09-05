@@ -14,6 +14,9 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   initial_cols = 160,
   initial_rows = 50,
+  keys = {
+    { key = 'v', mods = 'CMD', action = wezterm.action.Paste },
+  },
   use_ime = true,
   window_background_opacity = 0.9,
   window_padding = {
