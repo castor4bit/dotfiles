@@ -8,6 +8,11 @@ return {
     {
       family = 'HackGen Console',
       weight = 'Regular',
+    },
+    {
+      family = 'JetBrains Mono',
+      weight = 'Regular',
+      harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
     }
   },
   font_size = 12.0,
