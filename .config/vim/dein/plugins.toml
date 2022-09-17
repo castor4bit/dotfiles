@@ -78,6 +78,7 @@ repo = 'kuuote/ddu-source-mr'
 repo = 'lambdalisue/fern.vim'
 hook_add = '''
   let g:fern#default_hidden = 1
+  let g:fern#default_exclude = '^\%(\..\+swp\)$'
 
   nnoremap <silent> ,vp <Cmd>Fern . -drawer<CR>
   nnoremap <silent> ,vf <Cmd>Fern . -drawer -reveal=%<CR>
