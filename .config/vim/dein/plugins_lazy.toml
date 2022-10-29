@@ -51,10 +51,6 @@ repo = 'hail2u/vim-css3-syntax'
 on_ft = ['html', 'css', 'less']
 
 [[plugins]]
-repo = 'hashivim/vim-terraform'
-on_ft = 'terraform'
-
-[[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_if = 1
 hook_add = '''

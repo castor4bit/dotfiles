@@ -44,6 +44,9 @@ hook_add = '''
 repo = 'dhruvasagar/vim-table-mode'
 
 [[plugins]]
+repo = 'hashivim/vim-terraform'
+
+[[plugins]]
 repo = 'haya14busa/incsearch.vim'
 hook_add = '''
   let g:incsearch#auto_nohlsearch = 0
