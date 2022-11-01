@@ -182,6 +182,7 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim']
 hook_add = '''
+  call ddc#custom#patch_global('ui', 'native')
   call ddc#custom#patch_global('sources', ['around', 'vim-lsp', 'file'])
   call ddc#custom#patch_global('sourceOptions', {
         \ '_': {
@@ -227,6 +228,10 @@ repo = 'Shougo/ddc-matcher_length'
 
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu.vim'
