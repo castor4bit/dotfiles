@@ -212,9 +212,14 @@ hook_add = '''
   call ddc#custom#patch_global('autoCompleteEvents',
         \ ['InsertEnter', 'TextChangedI', 'TextChangedP'])
 
-  call ddc#enable()
-  call popup_preview#enable()
-  call signature_help#enable()
+  if has('gui_running')
+    call ddc#custom#patch_global('ui', 'none')
+  else
+    call ddc#enable()
+    call popup_preview#enable()
+    call signature_help#enable()
+  endif
+
 '''
 
 [[plugins]]
