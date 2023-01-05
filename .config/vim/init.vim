@@ -244,6 +244,16 @@ inoremap <F6> <C-R>=strftime("%Y%m%d%H%M")<CR>
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 
 "--------------------------------------
+" Custom Commands
+"--------------------------------------
+" jqでフォーマット
+command FormatJson :%!jq '.'
+" 行末のCR(^M)を一括削除
+command RemoveCR :%s///g
+" Unixファイルフォーマットで開き直す
+command ReopenWithUnixFileFormat :e ++ff=unix
+
+"--------------------------------------
 " Local settings
 "--------------------------------------
 if filereadable(expand('~/.vimrc.local'))
