@@ -151,12 +151,14 @@ set completeopt-=preview
 " 補完メニューの高さ
 set pumheight=10
 set visualbell t_vb=
+" 指定文字数を超えるを行はシンタックスハイライトしない
+set synmaxcol=256
 
 " ファイルタイプ毎のインデント有効化
 filetype indent on
 " ファイルタイプ毎のプラグイン有効化
 filetype plugin on
-" シンタックスカラーリング有効化
+" シンタックスハイライト有効化
 syntax on
 
 augroup vimrc
