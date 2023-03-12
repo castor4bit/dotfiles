@@ -196,6 +196,9 @@ defaults write com.apple.dock wvous-br-corner -int 5
 # Remove all apps from Dock
 defaults delete com.apple.dock persistent-apps
 
+# Do not keep recently used apps
+defaults write com.apple.dock show-recents -bool false
+
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 
