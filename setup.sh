@@ -44,7 +44,7 @@ ln -s $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight $(br
 
 # install ruby
 eval "$(rbenv init -)"
-ruby_version=3.1.2
+ruby_version=3.2.2
 RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=$(brew --prefix readline)" rbenv install $ruby_version
 rbenv global $ruby_version
 rbenv rehash
@@ -56,14 +56,14 @@ rbenv rehash
 # install perl
 curl -skL http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
-perl_version=$(perlbrew available | grep perl-5.34.0 | awk '{print $1}')
+perl_version=$(perlbrew available | grep perl-5.38.0 | awk '{print $1}')
 perlbrew install $perl_version
 perlbrew switch  $perl_version
 perlbrew install-cpanm
 
 # install nodejs
 eval "$(nodenv init -)"
-node_version=18.1.0
+node_version=20.9.0
 nodenv install $node_version
 nodenv global $node_version
 
