@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm';
+local act = wezterm.action
 
 return {
   adjust_window_size_when_changing_font_size = true,
@@ -20,7 +21,7 @@ return {
   initial_cols = 160,
   initial_rows = 50,
   keys = {
-    { key = 'v', mods = 'CMD', action = wezterm.action.Paste },
+    { key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
   },
   use_ime = true,
   window_background_opacity = 0.9,
