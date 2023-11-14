@@ -30,22 +30,22 @@ for file in ${FILES[@]}; do
 done
 
 # change default shell to zsh
-grep '/usr/local/bin/zsh' /etc/shells > /dev/null
+grep "$(brew --prefix)/bin/zsh" /etc/shells > /dev/null
 if [ $? -ne 0 ]; then
-  sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
+  sudo sh -c "echo '$(brew --prefix)/bin/zsh' >> /etc/shells"
 fi
-chsh -s /usr/local/bin/zsh
+chsh -s $(brew --prefix)/bin/zsh
 
 # ssh settings for sierra (or later)
 echo -e "Host *\n  UseKeychain yes\n  AddKeysToAgent yes\n" >> ~/.ssh/config
 
 # symlink diff-highlight
-ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
+ln -s $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight $(brew --prefix)/bin
 
 # install ruby
 eval "$(rbenv init -)"
 ruby_version=3.1.2
-RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=/usr/local" rbenv install $ruby_version
+RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=$(brew --prefix readline)" rbenv install $ruby_version
 rbenv global $ruby_version
 rbenv rehash
 

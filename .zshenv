@@ -24,6 +24,12 @@ path=( ${(u)path:A} )
 setopt no_global_rcs
 
 # homebrew
+if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
+  BREW_PATH_PREFIX=/opt/homebrew
+else
+  BREW_PATH_PREFIX=/usr/local
+fi
+eval "$($BREW_PATH_PREFIX/bin/brew shellenv)"
 export PATH="$(brew --prefix)/bin:$PATH"
 
 # perlbrew
@@ -55,8 +61,8 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # google-cloud-sdk
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # others
 export GISTY_DIR="$HOME/Project/gists"

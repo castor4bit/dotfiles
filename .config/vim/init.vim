@@ -195,7 +195,7 @@ endif
 augroup vimrc_msword
   autocmd!
   autocmd BufReadPre  *.doc set readonly
-  autocmd BufReadPost *.doc silent %!/usr/local/bin/antiword -m UTF-8.txt '%'
+  autocmd BufReadPost *.doc silent %!antiword -m UTF-8.txt '%'
 augroup END
 
 "--------------------------------------
