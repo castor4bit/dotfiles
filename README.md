@@ -32,7 +32,7 @@ $ sudo xcodebuild -license
 ### Install Homebrew and packages
 
 ```sh
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 $ cd ~/Projects/dotfiles
 $ brew tap Homebrew/bundle
 $ brew bundle
