@@ -102,6 +102,9 @@ launchctl load $LOGINHOOK_PLIST_FILEPATH
 # Replace next window shortcut to `option + tab`
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "{ enabled = 1; value = { parameters = (65535, 48, 524288); type = 'standard'; }; }"
 
+# Automatically switch to a document's input source
+defaults write com.apple.HIToolbox AppleGlobalTextInputProperties -dict TextInputGlobalPropertyPerContextInput true
+
 # Spotlight menu keyboard shortcut: none
 /usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Delete AppleSymbolicHotKeys:64' > /dev/null 2>&1
 /usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" -c 'Add AppleSymbolicHotKeys:64:enabled bool false'
@@ -198,6 +201,9 @@ defaults delete com.apple.dock persistent-apps
 
 # Do not keep recently used apps
 defaults write com.apple.dock show-recents -bool false
+
+# Faster Dock display
+defaults write com.apple.dock autohide-delay -float 0
 
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
