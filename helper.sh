@@ -7,6 +7,7 @@ chrome_extensions=( \
 	raindropio/ldgfbffkinooeloadekpmfoklnobpien \
 	vimium/dbepggeogbaibhgnhhndojpepiihcmeb \
 	website-ip/ghbmhlgniedlklkpimlibbaoomlpacmk \
+	deepl-translate-reading-w/cofdbpoegempjloogbagkncekinflcnj \
 )
 
 for name in ${chrome_extensions[@]}; do
