@@ -28,6 +28,8 @@
   textconv = $GOPATH/bin/git-xlsx-textconv
 [diff]
   compactionHeuristic = true
+[fetch]
+  prune = true
 [user]
   useConfigOnly = true
   name = castor4bit
