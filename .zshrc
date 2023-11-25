@@ -36,7 +36,6 @@ alias less='less -FRSX'
 # ディレクトリ関連
 setopt auto_cd            # ディレクトリ名入力で自動cd
 setopt auto_pushd         # ディレクトリ移動時に自動pushd
-setopt cdable_vars        # 変数展開する
 setopt pushd_ignore_dups  # 同じディレクトリを重複pushしない
 
 # 補完
