@@ -32,6 +32,7 @@ alias ssh='TERM=xterm ssh'  # 接続時のTERMを初期化
 # S 改行しない
 # X 終了時に画面クリアしない
 alias less='less -FRSX'
+alias delds='find . -name ".DS_Store" -type f -print -delete'
 
 # ディレクトリ関連
 setopt auto_cd            # ディレクトリ名入力で自動cd
