@@ -34,3 +34,5 @@
   useConfigOnly = true
   name = castor4bit
   email = castor.4bit@gmail.com
+[init]
+  defaultBranch = main
