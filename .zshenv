@@ -65,7 +65,7 @@ source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # mysql-client
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+path=($(brew --prefix)/opt/mysql-client/bin(N-/) $path)
 
 # others
 export GISTY_DIR="$HOME/Project/gists"
