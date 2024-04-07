@@ -64,6 +64,9 @@ fi
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
+# mysql-client
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
 # others
 export GISTY_DIR="$HOME/Project/gists"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
