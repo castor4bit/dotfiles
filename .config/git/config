@@ -34,5 +34,10 @@
   useConfigOnly = true
   name = castor4bit
   email = castor.4bit@gmail.com
+  signingKey = A7E94382
 [init]
   defaultBranch = main
+[gpg]
+  program = /opt/homebrew/bin/gpg
+[commit]
+  gpgsign = true
