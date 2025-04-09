@@ -15,6 +15,7 @@
   dc = diff --cached
   f  = fetch
   fa = fetch --all
+  sw = switch
 [include]
   path = ~/.gitconfig.local
 [pager]
