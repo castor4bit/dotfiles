@@ -3,6 +3,7 @@
 # install dotfiles
 FILES=(\
   .config/alacritty/alacritty.yml \
+  .config/ghostty/config \
   .config/git/config \
   .config/git/ignore \
   .config/mpv/mpv.conf \
