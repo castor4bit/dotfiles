@@ -16,6 +16,7 @@ FILES=(\
   .inputrc \
   .rgignore \
   .ripgreprc \
+  .terraformrc \
   .tmux.conf \
   .tigrc \
   .vimrc \
@@ -79,6 +80,9 @@ git clone https://github.com/nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugi
 # setup vim
 curl -sL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s -- ~/.cache/dein
 vim -c ":call dein#install()" -c ":GoInstallBinaries" -c ":q"
+
+# create terraform plugins directory
+mkdir -p $HOME/.terraform.d/plugin-cache
 
 # dircolors
 mkdir -p ~/.zsh/dircolors
