@@ -48,6 +48,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
+export PATH="$(brew --prefix python)/libexec/bin:$PATH"
 
 # go
 if [ -z "${GOPATH:-}" ]; then
