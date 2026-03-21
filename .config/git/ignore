@@ -58,3 +58,6 @@ Temporary Items
 # Others
 #----------------------------
 Brewfile.lock.json
+
+# Coding Agent
+**/.claude/settings.local.json
