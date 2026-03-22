@@ -32,11 +32,6 @@ fi
 eval "$($BREW_PATH_PREFIX/bin/brew shellenv)"
 export PATH="$(brew --prefix)/bin:$PATH"
 
-# perlbrew
-if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
-  source ~/perl5/perlbrew/etc/bashrc
-fi
-
 # python
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENV_USE_DISTRIBUTE=true

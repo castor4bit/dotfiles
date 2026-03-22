@@ -45,14 +45,6 @@ echo -e "Host *\n  UseKeychain yes\n  AddKeysToAgent yes\n" >> ~/.ssh/config
 # symlink diff-highlight
 ln -s $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight $(brew --prefix)/bin
 
-# install perl
-curl -skL http://install.perlbrew.pl | bash
-source ~/perl5/perlbrew/etc/bashrc
-perl_version=$(perlbrew available | grep perl-5.38.0 | awk '{print $1}')
-perlbrew install $perl_version
-perlbrew switch  $perl_version
-perlbrew install-cpanm
-
 # install tools via mise
 mise install
 
