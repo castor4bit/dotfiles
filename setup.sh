@@ -6,6 +6,7 @@ FILES=(\
   .config/ghostty/config \
   .config/git/config \
   .config/git/ignore \
+  .config/mise/config.toml \
   .config/mpv/mpv.conf \
   .config/vim/init.vim \
   .config/wezterm/wezterm.lua \
@@ -44,17 +45,6 @@ echo -e "Host *\n  UseKeychain yes\n  AddKeysToAgent yes\n" >> ~/.ssh/config
 # symlink diff-highlight
 ln -s $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight $(brew --prefix)/bin
 
-# install ruby
-eval "$(rbenv init -)"
-ruby_version=3.2.2
-RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=$(brew --prefix readline)" rbenv install $ruby_version
-rbenv global $ruby_version
-rbenv rehash
-
-gem install bundler --no-document
-gem install pry     --no-document
-rbenv rehash
-
 # install perl
 curl -skL http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
@@ -63,19 +53,13 @@ perlbrew install $perl_version
 perlbrew switch  $perl_version
 perlbrew install-cpanm
 
-# install nodejs
-eval "$(nodenv init -)"
-node_version=20.9.0
-nodenv install $node_version
-nodenv global $node_version
+# install tools via mise
+mise install
+
+gem install bundler --no-document
 
 npm install -g js-beautify
 npm upgrade -g npm
-
-# install nodenv plugins
-mkdir -p "$(nodenv root)"/plugins
-git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update"
-git clone https://github.com/nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
 
 # setup vim
 curl -sL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s -- ~/.cache/dein

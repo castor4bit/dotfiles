@@ -37,10 +37,6 @@ if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
   source ~/perl5/perlbrew/etc/bashrc
 fi
 
-# *env
-if which rbenv  > /dev/null; then eval "$(rbenv  init -)"; fi
-if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
-
 # python
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENV_USE_DISTRIBUTE=true
@@ -60,6 +56,9 @@ export PATH=$PATH:$GOPATH/bin
 if [ -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
 fi
+
+# mise
+eval "$($(brew --prefix mise)/bin/mise activate zsh)"
 
 # google-cloud-sdk
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"

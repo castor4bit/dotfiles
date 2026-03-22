@@ -1,0 +1,6 @@
+[tools]
+node = "24.14.0"
+ruby = "4.0.2"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "ruby"]
