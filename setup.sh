@@ -46,8 +46,6 @@ ln -s $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight $(br
 # install tools via mise
 mise install
 
-gem install bundler --no-document
-
 npm install -g js-beautify
 npm upgrade -g npm
 
