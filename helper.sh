@@ -1,10 +1,6 @@
 # Open chrome extension install pages
 chrome_extensions=( \
 	1password-x-–-password-ma/aeblfdkhhhdcdjpifhhbdiojplfjncoa \
-	autopagerize/igiofjhpmpihnifddepnpngfjhkfenbp \
-	go-back-with-backspace/eekailopagacbcdloonjhbiecobagjci \
-	hatebu/dnlfpnhinnjdgmjfpccajboogcjocdla \
-	raindropio/ldgfbffkinooeloadekpmfoklnobpien \
 	vimium/dbepggeogbaibhgnhhndojpepiihcmeb \
 	website-ip/ghbmhlgniedlklkpimlibbaoomlpacmk \
 	deepl-translate-reading-w/cofdbpoegempjloogbagkncekinflcnj \
