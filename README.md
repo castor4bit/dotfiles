@@ -34,7 +34,6 @@ $ sudo xcodebuild -license
 ```sh
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 $ cd ~/Projects/dotfiles
-$ brew tap Homebrew/bundle
 $ brew bundle
 ```
 
