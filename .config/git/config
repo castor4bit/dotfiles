@@ -35,7 +35,7 @@
   useConfigOnly = true
   name = castor4bit
   email = castor.4bit@gmail.com
-  signingKey = A7E94382
+  signingKey = 79A932BA21CC182BD98DDBE70AB41E35EF139910
 [init]
   defaultBranch = main
 [gpg]
