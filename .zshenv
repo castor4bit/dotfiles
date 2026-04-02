@@ -55,9 +55,9 @@ fi
 # mise
 eval "$($(brew --prefix mise)/bin/mise activate zsh)"
 
-# google-cloud-sdk
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# google-cloud-sdk (gcloud-cli)
+source "$(brew --prefix)/Caskroom/gcloud-cli/latest/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/Caskroom/gcloud-cli/latest/google-cloud-sdk/completion.zsh.inc"
 
 # mysql-client
 path=($(brew --prefix)/opt/mysql-client/bin(N-/) $path)
