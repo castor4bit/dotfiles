@@ -53,7 +53,7 @@ npm upgrade -g npm
 
 # setup vim
 curl -sL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s -- ~/.cache/dein
-vim -c ":call dein#install()" -c ":GoInstallBinaries" -c ":q"
+vim -c ":call dein#install()" -c ":q"
 
 # create terraform plugins directory
 mkdir -p $HOME/.terraform.d/plugin-cache
