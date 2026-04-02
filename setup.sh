@@ -64,9 +64,6 @@ git clone https://github.com/seebi/dircolors-solarized.git ~/.zsh/dircolors/dirc
 ln -sf ~/.zsh/dircolors/dircolors-solarized/dircolors.256dark ~/.zsh/dircolors/current
 sed -i -e "s/^NORMAL 00;38;5;244/NORMAL 00;38;5;250/" ~/.zsh/dircolors/current
 
-# cdd
-git clone https://github.com/m4i/cdd.git ~/.zsh/cdd
-
 # enable locate
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 sudo /usr/libexec/locate.updatedb
