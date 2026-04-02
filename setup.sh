@@ -2,14 +2,12 @@
 
 # install dotfiles
 FILES=(\
-  .config/alacritty/alacritty.yml \
   .config/ghostty/config \
   .config/git/config \
   .config/git/ignore \
   .config/mise/config.toml \
   .config/mpv/mpv.conf \
   .config/vim/init.vim \
-  .config/wezterm/wezterm.lua \
   .zsh/functions/tmux.zsh \
   .eslintrc \
   .gemrc \
