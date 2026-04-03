@@ -30,6 +30,22 @@ for file in ${FILES[@]}; do
   fi
 done
 
+# claude code
+CLAUDE_FILES=(\
+  .claude/settings.json \
+  .claude/CLAUDE.md \
+  .claude/statusline.sh \
+  .claude/hooks/notify.sh \
+)
+for file in ${CLAUDE_FILES[@]}; do
+  if [ ! -f "$HOME/$file" ]; then
+    mkdir -p $(dirname $HOME/$file)
+    ln -s $(cd $(dirname $0) && pwd)/$file $HOME/$file
+  fi
+done
+chmod +x $HOME/.claude/statusline.sh
+chmod +x $HOME/.claude/hooks/notify.sh
+
 # change default shell to zsh
 grep "$(brew --prefix)/bin/zsh" /etc/shells > /dev/null
 if [ $? -ne 0 ]; then
