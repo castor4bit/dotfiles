@@ -35,10 +35,12 @@
   useConfigOnly = true
   name = castor4bit
   email = castor.4bit@gmail.com
-  signingKey = 79A932BA21CC182BD98DDBE70AB41E35EF139910
+  signingkey = ~/.ssh/id_signing.pub
 [init]
   defaultBranch = main
 [gpg]
-  program = /opt/homebrew/bin/gpg
+  format = ssh
+[gpg "ssh"]
+  allowedSignersFile = ~/.gitallowedsigners
 [commit]
   gpgsign = true
