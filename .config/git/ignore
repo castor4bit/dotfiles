@@ -54,6 +54,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# direnv
+.envrc
+
 #----------------------------
 # Others
 #----------------------------
