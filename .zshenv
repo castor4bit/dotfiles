@@ -68,4 +68,4 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export PHP_CS_FIXER_IGNORE_ENV=1
 
 # 環境個別設定を読み込む (.zshenv.local)
-if [[ -s $HOME/.zshenv.local ]] ; then source $HOME/.zshenv.local ]] ; fi
+if [[ -s $HOME/.zshenv.local ]]; then source $HOME/.zshenv.local; fi

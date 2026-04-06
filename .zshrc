@@ -84,7 +84,7 @@ autoload -U url-quote-magic     # URL文字列を自動でエスケープ
 zle -N self-insert url-quote-magic
 
 # 環境個別設定を読み込む (.zshrc.mine)
-if [[ -s $HOME/.zshrc.mine ]] ; then source $HOME/.zshrc.mine ]] ; fi
+if [[ -s $HOME/.zshrc.mine ]]; then source $HOME/.zshrc.mine; fi
 
 # Prompt
 # See: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Prompt-Expansion
