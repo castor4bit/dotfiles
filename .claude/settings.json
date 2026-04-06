@@ -4,7 +4,11 @@
   "sandbox": {
     "enabled": true,
     "filesystem": {
-      "denyRead": ["~/.ssh", "~/.gnupg", "~/.aws", "~/.zsh_history", "~/.bash_history"]
+      "denyRead": ["~/.ssh", "~/.gnupg", "~/.aws", "~/.zsh_history", "~/.bash_history"],
+      "allowRead": ["~/.ssh/*.pub"]
+    },
+    "network": {
+      "allowUnixSockets": ["~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"]
     }
   },
   "statusLine": {
