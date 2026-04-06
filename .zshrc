@@ -148,6 +148,16 @@ preexec () {
   [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
 }
 
+# mise
+eval "$($(brew --prefix mise)/bin/mise activate zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# google-cloud-sdk (gcloud-cli)
+source "$(brew --prefix)/Caskroom/gcloud-cli/latest/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/Caskroom/gcloud-cli/latest/google-cloud-sdk/completion.zsh.inc"
+
 # tmux起動
 source "$HOME/.zsh/functions/tmux.zsh"
 
