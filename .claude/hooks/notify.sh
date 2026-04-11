@@ -18,7 +18,7 @@ CLICK_EXECUTE=""
 if [ -n "$TMUX" ]; then
   TMUX_BIN=$(command -v tmux)
   TMUX_SOCKET=${TMUX%%,*}
-  TMUX_TARGET=$(tmux display-message -p -F '#{session_name}:#{window_index}' 2>/dev/null)
+  TMUX_TARGET=$(tmux display-message -p -t "$TMUX_PANE" -F '#{session_name}:#{window_index}' 2>/dev/null)
   if [ -n "$TMUX_BIN" ] && [ -n "$TMUX_SOCKET" ] && [ -n "$TMUX_TARGET" ]; then
     CLICK_EXECUTE="open -a Ghostty && '$TMUX_BIN' -S '$TMUX_SOCKET' select-window -t '$TMUX_TARGET'"
   fi
