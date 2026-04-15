@@ -6,6 +6,12 @@
 - For any task touching >1 file or requiring design choices, first output: (1) your understanding of the goal, (2) 2-3 approach options with tradeoffs, (3) recommended approach. Wait for my approval before editing.
 - Before declaring a bug fixed: (1) reproduce it, (2) state the root cause in one sentence, (3) apply the fix, (4) reproduce again to confirm. Show me each step.
 
+## Problem Solving
+
+- Always aim for root-cause resolution first. When something fails or doesn't work as intended, diagnose *why* and fix the underlying cause. Workarounds, manual user steps, and "try it yourself" handoffs are not solutions — they are at best diagnostic steps on the way to a real fix.
+- Never delegate the resolution back to the user. If you hit a blocker (environment, permissions, missing data, unclear requirement), your job is to investigate and either fix it or present a concrete fix for approval. Asking the user to run the failing command by hand, or to work around the problem themselves, is not acceptable as a final answer.
+- Distinguish "run once" from "works going forward." When the user asks to verify or test something, the implicit goal is a durable working state, not a single successful invocation. After it works once, confirm it will keep working under the same conditions in future sessions.
+
 ## Communication
 
 - Always respond in Japanese
