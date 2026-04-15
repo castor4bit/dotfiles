@@ -168,8 +168,8 @@ source "$HOME/.zsh/functions/tmux.zsh"
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 
-# Secretive SSH Agent
-export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+# 1Password SSH Agent
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 # pnpm
 export PNPM_HOME="~/Library/pnpm"
