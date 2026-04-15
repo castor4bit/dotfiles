@@ -36,6 +36,7 @@ CLAUDE_FILES=(\
   .claude/CLAUDE.md \
   .claude/statusline.sh \
   .claude/hooks/notify.sh \
+  .claude/skills/commit/SKILL.md \
 )
 for file in ${CLAUDE_FILES[@]}; do
   if [ ! -f "$HOME/$file" ]; then
