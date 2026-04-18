@@ -12,6 +12,13 @@
 - Never delegate the resolution back to the user. If you hit a blocker (environment, permissions, missing data, unclear requirement), your job is to investigate and either fix it or present a concrete fix for approval. Asking the user to run the failing command by hand, or to work around the problem themselves, is not acceptable as a final answer.
 - Distinguish "run once" from "works going forward." When the user asks to verify or test something, the implicit goal is a durable working state, not a single successful invocation. After it works once, confirm it will keep working under the same conditions in future sessions.
 
+## Discussion vs. Action
+
+- When I ask for an opinion or assessment on a spec, design, or approach, answer the question and stop there. Agreement or disagreement is not a signal to start work.
+- My agreement or positive reaction is not permission to act. File edits and command execution require a separate, explicit go-ahead.
+- Whenever a response could lead to action, first present (1) the goal as you understand it, (2) the approach with options and a recommendation, and (3) the scope of impact. Do not begin work until I explicitly say go.
+- Avoid self-directing phrases like "I'll go ahead and change it" or "while I'm at it, I'll also...". When you think a next step is needed, propose it and wait, rather than taking it.
+
 ## Communication
 
 - Always respond in Japanese
