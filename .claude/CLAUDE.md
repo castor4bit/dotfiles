@@ -4,7 +4,8 @@
 
 - Before implementing, present a plan and wait for approval. For ambiguous requests, conduct a requirements hearing with specific questions rather than asking open-ended 'which direction?'
 - For any task touching >1 file or requiring design choices, first output: (1) your understanding of the goal, (2) 2-3 approach options with tradeoffs, (3) recommended approach. Wait for my approval before editing.
-- Before declaring a bug fixed: (1) reproduce it, (2) state the root cause in one sentence, (3) apply the fix, (4) reproduce again to confirm. Show me each step.
+- When fixing a bug: (1) reproduce it yourself, (2) identify the root cause and report it with a proposed fix, (3) wait for my approval before editing, (4) apply the fix, (5) reproduce again yourself to confirm, (6) add a prevention measure (test, assertion, or check) or explicitly state why none applies. Do not skip step (3) even when the cause looks obvious. Reproduction and verification are your job — do not ask me to run the fix or confirm it.
+- Do not report a bug fix as complete until verification (step 5) and prevention (step 6) are done. The completion report must cover four things: the original problem, the applied fix, how you verified it is resolved, and the prevention measure added.
 
 ## Problem Solving
 
@@ -14,7 +15,7 @@
 
 ## Discussion vs. Action
 
-- When I ask for an opinion or assessment on a spec, design, or approach, answer the question and stop there. Agreement or disagreement is not a signal to start work.
+- Treat user input as information, not instruction, unless it contains an explicit ask to change something. Opinions, impressions, reactions, observations, complaints, and "I wonder if..." remarks are discussion — they require acknowledgement or a reply, not edits. If a change seems warranted, propose it and wait for go.
 - My agreement or positive reaction is not permission to act. File edits and command execution require a separate, explicit go-ahead.
 - Whenever a response could lead to action, first present (1) the goal as you understand it, (2) the approach with options and a recommendation, and (3) the scope of impact. Do not begin work until I explicitly say go.
 - Avoid self-directing phrases like "I'll go ahead and change it" or "while I'm at it, I'll also...". When you think a next step is needed, propose it and wait, rather than taking it.
